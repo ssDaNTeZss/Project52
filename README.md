@@ -9,7 +9,7 @@ authenticate users.
 ## Quick Start
 * Firstly, clone the repository:
 ```
-git clone https://github.com/alexusievich/FinalProject.git
+git clone https://github.com/ssDaNTeZss/Project52.git
 ```
 * Then open project with IntelliJ IDEA or another program and start the application.
 * Finally, you can see your application running on:
