@@ -1,6 +1,16 @@
 main {
   position: relative;
-  display: flex;
-  margin: 175px 136px 0 136px;
+  display: block;
   overflow: hidden;
+  max-width: 1167px;
+  //min-width: 1167px;
+  margin: 175px auto 0 auto;
 }
+
+@media (max-width: 576px) {
+  main {
+    margin: 85px auto 0 auto;
+    padding: 0 15px 0 15px;
+  }
+}
+

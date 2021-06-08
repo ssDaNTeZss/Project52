@@ -8,6 +8,8 @@ import { TopbarComponent } from './topbar/topbar.component';
 import { HeaderComponent } from './header/header.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BannerComponent } from './banner/banner.component';
+import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
+import { FooterComponent } from './footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { BannerComponent } from './banner/banner.component';
     TopbarComponent,
     HeaderComponent,
     NavbarComponent,
-    BannerComponent
+    BannerComponent,
+    ProductCarouselComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

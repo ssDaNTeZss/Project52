@@ -4,6 +4,7 @@
   //margin: 0 136px 0 136px;
   overflow: hidden;
   border-radius: 4px;
+  margin-bottom: 80px;
 }
 
 .carousel__inner {
@@ -15,6 +16,7 @@
 .carousel__item {
   width: 20%;
   transition: 2s;
+  position: relative;
 }
 
 .carousel__item img {
@@ -53,4 +55,49 @@
   width: 24px !important;
   height: 24px !important;
   margin-left: 12px;
+}
+
+.link-for-mobile {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .carousel {
+    height: 203px;
+    margin-bottom: 42px;
+  }
+
+  .carousel__inner {
+    height: 203px;
+  }
+
+  .carousel__item img {
+    width: 100%;
+    height: 203px;
+  }
+
+  .carousel__item__content {
+    bottom: 46px;
+    padding-left: 9px;
+  }
+
+  .content__title {
+    font-size: 24px;
+    margin-bottom: 0;
+  }
+
+  .content__description {
+    width: 60%;
+    font-size: 18px;
+    margin-top: 0;
+    margin-bottom: 25px;
+  }
+
+  .btn-for-pc {
+    display: none !important;
+  }
+
+  .link-for-mobile {
+    display: inline-flex;
+  }
 }

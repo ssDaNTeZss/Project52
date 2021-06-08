@@ -20,7 +20,7 @@ export class BannerComponent implements OnInit {
       if (this.carouselMargin > 40) {
         this.carouselMargin = 0;
       }
-    }, 2000)
+    }, 5000)
   }
 
 }
