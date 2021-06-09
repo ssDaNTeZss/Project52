@@ -148,6 +148,22 @@
 						</configuration>
 					</execution>
 					<execution>
+						<id>position-angular-build-img</id>
+						<goals>
+							<goal>copy-resources</goal>
+						</goals>
+						<phase>prepare-package</phase>
+						<configuration>
+							<outputDirectory>src/main/resources/static/assets</outputDirectory>
+							<resources>
+								<resource>
+									<directory>src/main/webapp/dist/webapp/assets</directory>
+									<filtering>false</filtering>
+								</resource>
+							</resources>
+						</configuration>
+					</execution>
+					<execution>
 						<id>position-angular-build-html</id>
 						<goals>
 							<goal>copy-resources</goal>
