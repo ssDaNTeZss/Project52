@@ -1,9 +1,10 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-product-carousel',
   templateUrl: './product-carousel.component.html',
-  styleUrls: ['./product-carousel.component.less']
+  // styleUrls: ['./product-carousel.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCarouselComponent implements OnInit {
 

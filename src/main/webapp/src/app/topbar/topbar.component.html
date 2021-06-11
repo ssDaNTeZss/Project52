@@ -1,11 +1,11 @@
 <div class="row topbar">
   <div class="col">
-    <div class="topbar__logo" href="#">
-      <img class="logo" src="assets/svg/Logo.svg" width="47px" height="45px">
+    <div class="topbar__logo">
+      <img class="logo" src="assets/svg/Logo.svg" width="47px" height="45px" alt="logo">
       <img class="burger" src="assets/svg/Burger.svg" (click)="openNavbar()"
-           *ngIf="!this.statusNavbar">
+           *ngIf="!this.statusNavbar" alt="burger">
       <img class="close" src="assets/svg/Close-black.svg" (click)="openNavbar()"
-      *ngIf="this.statusNavbar">
+      *ngIf="this.statusNavbar" alt="close">
     </div>
   </div>
   <div class="col topbar__brand">

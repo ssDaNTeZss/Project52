@@ -1,13 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  styleUrls: ['./footer.component.less']
+  // styleUrls: ['./footer.component.less'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private changeDetection: ChangeDetectorRef,
+  ) {
+    this.changeDetection.detach();
+  }
 
   ngOnInit(): void {
   }
