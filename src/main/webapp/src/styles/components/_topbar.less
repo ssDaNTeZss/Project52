@@ -1,0 +1,63 @@
+.topbar {
+  height: 51.86px;
+  align-items: center;
+  max-width: 1167px;
+  margin: 0 auto 0 auto;
+
+  &__brand {
+    text-align: center;
+    font-family: @font-Roboto;
+
+    &__item {
+      text-decoration: none;
+      font-size: 24px;
+      color: @color-black;
+    }
+  }
+
+  &__icons {
+    text-align: right;
+  }
+}
+
+.icon_cart {
+  margin-left: 20px;
+}
+
+.logo {
+  display: flex;
+}
+
+.burger {
+  display: none;
+}
+
+.close {
+  display: none;
+}
+
+@media (max-width: 576px) {
+  .topbar {
+    height: 42px;
+    width: auto;
+    margin: 0;
+    padding: 0 15px 0 15px;
+
+    &__brand__item {
+      font-size: 20px;
+      line-height: 17px;
+    }
+  }
+
+  .logo {
+    display: none;
+  }
+
+  .burger {
+    display: flex;
+  }
+
+  .close {
+    display: flex;
+  }
+}
