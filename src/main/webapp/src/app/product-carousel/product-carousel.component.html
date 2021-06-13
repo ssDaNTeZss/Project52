@@ -4,68 +4,23 @@
     <img src="assets/svg/Arrow-left-gray-24x24.svg" width="24px" height="24px">
     <img class="arrow-right active" src="assets/svg/Arrow-right-black-24x24.svg" width="24px" height="24px">
   </div>
-    <div class="row product-cards">
-      <div class="card">
-        <img src="assets/img/Block.jpg" alt="...">
-        <div class="card__info">
-          <p class="card__info__name">Apple iPhone 12</p>
-          <p class="card__info__price">₽60 000</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="assets/img/Block.jpg" alt="...">
-        <div class="card__info">
-          <p class="card__info__name">Apple iPhone 12</p>
-          <p class="card__info__price">₽60 000</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="assets/img/Block.jpg" alt="...">
-        <div class="card__info">
-          <p class="card__info__name">Apple iPhone 12</p>
-          <p class="card__info__price">₽60 000</p>
-        </div>
-      </div>
-
-      <div class="card">
-        <img src="assets/img/Block.jpg" alt="...">
-        <div class="card__info">
-          <p class="card__info__name">Apple iPhone 12</p>
-          <p class="card__info__price">₽60 000</p>
-        </div>
+  <div class="row product-cards">
+    <div class="card" *ngFor="let product of products">
+      <img src="{{product.img}}" alt="{{product.name}}">
+      <div class="card__info">
+        <p class="card__info__name">{{product.name}}</p>
+        <p class="card__info__price">₽{{product.price}}</p>
       </div>
     </div>
+  </div>
 
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide">
-        <img src="assets/img/Block.jpg" alt="...">
-              <div class="swiper-slide__info">
-                <p class="swiper-slide__name">Apple iPhone 12</p>
-                <p class="card__info__price">₽60 000</p>
-              </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="assets/img/Block.jpg" alt="...">
+      <div class="swiper-slide" *ngFor="let product of products">
+        <img src="{{product.img}}" alt="{{product.name}}">
         <div class="swiper-slide__info">
-          <p class="swiper-slide__name">Apple iPhone 12</p>
-          <p class="card__info__price">₽60 000</p>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="assets/img/Block.jpg" alt="...">
-        <div class="swiper-slide__info">
-          <p class="swiper-slide__name">Apple iPhone 12</p>
-          <p class="swiper-slide__price">₽60 000</p>
-        </div>
-      </div>
-      <div class="swiper-slide">
-        <img src="assets/img/Block.jpg" alt="...">
-        <div class="swiper-slide__info">
-          <p class="swiper-slide__name">Apple iPhone 12</p>
-          <p class="card__info__price">₽60 000</p>
+          <p class="swiper-slide__name">{{product.name}}</p>
+          <p class="card__info__price">₽{{product.price}}</p>
         </div>
       </div>
     </div>
