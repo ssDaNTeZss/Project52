@@ -1,9 +1,66 @@
 {
-  "posts": [
-    { "id": 1, "title": "json-server", "author": "typicode" }
+  "product": [
+    {
+      "id": 1001,
+      "brand": "Apple",
+      "category": "phone",
+      "name": "Apple iPhone 12 Pro",
+      "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=470&hei=556&fmt=png-alpha&.v=1604021661000",
+      "config": "128 GB Тихоокеанский синий",
+      "price": 99990,
+      "description": "",
+      "popularity": 0,
+      "rating": 1
+    },
+    {
+      "id": 1002,
+      "brand": "Apple",
+      "category": "phone",
+      "name": "Apple iPhone 12",
+      "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-blue-select-2020?wid=470&hei=556&fmt=png-alpha&.v=1604343704000",
+      "config": "128 GB Blue",
+      "price": 84990,
+      "description": "",
+      "popularity": 0,
+      "rating": 1
+    },
+    {
+      "id": 1003,
+      "brand": "Apple",
+      "category": "phone",
+      "name": "Apple iPhone XR",
+      "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-xr-red-select-201809?wid=470&hei=556&fmt=p-jpg&qlt=95&.v=1551226038669",
+      "config": "128 GB (PRODUCT)RED",
+      "price": 52990,
+      "description": "",
+      "popularity": 0,
+      "rating": 1
+    },
+    {
+      "id": 1004,
+      "brand": "Apple",
+      "category": "tadlet",
+      "name": "Apple iPad Air",
+      "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-air-select-wifi-green-202009?wid=470&hei=556&fmt=png-alpha&.v=1598650644000",
+      "config": "256 GB Wi-Fi Зелёный",
+      "price": 69990,
+      "description": "",
+      "popularity": 0,
+      "rating": 1
+    }
   ],
-  "comments": [
-    { "id": 1, "body": "some comment", "postId": 1 }
-  ],
-  "profile": { "name": "typicode" }
+  "tech_spec": [
+    {
+      "id": 10001,
+      "name": "Operating system",
+      "value": "iOS",
+      "product_ID": 1001
+    },
+    {
+      "id": 10002,
+      "name": "Display",
+      "value": "6.1″, OLED",
+      "product_ID": 1001
+    }
+  ]
 }
