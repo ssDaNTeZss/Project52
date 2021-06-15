@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {SimpleService} from "../simple.service";
+import {OpenNavbarService} from "../open-navbar.service";
 
 @Component({
   selector: 'app-topbar',
@@ -13,7 +13,7 @@ export class TopbarComponent implements OnInit {
 
   constructor(
     private changeDetection: ChangeDetectorRef,
-    private simpleService: SimpleService,
+    private openNavbarService: OpenNavbarService,
   ) {  }
 
   ngOnInit(): void {
@@ -21,7 +21,7 @@ export class TopbarComponent implements OnInit {
 
   openNavbar() {
     this.statusNavbar = !this.statusNavbar;
-    this.simpleService.openNavbar(this.statusNavbar);
+    this.openNavbarService.openNavbar(this.statusNavbar);
     this.changeDetection.detectChanges();
   }
 }

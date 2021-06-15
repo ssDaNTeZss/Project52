@@ -1,5 +1,5 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {SimpleService} from "../simple.service";
+import {OpenNavbarService} from "../open-navbar.service";
 import {Subscription} from "rxjs";
 
 @Component({
@@ -15,14 +15,14 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
 
   constructor(
-    private simpleService: SimpleService,
+    private openNavbarService: OpenNavbarService,
     private changeDetection: ChangeDetectorRef,
   ) {
     // this.changeDetection.detach();
   }
 
   ngOnInit(): void {
-    this.simpleService.openNavbar$.subscribe((status: boolean) => {
+    this.openNavbarService.openNavbar$.subscribe((status: boolean) => {
       this.statusNavbar = !this.statusNavbar;
       this.changeDetection.detectChanges();
     })
