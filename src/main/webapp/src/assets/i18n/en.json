@@ -1,0 +1,38 @@
+{
+  "BANNER": {
+    "BUTTON": "View now",
+    "TITLE-ONE": "40% OFF",
+    "DESCRIPTION-ONE": "Best deals this week. Top gadgets",
+    "TITLE-TWO": "40% OFF",
+    "DESCRIPTION-TWO": "Best deals this week. Top gadgets",
+    "TITLE-THREE": "40% OFF",
+    "DESCRIPTION-THREE": "Best deals this week. Top gadgets"
+  },
+  "NAVBAR": {
+    "TITLE": {
+      "PHONES": "Phones",
+      "TABLETS": "Tablets",
+      "ACCESSORIES": "Accessories"
+    }
+  },
+  "FOOTER": {
+    "TITLE": {
+      "CONTACTS": "Contacts",
+      "PRODUCTS": "Products",
+      "INFORMATION": "Information"
+    },
+    "PRODUCTS": {
+      "PHONES": "Phones",
+      "TABLETS": "Tablets",
+      "ACCESSORIES": "Accessories"
+    },
+    "ABOUT-US": "About us"
+  },
+  "MAIN-PAGE": {
+    "PRODUCT-CAROUSEL": {
+      "MOST-POPULAR": "Most popular",
+      "RECENTLY-VIEWED": "Recently viewed"
+    }
+  },
+  "BUTTON": {}
+}

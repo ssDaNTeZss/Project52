@@ -1,0 +1,38 @@
+{
+  "BANNER": {
+    "BUTTON": "Смотреть сейчас",
+    "TITLE-ONE": "Скидка 40%",
+    "DESCRIPTION-ONE": "Лучшие предложения на этой неделе. Лучшие гаджеты",
+    "TITLE-TWO": "Скидка 50%",
+    "DESCRIPTION-TWO": "Лучшие предложения на этой неделе. Лучшие гаджеты",
+    "TITLE-THREE": "Скидка 40%",
+    "DESCRIPTION-THREE": "Лучшие предложения на этой неделе. Лучшие гаджеты"
+  },
+  "NAVBAR": {
+    "TITLE": {
+      "PHONES": "Смартфоны",
+      "TABLETS": "Планшеты",
+      "ACCESSORIES": "Аксессуары"
+    }
+  },
+  "FOOTER": {
+    "TITLE": {
+      "CONTACTS": "Контакты",
+      "PRODUCTS": "Продукты",
+      "INFORMATION": "Информация"
+    },
+    "PRODUCTS": {
+      "PHONES": "Смартфоны",
+      "TABLETS": "Планшеты",
+      "ACCESSORIES": "Аксессуары"
+    },
+    "ABOUT-US": "О нас"
+  },
+  "MAIN-PAGE": {
+    "PRODUCT-CAROUSEL": {
+      "MOST-POPULAR": "Наиболее популярные",
+      "RECENTLY-VIEWED": "Недавно просмотренные"
+    }
+  },
+  "BUTTON": {}
+}
