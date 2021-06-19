@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy,
 import {CookieService} from "../cookie.service";
 import {Subscription} from "rxjs";
 import {ProductService} from "../product.service";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-product-carousel',
@@ -18,7 +19,8 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
   constructor(
     private changeDetection: ChangeDetectorRef,
     private cookie: CookieService,
-    private productService: ProductService
+    private productService: ProductService,
+    private translate: TranslateService
   ) {
   }
 
@@ -27,6 +29,7 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
     phoneDetails: null,
   };
   products = [];
+  translatedTitle = "";
 
   ngOnInit(): void {
 
@@ -55,7 +58,11 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
     //   }
     // });
 
-    if (this.title === "Recently viewed") {
+    this.subs = this.translate.get("MAIN-PAGE.PRODUCT-CAROUSEL." + this.title).subscribe((res: string) => {
+      this.translatedTitle = res;
+    });
+
+    if (this.title === "RECENTLY-VIEWED") {
       this.subs = this.cookie.getCookie('phoneIds').subscribe((cookies: any) => {
         this.ids = JSON.parse(cookies);
 
@@ -63,7 +70,6 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
           if (id !== '') {
             this.subs = this.productService.getOneProduct(id).subscribe((data: any) => {
               this.products.push(data);
-              console.log(this.products);
               this.changeDetection.detectChanges();
             });
           }
@@ -71,14 +77,13 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
       });
     }
 
-    if (this.title === "Most popular") {
+    if (this.title === "MOST-POPULAR") {
       this.ids = [1001, 1002, 1003, 1004];
 
       this.ids.reverse().forEach(id => {
         if (id !== '') {
           this.subs = this.productService.getOneProduct(id).subscribe((data: any) => {
             this.products.push(data);
-            console.log(this.products);
             this.changeDetection.detectChanges();
           });
         }
