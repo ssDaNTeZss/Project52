@@ -1,13 +1,12 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
-import {CookieService} from "../cookie.service";
+import {CookieService} from "../services/cookie.service";
 import {Subscription} from "rxjs";
-import {ProductService} from "../product.service";
+import {ProductService} from "../services/product.service";
 import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   selector: 'app-product-carousel',
   templateUrl: './product-carousel.component.html',
-  // styleUrls: ['./product-carousel.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ProductCarouselComponent implements OnInit, OnDestroy {

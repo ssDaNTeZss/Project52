@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import { Subscription } from "rxjs";
-import { OpenNavbarService } from "../../open-navbar.service";
+import { OpenNavbarService } from "../../services/open-navbar.service";
 
 @Component({
   selector: 'app-navbar',

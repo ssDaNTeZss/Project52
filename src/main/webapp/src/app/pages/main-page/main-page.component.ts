@@ -3,7 +3,6 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@an
 @Component({
   selector: 'app-main-page',
   templateUrl: './main-page.component.html',
-  // styleUrls: ['./main-page.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class MainPageComponent implements OnInit {

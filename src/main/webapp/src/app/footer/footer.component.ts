@@ -3,7 +3,6 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@an
 @Component({
   selector: 'app-footer',
   templateUrl: './footer.component.html',
-  // styleUrls: ['./footer.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FooterComponent implements OnInit {
@@ -15,6 +14,7 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.changeDetection.detectChanges();
   }
 
 }
