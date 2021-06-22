@@ -3,9 +3,9 @@
     <div class="topbar__logo">
       <img class="logo" src="assets/svg/Logo.svg" width="47px" height="45px" alt="logo">
       <img class="burger" src="assets/svg/Burger.svg" (click)="openNavbar()"
-           *ngIf="!this.statusNavbar" alt="burger">
+           *ngIf="!statusNavbar" alt="burger">
       <img class="close" src="assets/svg/Close-black.svg" (click)="openNavbar()"
-      *ngIf="this.statusNavbar" alt="close">
+           *ngIf="statusNavbar" alt="close">
     </div>
   </div>
   <div class="col topbar__brand">

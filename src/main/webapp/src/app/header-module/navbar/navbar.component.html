@@ -1,15 +1,15 @@
 <nav class="row navbar">
-    <ul class="navbar__nav">
-      <li class="nav__item">
-        <a class="nav__link" href="#">{{ "NAVBAR.TITLE.PHONES" | translate }}</a>
-      </li>
-      <li class="nav__item">
-        <a class="nav__link" href="#">{{ "NAVBAR.TITLE.TABLETS" | translate }}</a>
-      </li>
-      <li class="nav__item">
-        <a class="nav__link" href="#">{{ "NAVBAR.TITLE.ACCESSORIES" | translate }}</a>
-      </li>
-    </ul>
+  <ul class="navbar__nav">
+    <li class="nav__item">
+      <a class="nav__link" href="#" [routerLink]="['/products', 'phones']">{{ "NAVBAR.TITLE.PHONES" | translate }}</a>
+    </li>
+    <li class="nav__item">
+      <a class="nav__link" href="#">{{ "NAVBAR.TITLE.TABLETS" | translate }}</a>
+    </li>
+    <li class="nav__item">
+      <a class="nav__link" href="#">{{ "NAVBAR.TITLE.ACCESSORIES" | translate }}</a>
+    </li>
+  </ul>
 </nav>
 
 <nav class="row navbar-mobile" *ngIf="statusNavbar">

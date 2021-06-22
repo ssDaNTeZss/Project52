@@ -1,10 +1,9 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {OpenNavbarService} from "../open-navbar.service";
+import {OpenNavbarService} from "../../open-navbar.service";
 
 @Component({
   selector: 'app-topbar',
   templateUrl: './topbar.component.html',
-  // styleUrls: ['./topbar.component.less'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TopbarComponent implements OnInit {
