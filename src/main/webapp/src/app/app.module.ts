@@ -12,7 +12,7 @@ import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
 import { FilterAndSaerchComponent } from './filter-and-saerch/filter-and-saerch.component';
-import {HeaderModule} from "./header-module/header.module";
+import { HeaderModule } from "./header-module/header.module";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
