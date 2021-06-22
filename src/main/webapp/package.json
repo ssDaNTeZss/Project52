@@ -4,6 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "start-dev": "concurrently \"ng serve --configuration es5\" \"json-server --watch db.json\"",
     "build": "ng build --prod --deploy-url /static/",
     "test": "ng test",
     "lint": "ng lint",
@@ -21,8 +22,10 @@
     "@angular/router": "~9.1.12",
     "@ngx-translate/core": "^12.1.2",
     "@ngx-translate/http-loader": "^6.0.0",
+    "classlist.js": "^1.1.20150312",
     "rxjs": "~6.5.4",
     "tslib": "^1.10.0",
+    "web-animations-js": "^2.3.2",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
