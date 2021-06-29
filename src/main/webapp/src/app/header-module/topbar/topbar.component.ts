@@ -21,6 +21,6 @@ export class TopbarComponent implements OnInit {
   openNavbar() {
     this.statusNavbar = !this.statusNavbar;
     this.openNavbarService.openNavbar(this.statusNavbar);
-    this.changeDetection.detectChanges();
+    this.changeDetection.markForCheck();
   }
 }

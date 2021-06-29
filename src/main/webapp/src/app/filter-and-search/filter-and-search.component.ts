@@ -1,8 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-filter-and-search',
   templateUrl: './filter-and-search.component.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class FilterAndSearchComponent implements OnInit {
 

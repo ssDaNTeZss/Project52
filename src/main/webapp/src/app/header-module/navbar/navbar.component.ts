@@ -21,7 +21,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.openNavbarService.openNavbar$.subscribe((status: boolean) => {
       this.statusNavbar = !this.statusNavbar;
-      this.changeDetection.detectChanges();
+      this.changeDetection.markForCheck();
     })
   }
 

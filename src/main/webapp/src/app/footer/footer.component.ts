@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.changeDetection.detectChanges();
+    this.changeDetection.markForCheck();
   }
 
 }

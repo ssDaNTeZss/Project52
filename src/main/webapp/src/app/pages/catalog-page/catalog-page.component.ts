@@ -19,11 +19,11 @@ export class CatalogPageComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
 
     this.subs = this.productService.getProducts().subscribe((data: any) => {
-      this.changeDetection.detectChanges();
+      this.changeDetection.markForCheck();
     });
 
     this.subs = this.productService.getProductsSameType("phone").subscribe((data: any) => {
-      this.changeDetection.detectChanges();
+      this.changeDetection.markForCheck();
     });
   }
 

@@ -70,7 +70,7 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
             if (id !== '') {
               this.subs = this.productService.getOneProduct(id).subscribe((data: any) => {
                 this.products.push(data);
-                this.changeDetection.detectChanges();
+                this.changeDetection.markForCheck();
               });
             }
           })
@@ -85,7 +85,7 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
         if (id !== '') {
           this.subs = this.productService.getOneProduct(id).subscribe((data: any) => {
             this.products.push(data);
-            this.changeDetection.detectChanges();
+            this.changeDetection.markForCheck();
           });
         }
       });
