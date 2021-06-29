@@ -11,7 +11,7 @@ import { HttpClient, HttpClientModule } from "@angular/common/http";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
-import { FilterAndSaerchComponent } from './filter-and-saerch/filter-and-saerch.component';
+import { FilterAndSearchComponent } from './filter-and-search/filter-and-search.component';
 import { HeaderModule } from "./header-module/header.module";
 
 export function HttpLoaderFactory(http: HttpClient) {
@@ -26,7 +26,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductCarouselComponent,
     FooterComponent,
     CatalogPageComponent,
-    FilterAndSaerchComponent
+    FilterAndSearchComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +38,6 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       },
-      defaultLanguage: "en"
     }),
     HeaderModule
   ],
