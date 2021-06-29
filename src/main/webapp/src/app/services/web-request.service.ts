@@ -14,8 +14,8 @@ export class WebRequestService {
     this.ROOT_URL = environment.apiUrl;
   }
 
-  get(uri: string) {
-    return this.http.get(`${this.ROOT_URL}/${uri}`);
+  get(uri: string, payload?: Object) {
+    return this.http.get(`${this.ROOT_URL}/${uri}`, payload);
   }
 
   post(uri: string, payload: Object) {

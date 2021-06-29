@@ -17,13 +17,42 @@ export class BannerComponent implements OnInit {
 
   ngOnInit(): void {
     setInterval(() => {
-      this.carouselMarginPer = "-" + this.carouselMargin + "%";
       this.carouselMargin = this.carouselMargin + 20;
+
       if (this.carouselMargin > 40) {
         this.carouselMargin = 0;
       }
-      this.changeDetection.detectChanges();
-    }, 5000)
+      this.carouselMarginPer = "-" + this.carouselMargin + "%";
+
+      this.changeDetection.markForCheck();
+    }, 6000)
+  }
+
+  changeBanner(margin: number): void {
+    this.carouselMargin = margin;
+    this.carouselMarginPer = "-" + this.carouselMargin + "%";
+    this.changeDetection.markForCheck();
+  }
+
+  toggleArrows(direction: string) {
+    switch (direction) {
+      case "forward":
+        this.carouselMargin = this.carouselMargin + 20;
+
+        if (this.carouselMargin > 40) {
+          this.carouselMargin = 0;
+        }
+        break;
+      case "back":
+        this.carouselMargin = this.carouselMargin - 20;
+
+        if (this.carouselMargin < 0) {
+          this.carouselMargin = 40;
+        }
+        break;
+    }
+    this.carouselMarginPer = "-" + this.carouselMargin + "%";
+    this.changeDetection.markForCheck();
   }
 
 }

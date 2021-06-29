@@ -63,16 +63,18 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
 
     if (this.title === "RECENTLY-VIEWED") {
       this.subs = this.cookie.getCookie('phoneIds').subscribe((cookies: any) => {
-        this.ids = JSON.parse(cookies);
+        if (cookies) {
+          this.ids = JSON.parse(cookies);
 
-        this.ids.reverse().forEach(id => {
-          if (id !== '') {
-            this.subs = this.productService.getOneProduct(id).subscribe((data: any) => {
-              this.products.push(data);
-              this.changeDetection.detectChanges();
-            });
-          }
-        })
+          this.ids.reverse().forEach(id => {
+            if (id !== '') {
+              this.subs = this.productService.getOneProduct(id).subscribe((data: any) => {
+                this.products.push(data);
+                this.changeDetection.detectChanges();
+              });
+            }
+          })
+        }
       });
     }
 

@@ -1,7 +1,7 @@
 <div class="row topbar">
   <div class="col">
     <div class="topbar__logo">
-      <img class="logo" src="assets/svg/Logo.svg" width="47px" height="45px" alt="logo">
+      <img class="logo" src="assets/svg/Logo.svg" width="47px" height="45px" alt="logo" [routerLink]="['/']">
       <img class="burger" src="assets/svg/Burger.svg" (click)="openNavbar()"
            *ngIf="!statusNavbar" alt="burger">
       <img class="close" src="assets/svg/Close-black.svg" (click)="openNavbar()"
@@ -9,7 +9,7 @@
     </div>
   </div>
   <div class="col topbar__brand">
-    <a class="topbar__brand__item" href="#">
+    <a class="topbar__brand__item" href="#" [routerLink]="['/']">
       Shop52
     </a>
   </div>

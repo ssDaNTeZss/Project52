@@ -1,5 +1,8 @@
 <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
   <div class="carousel__inner">
+    <input type="radio" name="radio-btn" id="radio1">
+    <input type="radio" name="radio-btn" id="radio2">
+    <input type="radio" name="radio-btn" id="radio3">
     <div class="carousel__item active" [style.margin-left]="carouselMarginPer">
       <img src="assets/img/Block.jpg" alt="...">
       <div class="carousel__item__content">
@@ -45,5 +48,20 @@
         </a>
       </div>
     </div>
+  </div>
+
+  <div class="navigation-manual">
+    <label for="radio1" class="manual-btn" (click)="changeBanner(0)"
+           [ngClass]="{ selected: carouselMargin === 0 }"></label>
+    <label for="radio2" class="manual-btn" (click)="changeBanner(20)"
+           [ngClass]="{ selected: carouselMargin === 20 }"></label>
+    <label for="radio3" class="manual-btn" (click)="changeBanner(40)"
+           [ngClass]="{ selected: carouselMargin === 40 }"></label>
+  </div>
+
+  <div class="navigation-arrows">
+    <img src="assets/svg/Arrow-left-gray-24x24.svg" width="21px" height="21px" (click)="toggleArrows('back')">
+    <img class="arrow-right active" src="assets/svg/Arrow-right-black-24x24.svg" width="21px" height="21px"
+         (click)="toggleArrows('forward')">
   </div>
 </div>
