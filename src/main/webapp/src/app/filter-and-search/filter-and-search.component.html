@@ -1,0 +1,168 @@
+<div class="row" style="margin-bottom: 1000px">
+  <!--  <select class="select-css">-->
+  <!--    <option value="0">Sort</option>-->
+  <!--    <option>Пункт 2ere ere ere </option>-->
+  <!--  </select>-->
+  <!--  <select class="select-css">-->
+  <!--    <option value="0">Brand</option>-->
+  <!--    <option>Пункт 2</option>-->
+  <!--  </select>-->
+  <!--  <select class="select-css">-->
+  <!--    <option value="0">Price</option>-->
+  <!--    <option>Пункт 2</option>-->
+  <!--  </select>-->
+
+  <!--  <ul class="menu">-->
+  <!--    <li><a href="#">Sort</a>-->
+  <!--      <img class="rectangle" src="assets/svg/Rectangle.svg">-->
+  <!--      <ul>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--      </ul>-->
+  <!--    </li>-->
+  <!--    <li><a href="#">Brand</a>-->
+  <!--      <ul>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--      </ul>-->
+  <!--    </li>-->
+  <!--    <li><a href="#">Price</a>-->
+  <!--      <ul>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--        <li><a href="#">Dropdown item</a></li>-->
+  <!--      </ul>-->
+  <!--    </li>-->
+  <!--  </ul>-->
+
+  <!--  <div class="select is-active">-->
+  <!--    <div class="select__header">-->
+  <!--      <span class="select__current">Value 1</span>-->
+  <!--      <img class="rectangle" src="assets/svg/Rectangle.svg">-->
+  <!--    </div>-->
+
+  <!--    <div class="select__body">-->
+  <!--      <div class="select__item">Value hkghigi ojiuh</div>-->
+  <!--      <div class="select__item">Value 2</div>-->
+  <!--      <div class="select__item">Value 3</div>-->
+  <!--      <div class="select__item">Value 4</div>-->
+  <!--      <div class="select__item">Value 5</div>-->
+  <!--    </div>-->
+
+  <!--    <div class="select__header">-->
+  <!--      <span class="select__current">Value 1</span>-->
+  <!--      <img class="rectangle" src="assets/svg/Rectangle.svg">-->
+  <!--    </div>-->
+
+  <!--    <div class="select__body">-->
+  <!--      <div class="select__item">Value hkghigi ojiuh</div>-->
+  <!--      <div class="select__item">Value 2</div>-->
+  <!--      <div class="select__item">Value 3</div>-->
+  <!--      <div class="select__item">Value 4</div>-->
+  <!--      <div class="select__item">Value 5</div>-->
+  <!--    </div>-->
+  <!--  </div>-->
+
+  <div class="col">
+    <div class="filter" (click)="openFilter('sort')">
+      <div class="filter__header">
+        <span class="header__title">{{sortFilterTitle}}</span>
+        <img class="filter__icon" src="assets/svg/Rectangle.svg"
+             [ngClass]="{ 'up': turnIcon }"
+        >
+      </div>
+      <div class="filter__options" [ngClass]="{
+      'activated': activatedSort
+      }">
+        <ul class="list">
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by popularity', true)"
+          >
+            <span class="options__title">by popularity</span>
+            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+          </li>
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by popularity', false)"
+          >
+            <span>by popularity</span>
+            <img class="options__icon" src="assets/svg/Rectangle.svg">
+          </li>
+
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by rating', true)"
+          >
+            <span>by rating</span>
+            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+          </li>
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by rating', false)"
+          >
+            <span>by rating</span>
+            <img class="options__icon" src="assets/svg/Rectangle.svg">
+          </li>
+
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by price', true)"
+          >
+            <span>by price</span>
+            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+          </li>
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by price', false)"
+          >
+            <span>by price</span>
+            <img class="options__icon" src="assets/svg/Rectangle.svg">
+          </li>
+
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by name', true)"
+          >
+            <span>by name</span>
+            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+          </li>
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by name', false)"
+          >
+            <span>by name</span>
+            <img class="options__icon" src="assets/svg/Rectangle.svg">
+          </li>
+
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by default')"
+          >
+            <span>by default</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="filter" (click)="openFilter('brand')">
+      <div class="filter__header">
+        <span class="header__title">Brand</span>
+        <img class="filter__icon" src="assets/svg/Rectangle.svg">
+      </div>
+      <div class="filter__options" [ngClass]="{
+      'activated': activatedBrand
+      }">
+        <div class="checkbox">
+          <input  class="custom-checkbox" type="checkbox" id="scales" name="scales"
+                 disabled>
+          <label for="scales">Scales</label>
+        </div>
+
+        <div class="checkbox">
+          <input type="checkbox" id="color-1" name="color-1" value="indigo">
+          <label for="color-1">Indigo</label>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

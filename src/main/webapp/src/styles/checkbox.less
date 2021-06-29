@@ -1,0 +1,78 @@
+.checkbox {
+  padding: 5px 5px 1px 5px;
+  cursor: pointer;
+  -webkit-transition: all .3s;
+  transition: all .3s;
+  height: auto;
+
+  &:hover {
+    background-color: @color-snow;
+  }
+
+  & input {
+    position: absolute;
+    z-index: -1;
+    opacity: 0;
+    cursor: pointer;
+
+    & + label {
+      display: inline-flex;
+      align-items: center;
+      user-select: none;
+      font-size: 14px;
+      font-family: @font-Open-Sans;
+      color: @color-black;
+      line-height: 15px;
+      margin-right: 16px;
+      cursor: pointer;
+
+      &::before {
+        content: '';
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+        flex-grow: 0;
+        background-color: @color-pale-grey;
+        border-radius: 4px;
+        margin-right: 10px;
+        background-repeat: no-repeat;
+        background-position: center center;
+        background-size: 50% 50%;
+      }
+    }
+
+    &:not(:disabled):not(:checked) + label:hover::before {
+      border-color: @color-slate-blue;
+    }
+
+    &:not(:disabled):active + label::before {
+      background-color: @color-slate-blue;
+      border-color: @color-slate-blue;
+    }
+
+    &:focus + label::before {
+      box-shadow: 0 0 0 2rem @color-slate-blue-transparency-05;
+    }
+
+    &:focus:not(:checked) + label::before {
+      border-color: @color-slate-blue;
+    }
+
+    &:checked + label::before {
+      border-color: @color-primary;
+      background-color: @color-primary;
+      background-image: url("../assets/svg/check.svg");
+    }
+
+    &:disabled + label {
+      cursor: default;
+
+      &::before {
+        background-color: @color-dark-grey;
+      }
+    }
+  }
+}
+
+
