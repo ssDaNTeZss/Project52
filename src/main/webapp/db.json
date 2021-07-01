@@ -3,7 +3,7 @@
     {
       "id": 1001,
       "brand": "Apple",
-      "category": "phone",
+      "category": "phones",
       "name": "Apple iPhone 12 Pro",
       "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=470&hei=556&fmt=png-alpha&.v=1604021661000",
       "config": "128 GB Тихоокеанский синий",
@@ -15,7 +15,7 @@
     {
       "id": 1002,
       "brand": "Apple",
-      "category": "phone",
+      "category": "phones",
       "name": "Apple iPhone 12",
       "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-blue-select-2020?wid=470&hei=556&fmt=png-alpha&.v=1604343704000",
       "config": "128 GB Blue",
@@ -27,7 +27,7 @@
     {
       "id": 1003,
       "brand": "Apple",
-      "category": "phone",
+      "category": "phones",
       "name": "Apple iPhone XR",
       "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-xr-red-select-201809?wid=470&hei=556&fmt=p-jpg&qlt=95&.v=1551226038669",
       "config": "128 GB (PRODUCT)RED",
@@ -39,11 +39,23 @@
     {
       "id": 1004,
       "brand": "Apple",
-      "category": "tadlet",
+      "category": "tadlets",
       "name": "Apple iPad Air",
       "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-air-select-wifi-green-202009?wid=470&hei=556&fmt=png-alpha&.v=1598650644000",
       "config": "256 GB Wi-Fi Зелёный",
       "price": 69990,
+      "description": "",
+      "popularity": 0,
+      "rating": 1
+    },
+    {
+      "id": 1005,
+      "brand": "Samsung",
+      "category": "phones",
+      "name": "Samsung Galaxy S21 Ultra 5G",
+      "img": "https://static.galaxystore.ru/upload/resize_cache/iblock/3e2/440_440_1/3e278441a743a2126cb341f9869b8204.jpg",
+      "config": "256 GB Black Phantom",
+      "price": 105990,
       "description": "",
       "popularity": 0,
       "rating": 1

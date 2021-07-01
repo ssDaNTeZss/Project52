@@ -13,6 +13,7 @@ import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
 import { FilterAndSearchComponent } from './filter-and-search/filter-and-search.component';
 import { HeaderModule } from "./header-module/header.module";
+import { ProductCarouselContainerComponent } from './product-carousel.container/product-carousel.container.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -26,7 +27,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductCarouselComponent,
     FooterComponent,
     CatalogPageComponent,
-    FilterAndSearchComponent
+    FilterAndSearchComponent,
+    ProductCarouselContainerComponent
   ],
   imports: [
     BrowserModule,
