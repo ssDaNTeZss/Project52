@@ -10,12 +10,22 @@
   &__arrows {
     padding-right: 107px;
     text-align: right;
+
+    & img {
+      cursor: pointer;
+      padding: 2px;
+
+      &:hover {
+        background: @color-light-grey-transparency-02;
+        border-radius: 4px;
+      }
+    }
   }
 }
 
 .arrow-right {
   display: none;
-  margin-left: 20px;
+  margin-left: 16px;
 
   &.active {
     display: inline-block;
@@ -95,9 +105,9 @@
           background-color: @color-white;
 
           &:hover {
-            box-shadow:1px 1px 9px 0px rgba(255,255,255,0.63);
-            -webkit-box-shadow:1px 1px 9px 0px rgba(255,255,255,0.63);
-            -moz-box-shadow:1px 1px 9px 0px rgba(255,255,255,0.63);
+            box-shadow: 1px 1px 9px 0px rgba(255, 255, 255, 0.63);
+            -webkit-box-shadow: 1px 1px 9px 0px rgba(255, 255, 255, 0.63);
+            -moz-box-shadow: 1px 1px 9px 0px rgba(255, 255, 255, 0.63);
           }
         }
       }
