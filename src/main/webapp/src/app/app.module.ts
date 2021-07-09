@@ -14,6 +14,7 @@ import { CatalogPageComponent } from './pages/catalog-page/catalog-page.componen
 import { FilterAndSearchComponent } from './filter-and-search/filter-and-search.component';
 import { HeaderModule } from "./header-module/header.module";
 import { ProductCarouselContainerComponent } from './product-carousel.container/product-carousel.container.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -28,7 +29,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     FooterComponent,
     CatalogPageComponent,
     FilterAndSearchComponent,
-    ProductCarouselContainerComponent
+    ProductCarouselContainerComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
