@@ -22,7 +22,7 @@ export class ProductService {
     return this.webReqService.get("product", { params });
   }
 
-  getOneProduct(id: string): Observable<Object> {
+  getOneProduct(id: number): Observable<Object> {
     return this.webReqService.get(`product/${id}`);
   }
 }

@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
 import {CookieService} from "../services/cookie.service";
 import {ProductService} from "../services/product.service";
-import {Observable, of, Subscription} from "rxjs";
+import {forkJoin, Observable, Subscription} from "rxjs";
 import {Product} from "../models/product.model";
 
 @Component({
@@ -26,7 +26,7 @@ export class ProductCarouselContainerComponent implements OnInit, OnDestroy {
   state = {
     phoneDetails: null,
   };
-  productsObs: Observable<Product[]>;
+  productsObs: Observable<Object[]>;
   products: Product[] = [];
 
   ngOnInit(): void {
@@ -35,31 +35,23 @@ export class ProductCarouselContainerComponent implements OnInit, OnDestroy {
         if (cookies) {
           this.ids = JSON.parse(cookies);
 
-          this.ids.reverse().forEach(id => {
-            if (id !== '') {
-              this.subs = this.productService.getOneProduct(id).subscribe((data: any) => {
-                this.products.push(data);
-                this.changeDetection.markForCheck();
-              });
-            }
+          const arr = this.ids.reverse().map(id => {
+            return this.productService.getOneProduct(id);
           });
+
+          this.productsObs = forkJoin(arr);
         }
       });
-      this.productsObs = of(this.products);
     }
 
     if (this.title === "MOST-POPULAR") {
-      this.ids = [1001, 1002, 1003, 1004];
+      this.ids = [1005, 1002, 1003, 1004, 1001];
 
-      this.ids.reverse().forEach(id => {
-        if (id !== '') {
-          this.subs = this.productService.getOneProduct(id).subscribe((data: any) => {
-            this.products.push(data);
-            this.changeDetection.markForCheck();
-          });
-        }
+      const arr = this.ids.reverse().map(id => {
+        return this.productService.getOneProduct(id);
       });
-      this.productsObs = of(this.products);
+
+      this.productsObs = forkJoin(arr);
     }
   }
 

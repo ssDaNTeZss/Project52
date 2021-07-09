@@ -1,4 +1,12 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  HostListener,
+  Input,
+  OnDestroy,
+  OnInit
+} from '@angular/core';
 import {CookieService} from "../services/cookie.service";
 import {Observable, Subscription} from "rxjs";
 import {ProductService} from "../services/product.service";
@@ -17,24 +25,57 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
 
   private subs: Subscription;
 
+  scrWidth: number;
+
   constructor(
     private changeDetection: ChangeDetectorRef,
     private cookie: CookieService,
     private productService: ProductService,
     private translate: TranslateService
   ) {
+    this.getScreenSize();
   }
 
   translatedTitle = "";
+  carouselMarginPer2: string;
+  carouselMargin2 = 0;
+  carouselLeftPer: string;
+  carouselLeft = 0;
+  test = 0;
+  test2: string;
+  perScreen: number;
+  amounOfElements: number;
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+    this.scrWidth = window.innerWidth;
+    if (this.scrWidth <= 1024) {
+      this.perScreen = 50;
+      this.amounOfElements = 2;
+    } else {
+      this.perScreen = 25;
+      this.amounOfElements = 4;
+    }
+  }
 
   ngOnInit(): void {
 
-    console.log(this.products);
 
     this.subs = this.translate.get("MAIN-PAGE.PRODUCT-CAROUSEL." + this.title).subscribe((res: string) => {
       this.translatedTitle = res;
       this.changeDetection.markForCheck();
     });
+
+    setInterval(() => {
+      this.carouselMargin2 = this.carouselMargin2 + 5;
+
+      if (this.carouselMargin2 > 15) {
+        this.carouselMargin2 = 0;
+      }
+      this.carouselMarginPer2 = "-" + this.carouselMargin2 + "%";
+
+      this.changeDetection.markForCheck();
+    }, 6000)
 
     // this.subs = this.cookie.getCookie('phoneIds').subscribe((cookies: any) => {
     //   console.log(cookies);
@@ -64,5 +105,24 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
 
   ngOnDestroy(): void {
     this.subs.unsubscribe();
+  }
+
+  rightMover() {
+    this.carouselLeft = this.carouselLeft + this.perScreen;
+
+    if (this.carouselLeft / this.perScreen >
+      this.products.length - this.amounOfElements) {
+      this.carouselLeft = 0;
+    }
+    this.carouselLeftPer = "-" + this.carouselLeft + "%";
+  }
+
+  leftMover() {
+    if (this.carouselLeft == 0) {
+      this.carouselLeft = (this.products.length - this.amounOfElements) * this.perScreen;
+    } else {
+      this.carouselLeft = this.carouselLeft - this.perScreen;
+    }
+    this.carouselLeftPer = "-" + this.carouselLeft + "%";
   }
 }
