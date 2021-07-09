@@ -9,6 +9,8 @@ export class BannerComponent implements OnInit {
 
   carouselMarginPer: string;
   carouselMargin = 0;
+  carouselMarginPer2: string;
+  carouselMargin2 = 0;
 
   constructor(
     private changeDetection: ChangeDetectorRef,
@@ -23,6 +25,17 @@ export class BannerComponent implements OnInit {
         this.carouselMargin = 0;
       }
       this.carouselMarginPer = "-" + this.carouselMargin + "%";
+
+      this.changeDetection.markForCheck();
+    }, 6000);
+
+    setInterval(() => {
+      this.carouselMargin2 = this.carouselMargin2 + 5;
+
+      if (this.carouselMargin2 > 15) {
+        this.carouselMargin2 = 0;
+      }
+      this.carouselMarginPer2 = "-" + this.carouselMargin2 + "%";
 
       this.changeDetection.markForCheck();
     }, 6000)
