@@ -1,76 +1,4 @@
-<div class="row" style="margin-bottom: 1000px">
-  <!--  <select class="select-css">-->
-  <!--    <option value="0">Sort</option>-->
-  <!--    <option>Пункт 2ere ere ere </option>-->
-  <!--  </select>-->
-  <!--  <select class="select-css">-->
-  <!--    <option value="0">Brand</option>-->
-  <!--    <option>Пункт 2</option>-->
-  <!--  </select>-->
-  <!--  <select class="select-css">-->
-  <!--    <option value="0">Price</option>-->
-  <!--    <option>Пункт 2</option>-->
-  <!--  </select>-->
-
-  <!--  <ul class="menu">-->
-  <!--    <li><a href="#">Sort</a>-->
-  <!--      <img class="rectangle" src="assets/svg/Rectangle.svg">-->
-  <!--      <ul>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--      </ul>-->
-  <!--    </li>-->
-  <!--    <li><a href="#">Brand</a>-->
-  <!--      <ul>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--      </ul>-->
-  <!--    </li>-->
-  <!--    <li><a href="#">Price</a>-->
-  <!--      <ul>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--        <li><a href="#">Dropdown item</a></li>-->
-  <!--      </ul>-->
-  <!--    </li>-->
-  <!--  </ul>-->
-
-  <!--  <div class="select is-active">-->
-  <!--    <div class="select__header">-->
-  <!--      <span class="select__current">Value 1</span>-->
-  <!--      <img class="rectangle" src="assets/svg/Rectangle.svg">-->
-  <!--    </div>-->
-
-  <!--    <div class="select__body">-->
-  <!--      <div class="select__item">Value hkghigi ojiuh</div>-->
-  <!--      <div class="select__item">Value 2</div>-->
-  <!--      <div class="select__item">Value 3</div>-->
-  <!--      <div class="select__item">Value 4</div>-->
-  <!--      <div class="select__item">Value 5</div>-->
-  <!--    </div>-->
-
-  <!--    <div class="select__header">-->
-  <!--      <span class="select__current">Value 1</span>-->
-  <!--      <img class="rectangle" src="assets/svg/Rectangle.svg">-->
-  <!--    </div>-->
-
-  <!--    <div class="select__body">-->
-  <!--      <div class="select__item">Value hkghigi ojiuh</div>-->
-  <!--      <div class="select__item">Value 2</div>-->
-  <!--      <div class="select__item">Value 3</div>-->
-  <!--      <div class="select__item">Value 4</div>-->
-  <!--      <div class="select__item">Value 5</div>-->
-  <!--    </div>-->
-  <!--  </div>-->
-
+<div class="row filter-row">
   <div class="col">
     <div class="filter" (click)="openFilter('sort')">
       <div class="filter__header">
@@ -152,16 +80,46 @@
       <div class="filter__options" [ngClass]="{
       'activated': activatedBrand
       }">
-        <div class="checkbox">
-          <input  class="custom-checkbox" type="checkbox" id="scales" name="scales"
-                 disabled>
-          <label for="scales">Scales</label>
+        <!--        <div class="checkbox" *ngFor="let brand of state.brands">-->
+        <!--          <input type="checkbox" id="{{brand.value | lowercase}}" name="{{brand.value | lowercase}}" value="{{brand.value | lowercase}}"-->
+        <!--                 [(ngModel)]="brand.checked"-->
+        <!--                 (change)="onToggle($event, brand.value)">-->
+        <!--          <label for="{{brand.value | lowercase}}">{{brand.value}}</label>-->
+        <!--        </div>-->
+
+        <div class="checkbox" *ngFor="let brand of state.brands">
+          <input type="checkbox"
+                 id="{{brand.value | lowercase}}"
+                 name="{{brand.value | lowercase}}"
+                 value="{{brand.value | lowercase}}"
+                 [(ngModel)]="brand.checked"
+                 (change)="onToggle()"
+                 [checked]="brand.checked"
+                 [disabled]="brand.disabled">
+          <label for="{{brand.value | lowercase}}">{{brand.value}}</label>
+        </div>
+        <div class="checkbox" style="text-align: center"
+             (click)="cleaningAppliedBrands()"
+             *ngIf="this.state.appliedBrands.length !== 0">
+          <button type="button" class="btn btn-outline btn-for-pc">
+            <span>Clear</span>
+          </button>
         </div>
 
-        <div class="checkbox">
-          <input type="checkbox" id="color-1" name="color-1" value="indigo">
-          <label for="color-1">Indigo</label>
-        </div>
+      </div>
+    </div>
+
+    <div class="filter" (click)="openFilter('price')">
+      <div class="filter__header">
+        <span class="header__title">Price</span>
+        <img class="filter__icon" src="assets/svg/Rectangle.svg">
+      </div>
+      <div class="filter__options" [ngClass]="{
+      'activated': activatedPrice
+      }">
+<input type="text">
+<input type="text">
+
       </div>
     </div>
   </div>

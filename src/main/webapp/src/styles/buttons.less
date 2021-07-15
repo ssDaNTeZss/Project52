@@ -46,6 +46,37 @@
       border-color: @color-primary;
     }
   }
+
+  &-outline {
+    font-size: 14px;
+    line-height: 17px;
+    color: @color-black;
+    background-color: @color-white;
+    border-color: @color-primary;
+    height: 46px;
+    padding: 11px 28px;
+
+    &.big {
+      height: 50px;
+      padding: 11px 55px;
+    }
+
+    span {
+      margin: auto 12px auto 0;
+    }
+
+    &:hover {
+      color: @color-white;
+      background-color: @color-slate-blue;
+      border-color: @color-slate-blue;
+    }
+
+    &:disabled, &.disabled {
+      color: @color-white;
+      background-color: @color-primary;
+      border-color: @color-primary;
+    }
+  }
 }
 
 .btn-check:focus + .btn-primary, .btn-primary:focus {
@@ -54,11 +85,13 @@
   border-color: @color-slate-blue;
   box-shadow: 0 0 0 0.25rem @color-slate-blue-transparency-05;
 }
+
 .btn-check:checked + .btn-primary, .btn-check:active + .btn-primary, .btn-primary:active, .btn-primary.active, .show > .btn-primary.dropdown-toggle {
   color: @color-white;
   background-color: @color-slate-blue;
   border-color: @color-slate-blue;
 }
+
 .btn-check:checked + .btn-primary:focus, .btn-check:active + .btn-primary:focus, .btn-primary:active:focus, .btn-primary.active:focus, .show > .btn-primary.dropdown-toggle:focus {
   box-shadow: 0 0 0 0.25rem @color-slate-blue-transparency-05;
 }

@@ -15,6 +15,9 @@ import { FilterAndSearchComponent } from './filter-and-search/filter-and-search.
 import { HeaderModule } from "./header-module/header.module";
 import { ProductCarouselContainerComponent } from './product-carousel.container/product-carousel.container.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { FilterAndSearchContainerComponent } from './filter-and-search.container/filter-and-search.container.component';
+import { ProductCatalogContainerComponent } from './product-catalog.container/product-catalog.container.component';
+import {FormsModule} from "@angular/forms";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -30,21 +33,24 @@ export function HttpLoaderFactory(http: HttpClient) {
     CatalogPageComponent,
     FilterAndSearchComponent,
     ProductCarouselContainerComponent,
-    PageNotFoundComponent
+    PageNotFoundComponent,
+    FilterAndSearchContainerComponent,
+    ProductCatalogContainerComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      },
-    }),
-    HeaderModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient]
+            },
+        }),
+        HeaderModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })

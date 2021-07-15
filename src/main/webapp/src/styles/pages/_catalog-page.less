@@ -21,3 +21,101 @@ main {
   }
 }
 
+
+.catalog {
+  margin-top: 44px;
+}
+
+.item {
+  display: inline-block;
+  min-width: calc(25% - 21px);
+  margin: 0 10.5px 78.5px 10.5px;
+  border-radius: 4px;
+  position: relative;
+  left: 0;
+  text-align: center;
+  cursor: pointer;
+  transition: 2s;
+
+
+  &__img {
+    display: block;
+    position: relative;
+    margin-bottom: 20px;
+
+    & img {
+      display: flex;
+      overflow: hidden;
+      max-width: 276px;
+      width: auto;
+      height: 260px;
+      border-radius: 4px;
+      margin: 0 auto 20px auto;
+      transition: opacity 500ms linear;
+    }
+
+    &:after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: @color-black-transparency-55;
+      border-radius: 4px;
+      opacity: 0;
+    }
+
+    &:hover:before,
+    &:hover:after {
+      transition: transform 500ms linear;
+      opacity: 1;
+    }
+
+    &__btn {
+      display: none;
+      position: absolute;
+      bottom: 41px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 5;
+
+      & img {
+        margin: 0 8px;
+        z-index: 96;
+        width: 20px;
+        height: 20px;
+        padding: 13px;
+        background-color: @color-white;
+
+        &:hover {
+          box-shadow: 1px 1px 9px 0px rgba(255, 255, 255, 0.63);
+          -webkit-box-shadow: 1px 1px 9px 0px rgba(255, 255, 255, 0.63);
+          -moz-box-shadow: 1px 1px 9px 0px rgba(255, 255, 255, 0.63);
+        }
+      }
+    }
+
+    &:hover .item__img__btn {
+      display: inline-flex;
+    }
+  }
+
+  &__info {
+    font-family: @font-Open-Sans;
+    color: @color-black;
+    text-align: center;
+    position: relative;
+
+    &__name {
+      font-size: 18px;
+      line-height: 22px;
+      margin-bottom: 8.5px;
+    }
+
+    &__price {
+      font-size: 14px;
+      line-height: 17px;
+    }
+  }
+}

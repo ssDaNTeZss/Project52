@@ -59,6 +59,42 @@
       "description": "",
       "popularity": 0,
       "rating": 1
+    },
+    {
+      "id": 1006,
+      "brand": "Redmi",
+      "category": "phones",
+      "name": "Xiaomi Redmi Note 10",
+      "img": "https://fansitemi.ru/wp-content/uploads/2018/05/top-rejting-luchshih-smartfonov-telefonov-2021-goda20.jpg",
+      "config": "64 GB Gray",
+      "price": 14990,
+      "description": "",
+      "popularity": 0,
+      "rating": 1
+    },
+    {
+      "id": 1007,
+      "brand": "OnePlus",
+      "category": "phones",
+      "name": "OnePlus 8 Pro",
+      "img": "https://fansitemi.ru/wp-content/uploads/2020/09/top-rejting-luchshih-smartfonov-telefonov-2021-goda2.jpg",
+      "config": "256 GB Glacial Green",
+      "price": 56990,
+      "description": "",
+      "popularity": 0,
+      "rating": 1
+    },
+    {
+      "id": 1008,
+      "brand": "Poco",
+      "category": "phones",
+      "name": "Xiaomi Poco X3 Pro",
+      "img": "https://fansitemi.ru/wp-content/uploads/2018/05/top-rejting-luchshih-smartfonov-telefonov-2021-goda24.jpg",
+      "config": "256 GB Frost Blue",
+      "price": 26990,
+      "description": "",
+      "popularity": 0,
+      "rating": 1
     }
   ],
   "tech_spec": [

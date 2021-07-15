@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
-import {ProductService} from "../../services/product.service";
+
 
 @Component({
   selector: 'app-catalog-page',
@@ -11,20 +11,14 @@ export class CatalogPageComponent implements OnInit, OnDestroy {
 
   private subs: Subscription;
 
+  filteredProducts: any[];
+
   constructor(
-    private changeDetection: ChangeDetectorRef,
-    private productService: ProductService,
+    private changeDetection: ChangeDetectorRef
   ) { }
 
   ngOnInit(): void {
 
-    this.subs = this.productService.getProducts().subscribe((data: any) => {
-      this.changeDetection.markForCheck();
-    });
-
-    this.subs = this.productService.getProductsSameType("phone").subscribe((data: any) => {
-      this.changeDetection.markForCheck();
-    });
   }
 
   ngOnDestroy(): void {
