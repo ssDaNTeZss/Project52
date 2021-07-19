@@ -1,5 +1,5 @@
 {
-  "product": [
+  "products": [
     {
       "id": 1001,
       "brand": "Apple",
@@ -39,7 +39,7 @@
     {
       "id": 1004,
       "brand": "Apple",
-      "category": "tadlets",
+      "category": "tablets",
       "name": "Apple iPad Air",
       "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/ipad-air-select-wifi-green-202009?wid=470&hei=556&fmt=png-alpha&.v=1598650644000",
       "config": "256 GB Wi-Fi Зелёный",

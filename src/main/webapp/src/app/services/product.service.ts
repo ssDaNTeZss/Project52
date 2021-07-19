@@ -13,16 +13,16 @@ export class ProductService {
   ) { }
 
   getProducts(): Observable<Object> {
-    return this.webReqService.get("product");
+    return this.webReqService.get("products");
   }
 
   getProductsSameType(category: string): Observable<Object> {
     const params = new HttpParams()
       .set('category', category);
-    return this.webReqService.get("product", { params });
+    return this.webReqService.get("products", { params });
   }
 
   getOneProduct(id: number): Observable<Object> {
-    return this.webReqService.get(`product/${id}`);
+    return this.webReqService.get(`products/${id}`);
   }
 }
