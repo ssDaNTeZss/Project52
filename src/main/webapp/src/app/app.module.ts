@@ -17,7 +17,8 @@ import { ProductCarouselContainerComponent } from './product-carousel.container/
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { FilterAndSearchContainerComponent } from './filter-and-search.container/filter-and-search.container.component';
 import { ProductCatalogContainerComponent } from './product-catalog.container/product-catalog.container.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { DeclensionWordPipe } from './pipes/declension-word.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -35,7 +36,8 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductCarouselContainerComponent,
     PageNotFoundComponent,
     FilterAndSearchContainerComponent,
-    ProductCatalogContainerComponent
+    ProductCatalogContainerComponent,
+    DeclensionWordPipe
   ],
     imports: [
         BrowserModule,
@@ -49,7 +51,8 @@ export function HttpLoaderFactory(http: HttpClient) {
             },
         }),
         HeaderModule,
-        FormsModule
+        FormsModule,
+        ReactiveFormsModule
     ],
   providers: [],
   bootstrap: [AppComponent]

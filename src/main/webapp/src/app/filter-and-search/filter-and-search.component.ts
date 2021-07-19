@@ -11,6 +11,8 @@ import {ProductService} from "../services/product.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Params} from "@angular/router";
 import {Brand} from "../models/brand.model";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
+import {ProductCatalogService} from "../services/product-catalog.service";
 
 @Component({
   selector: 'app-filter-and-search-ui',
@@ -33,10 +35,12 @@ export class FilterAndSearchComponent implements OnInit {
     appliedBrands: [],
     sortKey: '',
     sortCheckArrowUp: null,
+    countFilteredProducts: null
   };
   @Output() sortChange = new EventEmitter<[string, boolean]>();
 
   @Output() brands = new EventEmitter<Brand[]>();
+  @Output() selectedPrices = new EventEmitter<[number, number]>();
 
   private subs: Subscription;
 
@@ -52,11 +56,13 @@ export class FilterAndSearchComponent implements OnInit {
     {value: "Oppo", checked: false},
   ];
   test: boolean;
+  formModelPrice: FormGroup;
 
   constructor(
     private changeDetection: ChangeDetectorRef,
     private productService: ProductService,
     private route: ActivatedRoute,
+    private ProductCatalogService: ProductCatalogService,
   ) {
   }
 
@@ -86,6 +92,28 @@ export class FilterAndSearchComponent implements OnInit {
     //   });
     // });
 
+    this.subs = this.ProductCatalogService.filteredProducts$.subscribe((filteredProducts: any[]) => {
+      this.state.countFilteredProducts = filteredProducts.length;
+      console.log("FGG", filteredProducts.length)
+      this.changeDetection.markForCheck();
+    });
+
+    this.formModelPrice = new FormGroup({
+      minPrice: new FormControl(
+        "",
+        [
+          Validators.min(this.state.minPrice),
+          Validators.max(this.state.maxPrice),
+        ],
+      ),
+      maxPrice: new FormControl(
+        "",
+        [
+          Validators.min(this.state.minPrice),
+          Validators.max(this.state.maxPrice),
+        ],
+      )
+    });
   }
 
   openFilter(nameFilter: string): void {
@@ -129,12 +157,6 @@ export class FilterAndSearchComponent implements OnInit {
   }
 
   onToggle(): void {
-    // if (e.target.checked) {
-    //   this.state.appliedBrands.push(value);
-    // } else {
-    //   this.state.appliedBrands = this.state.appliedBrands.filter(x => x != value)
-    // }
-    // this.toggle.emit(this.state.appliedBrands);
     this.brands.emit(this.state.brands);
   }
 
@@ -148,5 +170,24 @@ export class FilterAndSearchComponent implements OnInit {
 
   resetAllFilters() {
 
+  }
+
+  onSubmitForm() {
+    const FMP = this.formModelPrice.value;
+    this.selectedPrices.emit([FMP.minPrice, FMP.maxPrice]);
+  }
+
+  get _minPrice() {
+    return this.formModelPrice.get('minPrice')
+  }
+
+  get _maxPrice() {
+    return this.formModelPrice.get('maxPrice')
+  }
+
+  clearPriceForm(): void {
+    this.formModelPrice.reset();
+    this.selectedPrices.emit([null, null]);
+    this.activatedPrice = !this.activatedPrice;
   }
 }

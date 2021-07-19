@@ -23,11 +23,14 @@ export class FilterAndSearchContainerComponent implements OnInit {
     sortName: 'default',
     minPrice: null,
     maxPrice: null,
+    selectedMinPrice: null,
+    selectedMaxPrice: null,
     brands: [],
     appliedBrands: [],
     sortKey: '',
     sortCheckArrowUp: false,
-    filteredProducts: []
+    filteredProducts: [],
+    countFilteredProducts: null
   };
 
   constructor(
@@ -49,6 +52,7 @@ export class FilterAndSearchContainerComponent implements OnInit {
         this.state.products = data;
         this.state.filteredProducts = data;
         this.ProductCatalogService.filteredProducts(this.state.filteredProducts);
+        // this.state.countFilteredProducts = this.state.filteredProducts.length;
 
         let prices = [];
         let brands = [];
@@ -60,8 +64,8 @@ export class FilterAndSearchContainerComponent implements OnInit {
 
         this.state.minPrice = this.arrayMin(prices);
         this.state.maxPrice = this.arrayMax(prices);
-
-        // this.state.brands = Array.from(new Set(brands));
+        this.state.selectedMinPrice = this.state.minPrice;
+        this.state.selectedMaxPrice = this.state.maxPrice;
 
         this.state.brands = Array.from(new Set(brands))
           .map(brand => new Brand(brand, false, false));
@@ -70,28 +74,7 @@ export class FilterAndSearchContainerComponent implements OnInit {
       });
   }
 
-  arrayMin(arr: any): number {
-    let len = arr.length, min = Infinity;
-    while (len--) {
-      if (arr[len] < min) {
-        min = arr[len];
-      }
-    }
-    return min;
-  };
-
-  arrayMax(arr: any): number {
-    let len = arr.length, max = -Infinity;
-    while (len--) {
-      if (arr[len] > max) {
-        max = arr[len];
-      }
-    }
-    return max;
-  };
-
   sortChange(sortTitle?: [string, boolean]): void {
-
     if (sortTitle) {
       if (this.state.sortName !== sortTitle[0]) {
         this.state.sortName = sortTitle[0];
@@ -100,11 +83,51 @@ export class FilterAndSearchContainerComponent implements OnInit {
         this.state.sortCheckArrowUp = sortTitle[1];
       }
     }
+    this.selection();
+  }
 
+  onBrandsChange($event: Brand[]): void {
+    let brands = [];
+    $event.map(brand => {
+      if (!brand.disabled && brand.checked) {
+        brands.push(brand.value);
+      }
+    });
+    this.state.appliedBrands = Array.from(new Set(brands));
+
+    this.selection();
+  }
+
+  selection(): void {
+    if (this.state.appliedBrands.length === 0) {
+      this.state.filteredProducts = this.state.products;
+    }
+
+    this.filtration();
+    this.sorting();
+
+    this.ProductCatalogService.filteredProducts(this.state.filteredProducts);
+  }
+
+  filtration(): void {
+    let prod = [];
+    this.state.products.map(product => {
+      if (product.price >= this.state.selectedMinPrice &&
+        product.price <= this.state.selectedMaxPrice) {
+        prod.push(product);
+      }
+    });
+
+    if (this.state.appliedBrands.length !== 0) {
+      this.state.filteredProducts = prod.filter(e => this.state.appliedBrands.includes(e.brand));
+    } else {
+      this.state.filteredProducts = prod;
+    }
+  }
+
+  sorting(): void {
     if (this.state.sortName === 'default') {
-
-      this.filtration();
-
+      // this.filtration();
     } else {
       if (this.state.sortCheckArrowUp) {
         this.state.filteredProducts.sort(this.compare(this.state.sortName));
@@ -112,8 +135,6 @@ export class FilterAndSearchContainerComponent implements OnInit {
         this.state.filteredProducts.sort(this.compare(this.state.sortName, -1));
       }
     }
-    this.changeDetection.markForCheck();
-    this.ProductCatalogService.filteredProducts(this.state.filteredProducts);
   }
 
   compare(field?: any, order?: number): any {
@@ -138,36 +159,39 @@ export class FilterAndSearchContainerComponent implements OnInit {
     }
   }
 
-  onBrandsChange($event: Brand[]): void {
-    $event.map(brand => {
-      if (!brand.disabled && brand.checked) {
-        this.state.appliedBrands.push(brand.value);
+  arrayMin(arr: any): number {
+    let len = arr.length, min = Infinity;
+    while (len--) {
+      if (arr[len] < min) {
+        min = arr[len];
       }
-    });
-
-    if (this.state.appliedBrands.length !== 0) {
-      this.state.appliedBrands = Array.from(new Set(this.state.appliedBrands));
-      this.filtration();
-    } else {
-      this.state.filteredProducts = this.state.products;
-      this.sortChange();
     }
-  }
+    return min;
+  };
 
-  filtration(): void {
-    let prod = [];
-    this.state.products.map(product => {
-      if (product.price >= this.state.minPrice &&
-        product.price <= this.state.maxPrice) {
-        prod.push(product);
+  arrayMax(arr: any): number {
+    let len = arr.length, max = -Infinity;
+    while (len--) {
+      if (arr[len] > max) {
+        max = arr[len];
       }
-    });
-
-    if (this.state.appliedBrands.length !== 0 ) {
-      this.state.filteredProducts = prod.filter(e => this.state.appliedBrands.includes(e.brand));
-    } else {
-      this.state.filteredProducts = prod;
     }
-    this.ProductCatalogService.filteredProducts(this.state.filteredProducts);
+    return max;
+  };
+
+  selectedPrices($event: [number, number]): void {
+    if ($event[0] >= this.state.minPrice && $event[0] <= this.state.maxPrice) {
+      this.state.selectedMinPrice = $event[0];
+    }
+    if ($event[1] <= this.state.maxPrice && $event[1] >= this.state.minPrice) {
+      this.state.selectedMaxPrice = $event[1];
+    }
+
+    if ($event[0] === null && $event[1] === null) {
+      this.state.selectedMinPrice = this.state.minPrice;
+      this.state.selectedMaxPrice = this.state.maxPrice;
+    }
+
+    this.selection();
   }
 }

@@ -105,22 +105,67 @@
             <span>Clear</span>
           </button>
         </div>
-
       </div>
     </div>
 
-    <div class="filter" (click)="openFilter('price')">
-      <div class="filter__header">
+    <div class="filter">
+      <div class="filter__header" (click)="openFilter('price')">
         <span class="header__title">Price</span>
         <img class="filter__icon" src="assets/svg/Rectangle.svg">
       </div>
-      <div class="filter__options" [ngClass]="{
+      <div class="filter__options form-price" [ngClass]="{
       'activated': activatedPrice
       }">
-<input type="text">
-<input type="text">
+        <form
+          novalidate
+          [formGroup]="formModelPrice"
+          (ngSubmit)="onSubmitForm()"
+          class="form-price">
+
+
+          <div class="test-input">
+            <input
+              type="number"
+              formControlName="minPrice"
+
+            >
+            <label>from {{state.minPrice}}</label>
+            <span class="line"></span>
+          </div>
+          <div class="test-input">
+            <input
+              type="number"
+              formControlName="maxPrice"
+
+            >
+            <label>up to {{state.maxPrice}}</label>
+            <span class="line"></span>
+          </div>
+          <div class="div-button"
+               [ngClass]="{
+          'display-block': (_minPrice.touched || _minPrice.dirty) ||
+          (_maxPrice.touched || _maxPrice.dirty)
+          }">
+            <button
+              type="button"
+              class="btn btn-outline btn-for-pc"
+              [disabled]="formModelPrice.invalid"
+              (click)="clearPriceForm()">
+              <span>Clear</span>
+            </button>
+            <button
+              type="submit"
+              class="btn btn-primary btn-for-pc"
+              [disabled]="formModelPrice.invalid">
+              <span>Apply</span>
+            </button>
+          </div>
+
+        </form>
+
 
       </div>
     </div>
+    <span class="countFilteredProducts">{{state.countFilteredProducts | declensionWord:"item"}}</span>
   </div>
 </div>
