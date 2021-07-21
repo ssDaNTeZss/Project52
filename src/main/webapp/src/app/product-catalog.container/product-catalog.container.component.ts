@@ -1,6 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {ProductCatalogService} from "../services/product-catalog.service";
 import {Subscription} from "rxjs";
+import {Product} from "../models/product.model";
 
 @Component({
   selector: 'app-product-catalog',
@@ -10,7 +11,7 @@ import {Subscription} from "rxjs";
 export class ProductCatalogContainerComponent implements OnInit, OnDestroy {
 
   private subs: Subscription;
-  filteredProducts: any[];
+  filteredProducts: Product[];
 
   constructor(
     private changeDetection: ChangeDetectorRef,
