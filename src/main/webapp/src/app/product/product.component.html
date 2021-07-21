@@ -1,0 +1,101 @@
+<div class="row product">
+  <div class="row-product">
+    <div class="product-img">
+      <div class="product-img__item"
+           [style.left]="carouselLeftPer">
+        <img src="{{product?.img}}">
+      </div>
+      <div class="product-img__item"
+           *ngFor="let img of product?.images"
+           [style.left]="carouselLeftPer">
+        <img src="{{img.imageLink}}">
+      </div>
+
+      <div class="move-button__left"
+           (click)="leftMover()"
+           *ngIf="product?.images">
+        <img class="move-button__left-arrow"
+             src="assets/svg/arrow.svg"
+             width="12px" height="21px">
+      </div>
+      <div class="move-button__right"
+           (click)="rightMover()"
+           *ngIf="product?.images">
+        <img class="move-button__right-arrow"
+             src="assets/svg/arrow.svg"
+             width="12px" height="21px">
+      </div>
+    </div>
+  </div>
+  <div class="row-product">
+    <div class="product-card">
+      <div class="card-title">
+        <span class="card-title__name">{{product?.name}} {{product?.config}}</span>
+        <span class="card-title__price">₽{{product?.price}}</span>
+        <!--        <span>{{product?.rating}}</span>-->
+      </div>
+      <div class="card-buttons">
+        <span class="card-buttons__count">Count:</span>
+        <div class="counter-component">
+          <button
+            type="button"
+            class="btn btn-counter">
+            <span>+</span>
+          </button>
+          <span class="counter-component__count">1</span>
+          <button
+            type="button"
+            class="btn btn-counter">
+            <span style="margin-left: 2.5px">-</span>
+          </button>
+        </div>
+
+        <div class="card-buttons__buttons">
+          <button
+            type="submit"
+            class="btn btn-primary big-plus center">
+            <span>Order now</span>
+          </button>
+
+          <button
+            type="submit"
+            class="btn btn-cart">
+            <img src="assets/svg/cart.svg">
+          </button>
+        </div>
+      </div>
+      <div class="card-information">
+        <div class="information-card">
+          <div class="row information-card__title" (click)="openInfoCard('techSpec')">
+            <div class="col-11">Technical Specifications</div>
+            <div class="col-1 information-card__title__btn" *ngIf="!openFirstCard">+</div>
+            <div class="col-1 information-card__title__btn-minus" *ngIf="openFirstCard">-</div>
+          </div>
+          <div class="information-card__content"
+               [class.active]="openFirstCard">
+            <table class="table-techSpec">
+              <tr *ngFor="let techSpec of product?.techSpec">
+                <td class="table-techSpec__name">{{techSpec.name}}</td>
+                <td class="table-techSpec__value">{{techSpec.value}}</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+        <div class="information-card">
+          <div class="row information-card__title" (click)="openInfoCard('description')">
+            <div class="col-11">Description</div>
+            <div class="col-1 information-card__title__btn" *ngIf="!openSecondCard">+</div>
+            <div class="col-1 information-card__title__btn-minus" *ngIf="openSecondCard">-</div>
+          </div>
+          <div class="information-card__content"
+               [class.active]="openSecondCard">
+            <span class="content__description">
+              5G speed. A14 Bionic, the fastest chip in a smartphone.
+              An edge-to-edge OLED display. Ceramic Shield with four times better drop performance. And Night mode on every camera.
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
