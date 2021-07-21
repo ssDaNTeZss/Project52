@@ -1,0 +1,84 @@
+<div class="fullscreen__content">
+  <div class="row">
+    <div class="col-12 signup">
+      <span class="signup__title">Sign up</span>
+      <div class="close-btn">
+        <img class="close-btn" src="assets/svg/Close-black.svg" width="17px" height="17px" alt="Close">
+      </div>
+    </div>
+    <div class="col-12 signup-inputs">
+      <!--      <div class="test-input">-->
+      <!--        <input-->
+      <!--          type="text"-->
+      <!--        >-->
+      <!--        <label>Username*</label>-->
+      <!--        <span class="line"></span>-->
+      <!--      </div>-->
+      <form
+        novalidate
+        [formGroup]="formModelSignUp"
+        (ngSubmit)="onSubmitForm()">
+
+        <div class="input-group">
+          <input type="text"
+                 class="input input__primary"
+                 placeholder="Username*"
+                 formControlName="username"
+                 autofocus>
+          <div class="error-block"
+               *ngIf="_username.invalid && (_username.touched || _username.dirty)">
+            <p class="error-block__err"
+               *ngIf="_username.errors?.required">Обязательное поле</p>
+            <p class="error-block__err"
+               *ngIf="_username.errors?.minlength">Minimum Username length - 2 characters</p>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <input type="password"
+                 class="input input__primary"
+                 placeholder="Password*"
+                 formControlName="password">
+          <div class="error-block"
+               *ngIf="_password.invalid && (_password.touched || _password.dirty)">
+            <p class="error-block__err"
+               *ngIf="_password.errors?.required">Обязательное поле</p>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <input type="password"
+                 class="input input__primary"
+                 placeholder="Re-enter password*"
+                 formControlName="reEnterPassword">
+          <div class="error-block"
+               *ngIf="_reEnterPassword.invalid && (_reEnterPassword.touched || _reEnterPassword.dirty)">
+            <p class="error-block__err"
+               *ngIf="_reEnterPassword.errors?.required">Обязательное поле</p>
+          </div>
+        </div>
+
+        <div class="input-group">
+          <input type="email"
+                 class="input input__primary"
+                 placeholder="Email*"
+                 formControlName="email">
+          <div class="error-block"
+               *ngIf="_email.invalid && (_email.touched || _email.dirty)">
+            <p class="error-block__err"
+               *ngIf="_email.errors?.required">Обязательное поле</p>
+          </div>
+        </div>
+
+        <div class="div-btn">
+          <button
+            type="submit"
+            class="btn btn-primary btn-for-pc"
+            [disabled]="formModelSignUp.invalid">
+            <span>Create account</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
