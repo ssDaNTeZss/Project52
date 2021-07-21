@@ -22,6 +22,8 @@ import { DeclensionWordPipe } from './pipes/declension-word.pipe';
 import { ProductPageComponent } from './pages/product-page/product-page.component';
 import { ProductContainerComponent } from './product.container/product.container.component';
 import { ProductComponent } from './product/product.component';
+import { SignupFormContainerComponent } from './signup-form.container/signup-form.container.component';
+import { SignupFormComponent } from './signup-form/signup-form.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -43,7 +45,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     DeclensionWordPipe,
     ProductPageComponent,
     ProductContainerComponent,
-    ProductComponent
+    ProductComponent,
+    SignupFormContainerComponent,
+    SignupFormComponent
   ],
     imports: [
         BrowserModule,
