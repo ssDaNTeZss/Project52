@@ -6,11 +6,43 @@
       "category": "phones",
       "name": "Apple iPhone 12 Pro",
       "img": "https://store.storeimages.cdn-apple.com/4668/as-images.apple.com/is/iphone-12-pro-blue-hero?wid=470&hei=556&fmt=png-alpha&.v=1604021661000",
-      "config": "128 GB Тихоокеанский синий",
+      "config": "128 GB Pacific Blue",
       "price": 99990,
       "description": "",
       "popularity": 0,
-      "rating": 1
+      "rating": 1,
+      "techSpec": [
+        {
+          "id": 1001,
+          "name": "Capacity",
+          "value": "128GB"
+        },
+        {
+          "id": 1002,
+          "name": "Display",
+          "value": "Super Retina XDR display 6.1‑inch (diagonal)"
+        },
+        {
+          "id": 1003,
+          "name": "Display resolution",
+          "value": "2532‑by‑1170-pixel resolution at 460 ppi"
+        },
+        {
+          "id": 1004,
+          "name": "Processor",
+          "value": "A14 Bionic chip"
+        },
+        {
+          "id": 1005,
+          "name": "Operating System",
+          "value": "iOS 14"
+        },
+        {
+          "id": 1006,
+          "name": " Weight",
+          "value": "6.66 ounces (189 grams)"
+        }
+      ]
     },
     {
       "id": 1002,
@@ -22,7 +54,49 @@
       "price": 84990,
       "description": "",
       "popularity": 0,
-      "rating": 1
+      "rating": 1,
+      "techSpec": [
+        {
+          "id": 1007,
+          "name": "Capacity",
+          "value": "128GB"
+        },
+        {
+          "id": 1008,
+          "name": "Display",
+          "value": "Super Retina XDR display 5.4‑inch (diagonal)"
+        },
+        {
+          "id": 1009,
+          "name": "Display resolution",
+          "value": "2340‑by‑1080-pixel resolution at 476 ppi"
+        },
+        {
+          "id": 1010,
+          "name": "Processor",
+          "value": "A14 Bionic chip"
+        },
+        {
+          "id": 1011,
+          "name": "Operating System",
+          "value": "iOS 14"
+        },
+        {
+          "id": 1012,
+          "name": " Weight",
+          "value": "4.76 ounces (135 grams)"
+        }
+      ],
+      "images": [
+        {
+          "id": 100201,
+          "imageLink": "https://img.tehnomaks.ru/img/prod/full/16027637597.jpg"
+        },
+        {
+          "id": 100202,
+          "imageLink": "https://pbs.twimg.com/media/Ekc8zqYWAAEJ1dA.jpg"
+        }
+      ]
     },
     {
       "id": 1003,
