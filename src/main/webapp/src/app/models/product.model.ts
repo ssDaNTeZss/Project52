@@ -1,3 +1,6 @@
+import {TechSpec} from "./techSpec.model";
+import {Image} from "./image.model";
+
 export class Product {
   brand: string;
   category: string;
@@ -9,4 +12,6 @@ export class Product {
   popularity: number;
   price: number;
   rating: number;
+  techSpec: [TechSpec];
+  images: [Image];
 }
