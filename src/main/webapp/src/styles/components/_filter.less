@@ -1,6 +1,10 @@
 .filter-row {
   border-bottom: 1px solid @color-light-grey;
   padding-bottom: 7px;
+
+  &__mobile {
+    display: none;
+  }
 }
 
 .form-price {
@@ -27,4 +31,32 @@
   font-family: @font-Open-Sans;
   font-size: 14px;
   line-height: 20px;
+
+  &__mobile {
+    color: @color-black;
+    font-family: @font-Open-Sans;
+    font-size: 14px;
+    line-height: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .filter-row {
+    display: none;
+
+    &__mobile {
+      display: flex;
+    }
+  }
+
+.test {
+  background-color: #00CB6F;
+  width: 100vw;
+  height: calc(100vh + 85px);
+  overflow: hidden;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 999;
+}
 }

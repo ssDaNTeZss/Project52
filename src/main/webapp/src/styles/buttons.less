@@ -26,8 +26,35 @@
     padding: 11px 28px;
 
     &.big {
-      height: 50px;
+      height: 55px;
       padding: 11px 55px;
+      max-width: 200px;
+      align-content: center;
+
+      &-plus {
+        height: 55px;
+        padding: 11px 55px;
+        align-content: center;
+        width: 100%;
+
+        &.center {
+          align-content: center;
+          text-align: center;
+
+          span {
+            margin: auto;
+          }
+        }
+      }
+
+      &.center {
+        align-content: center;
+        text-align: center;
+
+        span {
+          margin: auto;
+        }
+      }
     }
 
     span {
@@ -68,6 +95,69 @@
     &:hover {
       color: @color-white;
       background-color: @color-slate-blue;
+      border-color: @color-slate-blue;
+    }
+
+    &:disabled, &.disabled {
+      color: @color-white;
+      background-color: @color-primary;
+      border-color: @color-primary;
+    }
+  }
+
+  &-counter {
+    font-size: 20px;
+    line-height: 17px;
+    color: @color-primary;
+    background-color: @color-pale-grey;
+    border-color: @color-pale-grey;
+    height: 26px;
+    width: 26px;
+    border-radius: 20px;
+
+    &.big {
+      height: 50px;
+      padding: 11px 55px;
+    }
+
+    span {
+      margin: 2.5px 0.5px;
+    }
+
+    &:hover {
+      color: @color-white;
+      background-color: @color-slate-blue;
+      border-color: @color-slate-blue;
+    }
+
+    &:disabled, &.disabled {
+      color: @color-white;
+      background-color: @color-primary;
+      border-color: @color-primary;
+    }
+  }
+
+  &-cart {
+    font-size: 20px;
+    line-height: 17px;
+    background-color: @color-white;
+    border-color: @color-pale-grey;
+    height: 56px;
+    width: 56px;
+    min-width: 56px;
+    align-content: center;
+
+    &-circle {
+      border-radius: 28px;
+    }
+
+    img {
+      margin: auto auto auto 10px;
+    }
+
+    &:hover {
+      color: @color-white;
+      background-color: @color-pale-grey;
       border-color: @color-slate-blue;
     }
 
