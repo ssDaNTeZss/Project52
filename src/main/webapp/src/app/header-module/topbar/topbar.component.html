@@ -14,12 +14,18 @@
     </a>
   </div>
   <div class="col topbar__icons">
-    <a href="#">
+    <span (click)="openAccountMenu()">
       <img src="assets/svg/account.svg" width="24px" height="24px">
-    </a>
-    <a class="icon_cart" href="#">
+    </span>
+    <div class="account-menu" *ngIf="openAccMenu">
+      <ul>
+        <li>Sign in</li>
+        <li (click)="openSignupForm()">Create account</li>
+      </ul>
+    </div>
+    <span class="icon_cart" href="#">
       <img src="assets/svg/cart.svg" width="24px" height="24px">
-    </a>
+    </span>
   </div>
 </div>
 
