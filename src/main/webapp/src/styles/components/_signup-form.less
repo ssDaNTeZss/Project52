@@ -7,7 +7,7 @@
   top: 0;
   right: 0;
   z-index: 999;
-  display: none;
+  //display: none;
 
   &__content {
     position: relative;
@@ -53,6 +53,49 @@
     &-inputs {
       max-width: 265px;
       margin: 46px auto auto auto;
+      overflow: hidden;
+      transition: all 0.5s;
+      max-height: 100%;
+    }
+
+    &-account-created {
+      max-width: 500px;
+      margin: 46px auto auto auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      &__title {
+        font-family: @font-Roboto;
+        font-size: 80px;
+        line-height: 88px;
+        color: @color-primary;
+      }
+
+      &__text {
+        font-family: @font-Roboto;
+        font-size: 18px;
+        line-height: 24px;
+        color: @color-wet-asphalt;
+      }
+
+      .row-btn {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+      }
+
+      .col-btn {
+
+        &__l {
+          padding: 30px 15px;
+          text-align: right;
+        }
+
+        &__r {
+          padding: 30px 15px;
+        }
+      }
     }
   }
 }
