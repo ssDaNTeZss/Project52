@@ -24,6 +24,8 @@ import { ProductContainerComponent } from './product.container/product.container
 import { ProductComponent } from './product/product.component';
 import { SignupFormContainerComponent } from './signup-form.container/signup-form.container.component';
 import { SignupFormComponent } from './signup-form/signup-form.component';
+import { LoginFormContainerComponent } from './login-form.container/login-form.container.component';
+import { LoginFormComponent } from './login-form/login-form.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -47,7 +49,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     ProductContainerComponent,
     ProductComponent,
     SignupFormContainerComponent,
-    SignupFormComponent
+    SignupFormComponent,
+    LoginFormContainerComponent,
+    LoginFormComponent
   ],
     imports: [
         BrowserModule,
