@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
 import {OpenNavbarService} from "../../services/open-navbar.service";
 import {SignupService} from "../../services/signup.service";
+import {LoginService} from "../../services/login.service";
 
 @Component({
   selector: 'app-topbar',
@@ -11,12 +12,24 @@ export class TopbarComponent implements OnInit {
 
   statusNavbar = false;
   openAccMenu = false;
+  scrWidth: number;
+  accountMenuRight: string;
 
   constructor(
     private changeDetection: ChangeDetectorRef,
     private openNavbarService: OpenNavbarService,
     private signupService: SignupService,
+    private loginService: LoginService,
   ) {  }
+
+  @HostListener('window:resize', ['$event'])
+  getScreenSize(event?) {
+    this.scrWidth = window.innerWidth;
+    if (this.scrWidth > 1164) {
+      this.accountMenuRight = (this.scrWidth - 1164) / 2 + "px";
+      this.changeDetection.markForCheck();
+    }
+  }
 
   ngOnInit(): void {
   }
@@ -33,6 +46,11 @@ export class TopbarComponent implements OnInit {
 
   openSignupForm(): void {
     this.signupService.openSignupForm(true);
+    this.openAccountMenu();
+  }
+
+  openLoginForm(): void {
+    this.loginService.openLoginForm(true);
     this.openAccountMenu();
   }
 }

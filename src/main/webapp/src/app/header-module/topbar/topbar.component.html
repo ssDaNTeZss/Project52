@@ -17,15 +17,16 @@
     <span (click)="openAccountMenu()">
       <img src="assets/svg/account.svg" width="24px" height="24px">
     </span>
-    <div class="account-menu" *ngIf="openAccMenu">
-      <ul>
-        <li>Sign in</li>
-        <li (click)="openSignupForm()">Create account</li>
-      </ul>
-    </div>
+
     <span class="icon_cart" href="#">
       <img src="assets/svg/cart.svg" width="24px" height="24px">
     </span>
+    <div class="account-menu" *ngIf="openAccMenu" [style.right]="accountMenuRight">
+      <ul>
+        <li (click)="openLoginForm()">Sign in</li>
+        <li (click)="openSignupForm()">Create account</li>
+      </ul>
+    </div>
   </div>
 </div>
 
