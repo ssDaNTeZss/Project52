@@ -39,4 +39,13 @@ export class WebRequestService {
       observe: "response"
     });
   }
+
+  login(username: string, password: string) {
+    return this.http.post(`${this.ROOT_URL}/auth/login`, {
+      "username": username,
+      "password": password
+    }, {
+      observe: "response"
+    });
+  }
 }
