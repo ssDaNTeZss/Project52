@@ -50,7 +50,27 @@
       "INVALID": "Enter a valid email address!"
     },
     "BUTTON": {
-      "SUBMIT": "Create account"
+      "SUBMIT": "Create account",
+      "BACK-HOME": "Back Home",
+      "SIGN-IN": "Sign in"
+    }
+  },
+  "LOGIN-FORM": {
+    "TITLE": "Sign in",
+    "USER": {
+      "REQUIRED": "Username is Required!",
+      "MIN-LENGTH": "Minimum Username length - 2 characters"
+    },
+    "PASSWORD": {
+      "REQUIRED": "Password is Required!",
+      "DO-NOT-MATCH": "Password do not match!"
+    },
+    "EMAIL": {
+      "REQUIRED": "Email is Required!",
+      "INVALID": "Enter a valid email address!"
+    },
+    "BUTTON": {
+      "SUBMIT": "Sign in"
     }
   }
 }
