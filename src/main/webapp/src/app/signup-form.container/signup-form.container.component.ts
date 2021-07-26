@@ -19,7 +19,7 @@ export class SignupFormContainerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.signupService.openSignupForm$.subscribe((openSignupForm: boolean) => {
+    this.subs = this.signupService.openSignupForm$.subscribe((openSignupForm: boolean) => {
       this.openSignupForm = openSignupForm;
       this.changeDetection.markForCheck();
     });

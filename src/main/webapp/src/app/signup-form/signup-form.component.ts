@@ -122,7 +122,7 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   }
 
 
-  backHome():void {
+  backHome(): void {
     this.closeSignupForm();
 
 
