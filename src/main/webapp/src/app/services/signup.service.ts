@@ -9,9 +9,19 @@ import {tap} from "rxjs/operators";
 })
 export class SignupService {
   public openSignupForm$ = new Subject<boolean>();
+  public openSignupPopup$ = new Subject<boolean>();
+  public validErr$ = new Subject<{showValidationError: boolean, validationError: string}>();
 
   public openSignupForm(openSignupForm: boolean): void {
     this.openSignupForm$.next(openSignupForm);
+  }
+
+  public openSignupPopup(openSignupPopup: boolean): void {
+    this.openSignupPopup$.next(openSignupPopup);
+  }
+
+  public validErr(validErr: {showValidationError: boolean, validationError: string}): void {
+    this.validErr$.next(validErr);
   }
 
   constructor(
