@@ -1,17 +1,24 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 import {LoginService} from "../services/login.service";
-import {of, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {confirmPasswordValidator} from "../validators/confirmPassword.validator";
-import {catchError} from "rxjs/operators";
-import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-login-form-ui',
   templateUrl: './login-form.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginFormComponent implements OnInit {
+export class LoginFormComponent implements OnInit, OnDestroy {
+
+  @Output() stateOfForm = new EventEmitter<{ username: string, password: string }>();
 
   private subs: Subscription;
 
@@ -22,6 +29,15 @@ export class LoginFormComponent implements OnInit {
   }
 
   formModelLogin: FormGroup;
+  showValidationError = false;
+  validationError: string;
+  showPopup = false;
+  userData: {
+    "id": 0,
+    "username": "",
+    "password": null,
+    "email": null
+  };
 
   ngOnInit(): void {
     this.formModelLogin = new FormGroup({
@@ -39,10 +55,40 @@ export class LoginFormComponent implements OnInit {
         ],
       )
     });
+
+    this.subs = this.loginService.validErr$.subscribe((validErr: any) => {
+      this.showValidationError = validErr.showValidationError;
+      this.validationError = validErr.validationError;
+      this.changeDetection.markForCheck();
+    });
+
+    this.subs = this.loginService.setUserState$.subscribe((data: any) => {
+      this.userData = data;
+      this.changeDetection.markForCheck();
+    });
+
+    this.subs = this.loginService.openLoginPopup$.subscribe((openLoginPopup: boolean) => {
+      if (openLoginPopup) {
+        this.showPopup = openLoginPopup;
+        this.changeDetection.markForCheck();
+
+        setTimeout(() => {
+          this.closeLoginForm();
+        }, 3000);
+      }
+    });
   }
 
-  closeLoginForm() {
+  ngOnDestroy(): void {
+    if (this.subs) {
+      this.subs.unsubscribe();
+    }
+  }
+
+  closeLoginForm(): void {
     this.loginService.openLoginForm(false);
+    this.showPopup = false;
+    this.changeDetection.markForCheck();
   }
 
   get _username(): AbstractControl {
@@ -53,30 +99,13 @@ export class LoginFormComponent implements OnInit {
     return this.formModelLogin.get("password");
   }
 
-  onSubmitForm() {
+  onSubmitForm(): void {
     const FMS = this.formModelLogin.value,
-      username = FMS.username,
-      password = FMS.password;
+      usernameAndPassword = {
+        username: FMS.username,
+        password: FMS.password
+      };
 
-    console.log(username, password)
-
-    // this.signupService.signup(email, password, username)
-    //   .pipe(catchError((e: HttpErrorResponse) => {
-    //     if (e.status === 400) {
-    //       console.log("400");
-    //       this.showValidationError = true;
-    //       this.validationError = e.error;
-    //       this.changeDetection.markForCheck();
-    //       return of(null);
-    //     }
-    //     if (e.status === 200) {
-    //       console.log("200");
-    //       this.showPopup = true;
-    //       this.changeDetection.markForCheck();
-    //       return of(null);
-    //     }
-    //   }))
-    //   .subscribe(() => {
-    //   });
+    this.stateOfForm.emit(usernameAndPassword);
   }
 }

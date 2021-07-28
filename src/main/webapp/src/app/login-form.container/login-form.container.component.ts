@@ -1,6 +1,8 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
+import {of, Subscription} from "rxjs";
 import {LoginService} from "../services/login.service";
+import {catchError} from "rxjs/operators";
+import {HttpErrorResponse} from "@angular/common/http";
 
 @Component({
   selector: 'app-login-form',
@@ -14,9 +16,14 @@ export class LoginFormContainerComponent implements OnInit {
   constructor(
     private loginService: LoginService,
     private changeDetection: ChangeDetectorRef,
-  ) { }
+  ) {
+  }
 
   openLoginForm = false;
+  state = {
+    showValidationError: false,
+    validationError: ""
+  };
 
   ngOnInit(): void {
     this.subs = this.loginService.openLoginForm$.subscribe((openLoginForm: boolean) => {
@@ -25,4 +32,28 @@ export class LoginFormContainerComponent implements OnInit {
     })
   }
 
+  signIn($stateOfForm: { username: string, password: string }): void {
+    this.loginService.login($stateOfForm.username, $stateOfForm.password)
+      .pipe(catchError((e: HttpErrorResponse) => {
+        if (e.status === 403) {
+          this.state.showValidationError = true;
+          this.state.validationError = "Invalid username or password!";
+
+          this.loginService.validErr(this.state);
+
+          this.changeDetection.markForCheck();
+          return of(null);
+        }
+        if (e.status === 200) {
+          this.loginService.openLoginPopup(true);
+          return of(null);
+        }
+      }))
+      .subscribe((data: any) => {
+        if (data) {
+          this.loginService.setUserState(data?.body);
+          this.loginService.openLoginPopup(true);
+        }
+      });
+  }
 }
