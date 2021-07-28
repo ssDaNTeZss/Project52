@@ -3,7 +3,7 @@ import {
   ChangeDetectorRef,
   Component,
   EventEmitter,
-  Input,
+  Input, OnDestroy,
   OnInit,
   Output
 } from '@angular/core';
@@ -19,7 +19,7 @@ import {ProductCatalogService} from "../services/product-catalog.service";
   templateUrl: './filter-and-search.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class FilterAndSearchComponent implements OnInit {
+export class FilterAndSearchComponent implements OnInit, OnDestroy {
 
   @Input() state = {
     products: [],
@@ -115,6 +115,13 @@ export class FilterAndSearchComponent implements OnInit {
       )
     });
   }
+
+  ngOnDestroy(): void {
+    if (this.subs) {
+      this.subs.unsubscribe();
+    }
+  }
+
 
   openFilter(nameFilter: string): void {
     switch (nameFilter) {
