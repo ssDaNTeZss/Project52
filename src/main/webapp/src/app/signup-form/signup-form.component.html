@@ -1,20 +1,13 @@
 <div class="fullscreen__content">
   <div class="row">
-    <div class="col-12 signup">
-      <span class="signup__title">{{ "SIGNUP-FORM.TITLE" | translate }}</span>
+    <div class="col-12 custom-form">
+      <span class="custom-form__title">{{ "SIGNUP-FORM.TITLE" | translate }}</span>
       <div class="close-btn" (click)="closeSignupForm()">
         <img class="close-btn" src="assets/svg/Close-black.svg" width="17px" height="17px" alt="Close">
       </div>
     </div>
-    <div class="col-12 signup-inputs"
+    <div class="col-12 custom-form__inputs"
     *ngIf="!showPopup">
-      <!--      <div class="test-input">-->
-      <!--        <input-->
-      <!--          type="text"-->
-      <!--        >-->
-      <!--        <label>Username*</label>-->
-      <!--        <span class="line"></span>-->
-      <!--      </div>-->
       <form
         novalidate
         [formGroup]="formModelSignUp"
@@ -94,17 +87,17 @@
       </form>
     </div>
 
-    <div class="col-12 signup-account-created"
+    <div class="col-12 custom-form-account-created"
          *ngIf="showPopup">
-      <span class="signup-account-created__title">Well done!</span>
-      <span class="signup-account-created__text">The account was successfully created.</span>
+      <span class="custom-form-account-created__title">Well done!</span>
+      <span class="custom-form-account-created__text">The account was successfully created.</span>
       <div class="row row-btn">
         <div class="col-6 col-btn__l">
           <button
             type="button"
             class="btn btn-outline btn-for-pc"
             (click)="backHome()">
-            <span></span>
+            <span>{{ "SIGNUP-FORM.BUTTON.BACK-HOME" | translate }}</span>
           </button>
         </div>
         <div class="col-6 col-btn__r">

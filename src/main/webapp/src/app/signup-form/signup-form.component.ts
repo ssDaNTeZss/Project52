@@ -1,10 +1,17 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {of, Subscription} from "rxjs";
+import {Subscription} from "rxjs";
 import {SignupService} from "../services/signup.service";
 import {confirmPasswordValidator} from "../validators/confirmPassword.validator";
-import {HttpErrorResponse, HttpResponse} from "@angular/common/http";
-import {catchError} from "rxjs/operators";
+import {LoginService} from "../services/login.service";
 
 @Component({
   selector: 'app-signup-form-ui',
@@ -13,18 +20,25 @@ import {catchError} from "rxjs/operators";
 })
 export class SignupFormComponent implements OnInit, OnDestroy {
 
+  @Output() stateOfForm = new EventEmitter<{
+    email: string,
+    password: string,
+    username: string
+  }>();
+
+  constructor(
+    private signupService: SignupService,
+    private loginService: LoginService,
+    private changeDetection: ChangeDetectorRef,
+  ) {
+  }
+
   private subs: Subscription;
   formModelSignUp: FormGroup;
   openSignupForm = false;
   showValidationError = false;
   validationError: string;
   showPopup = false;
-
-  constructor(
-    private signupService: SignupService,
-    private changeDetection: ChangeDetectorRef,
-  ) {
-  }
 
   ngOnInit(): void {
     this.formModelSignUp = new FormGroup({
@@ -57,6 +71,19 @@ export class SignupFormComponent implements OnInit, OnDestroy {
         ],
       )
     });
+
+    this.subs = this.signupService.validErr$.subscribe((validErr: any) => {
+      this.showValidationError = validErr.showValidationError;
+      this.validationError = validErr.validationError;
+      this.changeDetection.markForCheck();
+    });
+
+    this.subs = this.signupService.openSignupPopup$.subscribe((openSignupPopup: boolean) => {
+      if (openSignupPopup) {
+        this.showPopup = openSignupPopup;
+        this.changeDetection.markForCheck();
+      }
+    });
   }
 
   ngOnDestroy(): void {
@@ -88,30 +115,15 @@ export class SignupFormComponent implements OnInit, OnDestroy {
     return this.formModelSignUp.get("email");
   }
 
-  onSubmitForm() {
+  onSubmitForm(): void {
     const FMS = this.formModelSignUp.value,
-      email = FMS.email,
-      password = FMS.passwords.password,
-      username = FMS.username;
+      signupInfo = {
+      email: FMS.email,
+      password: FMS.passwords.password,
+      username: FMS.username
+    };
 
-    this.signupService.signup(email, password, username)
-      .pipe(catchError((e: HttpErrorResponse) => {
-        if (e.status === 400) {
-          console.log("400");
-          this.showValidationError = true;
-          this.validationError = e.error;
-          this.changeDetection.markForCheck();
-          return of(null);
-        }
-        if (e.status === 200) {
-          console.log("200");
-          this.showPopup = true;
-          this.changeDetection.markForCheck();
-          return of(null);
-        }
-      }))
-      .subscribe(() => {
-      });
+    this.stateOfForm.emit(signupInfo);
   }
 
   closeSignupForm(): void {
@@ -124,11 +136,10 @@ export class SignupFormComponent implements OnInit, OnDestroy {
 
   backHome(): void {
     this.closeSignupForm();
-
-
   }
 
   signIn(): void {
     this.closeSignupForm();
+    this.loginService.openLoginForm(true);
   }
 }

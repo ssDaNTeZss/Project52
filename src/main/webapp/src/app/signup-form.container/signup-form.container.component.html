@@ -1,3 +1,4 @@
 <div class="fullscreen" *ngIf="openSignupForm">
-  <app-signup-form-ui></app-signup-form-ui>
+  <app-signup-form-ui
+  (stateOfForm)="signUp($event)"></app-signup-form-ui>
 </div>
