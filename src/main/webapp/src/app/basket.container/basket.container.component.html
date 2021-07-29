@@ -1,0 +1,5 @@
+<div class="fullscreen" *ngIf="openBasket">
+<app-basket-ui
+[basket]="basketObs | async"
+></app-basket-ui>
+</div>

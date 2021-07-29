@@ -1,0 +1,65 @@
+<div class="fullscreen__content">
+  <div class="row">
+    <div class="col-12 custom-form">
+      <span class="custom-form__title">{{ "BASKET.TITLE" | translate }}</span>
+      <div class="close-btn" (click)="closeBasket()">
+        <img class="close-btn" src="assets/svg/Close-black.svg" width="17px" height="17px" alt="Close">
+      </div>
+    </div>
+    <div class="col-12 custom-form__basket"
+         *ngIf="basket">
+      <div class="basket-item" *ngFor="let item of basket.items">
+        <div class="basket-item__img">
+          <img src="{{item.product?.img}}">
+        </div>
+        <div class="basket-item__info">
+          <span class="basket-item__info__name">{{item.product?.name}}</span>
+          <div class="counter-component" style="padding: 18px 0px">
+            <button type="button" class="btn btn-counter"><span>+</span></button>
+            <span class="counter-component__count">1</span>
+            <button type="button" class="btn btn-counter"><span style="margin-left: 2.5px;">-</span></button>
+          </div>
+          <button type="button" class="btn btn-primary small center">
+            <span>Remove</span>
+          </button>
+        </div>
+        <div class="basket-item__price">
+          <span>₽{{item.product?.price}}</span>
+        </div>
+      </div>
+
+      <div class="total-price row">
+        <div class="col-6">Total</div>
+        <div class="col-6 total-price__price">₽{{basket.totalPrice}}</div>
+      </div>
+
+      <div class="row basket-buttons">
+        <div class="basket-buttons__checkout">
+          <button type="button" class="btn btn-primary maximum-width center">
+            <span>Checkout</span>
+          </button>
+        </div>
+        <div class="basket-buttons__clear">
+          <button type="button" class="btn btn-outline maximum-width center">
+            <span>Clear basket</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-12 cart-empty"
+         *ngIf="!basket">
+      <img src="assets/svg/cart-big.svg" width="73px" height="73px">
+      <div class="cart-empty__text">
+        <p>You shopping cart is empty.</p>
+        <p>Please return to our catalog</p>
+      </div>
+      <button type="button" class="btn btn-primary big center"
+              [routerLink]="['/products', 'phones']"
+              (click)="closeBasket()">
+        <span>Catalog</span>
+        <img class="btn-img" src="assets/svg/trending-flat.svg" width="24px" height="24px">
+      </button>
+    </div>
+  </div>
+</div>

@@ -26,6 +26,8 @@ import { SignupFormContainerComponent } from './signup-form.container/signup-for
 import { SignupFormComponent } from './signup-form/signup-form.component';
 import { LoginFormContainerComponent } from './login-form.container/login-form.container.component';
 import { LoginFormComponent } from './login-form/login-form.component';
+import { BasketContainerComponent } from './basket.container/basket.container.component';
+import { BasketComponent } from './basket/basket.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -51,7 +53,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     SignupFormContainerComponent,
     SignupFormComponent,
     LoginFormContainerComponent,
-    LoginFormComponent
+    LoginFormComponent,
+    BasketContainerComponent,
+    BasketComponent
   ],
     imports: [
         BrowserModule,
