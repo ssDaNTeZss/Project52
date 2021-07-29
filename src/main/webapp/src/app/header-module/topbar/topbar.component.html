@@ -18,7 +18,7 @@
       <img src="assets/svg/account.svg" width="24px" height="24px">
     </span>
 
-    <span class="icon_cart" href="#">
+    <span class="icon_cart" (click)="openBasket()">
       <img src="assets/svg/cart.svg" width="24px" height="24px">
     </span>
     <div class="account-menu" *ngIf="openAccMenu" [style.right]="accountMenuRight">

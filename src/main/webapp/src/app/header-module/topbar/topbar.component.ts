@@ -2,6 +2,7 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnI
 import {OpenNavbarService} from "../../services/open-navbar.service";
 import {SignupService} from "../../services/signup.service";
 import {LoginService} from "../../services/login.service";
+import {BasketService} from "../../services/basket.service";
 
 @Component({
   selector: 'app-topbar',
@@ -20,6 +21,7 @@ export class TopbarComponent implements OnInit {
     private openNavbarService: OpenNavbarService,
     private signupService: SignupService,
     private loginService: LoginService,
+    private basketService: BasketService,
   ) {  }
 
   @HostListener('window:resize', ['$event'])
@@ -52,5 +54,9 @@ export class TopbarComponent implements OnInit {
   openLoginForm(): void {
     this.loginService.openLoginForm(true);
     this.openAccountMenu();
+  }
+
+  openBasket(): void {
+    this.basketService.openBasket(true);
   }
 }
