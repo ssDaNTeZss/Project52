@@ -59,7 +59,8 @@
 
           <button
             type="submit"
-            class="btn btn-cart">
+            class="btn btn-cart"
+            (click)="addToBasket()">
             <img src="assets/svg/cart.svg">
           </button>
         </div>
@@ -90,8 +91,7 @@
           <div class="information-card__content"
                [class.active]="openSecondCard">
             <span class="content__description">
-              5G speed. A14 Bionic, the fastest chip in a smartphone.
-              An edge-to-edge OLED display. Ceramic Shield with four times better drop performance. And Night mode on every camera.
+              {{product?.description}}
             </span>
           </div>
         </div>

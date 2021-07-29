@@ -1,5 +1,6 @@
 import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
 import {Product} from "../models/product.model";
+import {BasketService} from "../services/basket.service";
 
 @Component({
   selector: 'app-product-ui',
@@ -10,7 +11,10 @@ export class ProductComponent implements OnInit {
 
   @Input() product: Product;
 
-  constructor() { }
+  constructor(
+    private basketService: BasketService,
+  ) {
+  }
 
   openFirstCard = false;
   openSecondCard = false;
@@ -30,7 +34,7 @@ export class ProductComponent implements OnInit {
     }
   }
 
-  rightMover():void {
+  rightMover(): void {
     this.carouselLeft = this.carouselLeft + this.perScreen;
 
     if (this.carouselLeft / this.perScreen >
@@ -40,12 +44,16 @@ export class ProductComponent implements OnInit {
     this.carouselLeftPer = "-" + this.carouselLeft + "%";
   }
 
-  leftMover():void {
+  leftMover(): void {
     if (this.carouselLeft == 0) {
       this.carouselLeft = (this.product.images.length) * this.perScreen;
     } else {
       this.carouselLeft = this.carouselLeft - this.perScreen;
     }
     this.carouselLeftPer = "-" + this.carouselLeft + "%";
+  }
+
+  addToBasket(): void {
+    this.basketService.sendToCart({id: this.product.id, count: 1});
   }
 }
