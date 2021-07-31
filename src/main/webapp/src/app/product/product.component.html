@@ -31,7 +31,7 @@
     <div class="product-card">
       <div class="card-title">
         <span class="card-title__name">{{product?.name}} {{product?.config}}</span>
-        <span class="card-title__price">₽{{product?.price}}</span>
+        <span class="card-title__price">₽{{product?.price | priceFormatting}}</span>
         <!--        <span>{{product?.rating}}</span>-->
       </div>
       <div class="card-buttons">

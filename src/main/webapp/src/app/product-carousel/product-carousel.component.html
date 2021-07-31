@@ -10,16 +10,18 @@
   <div class="product-cards">
     <div class="card" *ngFor="let product of products$"
          [style.left]="carouselLeftPer">
-      <a href="#" class="card__img">
-        <img src="{{product.img}}" alt="{{product.name}}">
-        <span class="card__img__btn">
-          <img src="assets/svg/Favorite.svg" width="20px" height="20px">
-          <img src="assets/svg/cart.svg" width="20px" height="20px">
-        </span>
-      </a>
-      <div class="card__info">
-        <p class="card__info__name">{{product.name}}</p>
-        <p class="card__info__price">₽{{product.price}}</p>
+      <div [routerLink]="['/productdetails', product.id]">
+        <a [routerLink]="['/productdetails', product.id]" class="card__img">
+          <img src="{{product.img}}" alt="{{product.name}}">
+          <span class="card__img__btn">
+            <img src="assets/svg/Favorite.svg" width="20px" height="20px">
+            <img src="assets/svg/cart.svg" width="20px" height="20px">
+          </span>
+        </a>
+        <div class="card__info">
+          <p class="card__info__name">{{product.name}}</p>
+          <p class="card__info__price">₽{{product.price | priceFormatting}}</p>
+        </div>
       </div>
     </div>
   </div>
@@ -30,7 +32,7 @@
         <img src="{{product.img}}" alt="{{product.name}}">
         <div class="swiper-slide__info">
           <p class="swiper-slide__name">{{product.name}}</p>
-          <p class="card__info__price">₽{{product.price}}</p>
+          <p class="card__info__price">₽{{product.price | priceFormatting}}</p>
         </div>
       </div>
     </div>
