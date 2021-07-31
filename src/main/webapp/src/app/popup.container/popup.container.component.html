@@ -1,0 +1,22 @@
+<div class="popup"
+     *ngIf="popup.openPopup && (popup.action === 'add')">
+  <div class="row popup__content">
+    <div class="popup__content__img">
+      <img src="assets/svg/cart.svg" width="24px" height="24px">
+    </div>
+    <div class="popup__content__text">
+      The {{popup.name}} successfully added to cart!
+    </div>
+  </div>
+</div>
+<div class="popup"
+     *ngIf="popup.openPopup && (popup.action === 'clearBasket')">
+  <div class="row popup__content">
+    <div class="popup__content__img">
+      <img src="assets/svg/trash-can.svg" width="20px" height="24px">
+    </div>
+    <div class="popup__content__text">
+      The basket has been emptied!
+    </div>
+  </div>
+</div>
