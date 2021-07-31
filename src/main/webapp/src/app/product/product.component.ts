@@ -54,6 +54,6 @@ export class ProductComponent implements OnInit {
   }
 
   addToBasket(): void {
-    this.basketService.sendToCart({id: this.product.id, count: 1});
+    this.basketService.sendToCart({id: this.product.id, name: this.product.name, count: 1});
   }
 }
