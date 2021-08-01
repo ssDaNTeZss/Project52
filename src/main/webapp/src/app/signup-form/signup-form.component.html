@@ -79,7 +79,16 @@
         <div class="div-btn">
           <button
             type="submit"
-            class="btn btn-primary btn-for-pc"
+            class="btn btn-primary"
+            [disabled]="formModelSignUp.invalid">
+            <span>{{ "SIGNUP-FORM.BUTTON.SUBMIT" | translate }}</span>
+          </button>
+        </div>
+
+        <div class="div-btn-mobile">
+          <button
+            type="submit"
+            class="btn btn-primary big-plus center"
             [disabled]="formModelSignUp.invalid">
             <span>{{ "SIGNUP-FORM.BUTTON.SUBMIT" | translate }}</span>
           </button>
