@@ -119,4 +119,61 @@
 .div-btn {
   width: 100%;
   text-align: center;
+
+  &-mobile {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .fullscreen {
+    .custom-form {
+      padding: 20px 20px 40px 20px;
+      display: inline-flex;
+      width: 100%;
+      border-bottom: 1px solid @color-light-grey;
+
+      //&__title {
+      //  font-family: @font-Roboto;
+      //  font-size: 24px;
+      //  line-height: 28px;
+      //  color: @color-black;
+      //}
+      //
+      //.close-btn {
+      //  position: absolute;
+      //  right: 40px;
+      //
+      //  & img {
+      //    cursor: pointer;
+      //    padding: 5px;
+      //    transition: 1s;
+      //
+      //    &:hover {
+      //      background: @color-light-grey;
+      //      border-radius: 4px;
+      //    }
+      //  }
+      //}
+
+      &__inputs {
+        max-width: 100%;
+        margin: 46px auto auto auto;
+        overflow: hidden;
+        transition: all 0.5s;
+        max-height: 100%;
+      }
+    }
+  }
+
+  .div-btn {
+    display: none;
+
+    &-mobile {
+      display: block;
+      width: 100%;
+      text-align: center;
+      margin-top: 65px;
+    }
+  }
 }
