@@ -28,6 +28,8 @@ import { LoginFormContainerComponent } from './login-form.container/login-form.c
 import { LoginFormComponent } from './login-form/login-form.component';
 import { BasketContainerComponent } from './basket.container/basket.container.component';
 import { BasketComponent } from './basket/basket.component';
+import { PopupContainerComponent } from './popup.container/popup.container.component';
+import { PriceFormattingPipe } from './pipes/price-formatting.pipe';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -55,7 +57,9 @@ export function HttpLoaderFactory(http: HttpClient) {
     LoginFormContainerComponent,
     LoginFormComponent,
     BasketContainerComponent,
-    BasketComponent
+    BasketComponent,
+    PopupContainerComponent,
+    PriceFormattingPipe
   ],
     imports: [
         BrowserModule,
