@@ -28,7 +28,8 @@
 
   <div class="swiper-container">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" *ngFor="let product of products$">
+      <div class="swiper-slide" *ngFor="let product of products$"
+           [routerLink]="['/productdetails', product.id]">
         <img src="{{product.img}}" alt="{{product.name}}">
         <div class="swiper-slide__info">
           <p class="swiper-slide__name">{{product.name}}</p>
