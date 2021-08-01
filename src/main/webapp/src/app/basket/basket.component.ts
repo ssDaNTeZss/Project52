@@ -1,4 +1,13 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, Input, OnDestroy, OnInit} from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  ChangeDetectorRef,
+  Component,
+  EventEmitter,
+  Input,
+  OnDestroy,
+  OnInit,
+  Output
+} from '@angular/core';
 import {Subscription} from "rxjs";
 import {BasketService} from "../services/basket.service";
 import {Basket} from "../models/basket.model";
@@ -11,6 +20,8 @@ import {Basket} from "../models/basket.model";
 export class BasketComponent implements OnInit, OnDestroy {
 
   @Input() basket?: Basket;
+
+  @Output() clearButton = new EventEmitter<boolean>();
 
   private subs: Subscription;
 
@@ -153,5 +164,9 @@ export class BasketComponent implements OnInit, OnDestroy {
 
   closeBasket(): void {
     this.basketService.openBasket(false);
+  }
+
+  clearBasket(): void {
+    this.clearButton.emit();
   }
 }

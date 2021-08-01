@@ -6,14 +6,15 @@
         <img class="close-btn" src="assets/svg/Close-black.svg" width="17px" height="17px" alt="Close">
       </div>
     </div>
-    <div class="col-12 custom-form__basket"
-         *ngIf="basket">
-      <div class="basket-item" *ngFor="let item of basket.items">
-        <div class="basket-item__img">
+
+    <div class="col-12 basket"
+         *ngIf="testBasket">
+      <div class="basket__item" *ngFor="let item of basket.items">
+        <div class="basket__item__img">
           <img src="{{item.product?.img}}">
         </div>
-        <div class="basket-item__info">
-          <span class="basket-item__info__name">{{item.product?.name}}</span>
+        <div class="basket__item__info">
+          <span class="basket__item__info__name">{{item.product?.name}}</span>
           <div class="counter-component" style="padding: 18px 0px">
             <button type="button" class="btn btn-counter"><span>+</span></button>
             <span class="counter-component__count">1</span>
@@ -23,32 +24,79 @@
             <span>Remove</span>
           </button>
         </div>
-        <div class="basket-item__price">
-          <span>₽{{item.product?.price}}</span>
+        <div class="basket__item__price">
+          <span>₽{{item.product?.price | priceFormatting}}</span>
         </div>
       </div>
 
-      <div class="total-price row">
+      <div class="basket__total-price row">
         <div class="col-6">Total</div>
-        <div class="col-6 total-price__price">₽{{basket.totalPrice}}</div>
+        <div class="col-6 basket__total-price__right">₽{{testBasket.totalPrice | priceFormatting}}</div>
       </div>
 
-      <div class="row basket-buttons">
-        <div class="basket-buttons__checkout">
+      <div class="row basket__button-div">
+        <div class="basket__button-div__checkout">
           <button type="button" class="btn btn-primary maximum-width center">
             <span>Checkout</span>
           </button>
         </div>
-        <div class="basket-buttons__clear">
-          <button type="button" class="btn btn-outline maximum-width center">
+        <div class="basket__button-div__clear">
+          <button type="button" class="btn btn-outline maximum-width center"
+                  (click)="clearBasket()">
             <span>Clear basket</span>
           </button>
         </div>
       </div>
     </div>
 
+    <div class="col-12 basket-mobile"
+         *ngIf="testBasket">
+      <div class="basket-mobile__item" *ngFor="let item of basket.items">
+        <p class="basket-mobile__item__name">{{item.product?.name}}</p>
+        <div class="basket-mobile__item__img">
+          <img src="{{item.product?.img}}">
+        </div>
+        <div class="row basket-mobile__item__btn">
+          <div class="col-6">
+            <div class="counter-component" style="padding: 5px 0px">
+              <button type="button" class="btn btn-counter"><span>+</span></button>
+              <span class="counter-component__count">1</span>
+              <button type="button" class="btn btn-counter"><span style="margin-left: 2.5px;">-</span></button>
+            </div>
+          </div>
+          <div class="col-6 basket-mobile__item__btn-remove">
+            <button type="button" class="btn btn-primary small center">
+              <span>Remove</span>
+            </button>
+          </div>
+        </div>
+        <p class="basket-mobile__item__price">₽{{item.product?.price | priceFormatting}}</p>
+      </div>
+
+      <div class="basket-mobile__bottom-line">
+        <div class="row basket-mobile__bottom-line__total-price">
+          <div class="col-6">Total</div>
+          <div class="col-6 o basket-mobile__bottom-line__total-price__right">
+            ₽{{testBasket.totalPrice | priceFormatting}}</div>
+        </div>
+        <div class="row basket-mobile__bottom-line__buttons">
+          <div class="col-6 basket-mobile__bottom-line__buttons-checkout">
+            <button type="button" class="btn btn-primary maximum-width center">
+              <span>Checkout</span>
+            </button>
+          </div>
+          <div class="col-6 basket-mobile__bottom-line__buttons-clear">
+            <button type="button" class="btn btn-outline maximum-width center"
+                    (click)="clearBasket()">
+              <span>Clear basket</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <div class="col-12 cart-empty"
-         *ngIf="!basket">
+         *ngIf="!testBasket">
       <img src="assets/svg/cart-big.svg" width="73px" height="73px">
       <div class="cart-empty__text">
         <p>You shopping cart is empty.</p>

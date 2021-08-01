@@ -1,55 +1,139 @@
-.fullscreen {
-  background-color: @color-white;
-  width: 100%;
-  height: 100%;
+.basket {
+  max-width: 100%;
+  margin: 40px auto auto auto;
   overflow: hidden;
-  position: fixed;
-  top: 0;
-  right: 0;
-  z-index: 999;
+  transition: all 0.5s;
+  max-height: 100%;
+  position: relative;
 
-  &__content {
-    position: relative;
-    display: block;
-    overflow: hidden;
-    max-width: 576px;
-    height: 100%;
-    margin: 0 auto 0 auto;
-    padding: 40px 50px;
-    background: @color-white;
-    box-shadow: -5px 10px 52px rgba(90, 92, 102, 0.06);
+  &-mobile {
+    display: none;
   }
 
-  .custom-form {
-    padding: 20px 20px 40px 20px;
-    display: inline-flex;
-    width: 100%;
-    border-bottom: 1px solid @color-light-grey;
+  &__item {
+    max-width: 100%;
+    margin: 0 20px 40px 20px;
+    height: 128px;
+    display: flex;
 
-    &__title {
-      font-family: @font-Roboto;
-      font-size: 24px;
-      line-height: 28px;
-      color: @color-black;
-    }
-
-    .close-btn {
-      position: absolute;
-      right: 40px;
+    &__img {
+      position: relative;
+      width: 100px;
+      height: 100%;
+      margin-right: 21px;
 
       & img {
-        cursor: pointer;
-        padding: 5px;
-        transition: 1s;
-
-        &:hover {
-          background: @color-light-grey;
-          border-radius: 4px;
-        }
+        max-height: 100px;
+        max-width: 100px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
       }
     }
 
-    &__basket {
+    &__info {
+      width: calc(80% - 121px);
+
+      &__name {
+        font-family: @font-Open-Sans;
+        font-size: 16px;
+        line-height: 24px;
+        color: @color-black;
+      }
+    }
+
+    &__price {
+      padding-top: 3px;
+      width: 20%;
+      text-align: right;
+
+      & span {
+        font-family: @font-Open-Sans;
+        font-size: 16px;
+        line-height: 22px;
+        color: @color-black;
+      }
+    }
+  }
+
+  &__total-price {
+    width: 100%;
+    border-top: 1px solid @color-light-grey;
+    margin-top: 40px;
+    padding: 15px 0 40px 0;
+    font-family: @font-Roboto;
+    font-size: 16px;
+    line-height: 24px;
+    color: @color-black;
+
+    & div {
+      padding: 0 14px;
+    }
+
+    &__right {
+      text-align: right;
+    }
+  }
+
+  &__button-div {
+    width: 428px;
+    margin: 0 auto;
+
+    &__checkout {
+      max-width: 231px;
+      margin-right: 53px;
+    }
+
+    &__clear {
+      max-width: 144px;
+    }
+  }
+}
+
+
+@media (max-width: 576px) {
+  .fullscreen {
+    background-color: @color-white;
+    width: 100%;
+    height: 100%;
+    overflow: scroll;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 999;
+
+
+    &__content {
+      position: relative;
+      display: block;
+      overflow: hidden;
+      max-width: 576px;
+      height: 100%;
+      margin: 0 auto 0 auto;
+      padding: 15px 15px 330px 15px;
+      background: @color-white;
+      box-shadow: -5px 10px 52px rgba(90, 92, 102, 0.06);
+    }
+
+    .custom-form {
+      padding: 0 0 15px 0;
+      display: inline-flex;
+      width: 100%;
+      border-bottom: 1px solid @color-light-grey;
+
+      .close-btn {
+        position: absolute;
+        right: 10px;
+      }
+    }
+  }
+
+  .basket {
+    display: none;
+
+    &-mobile {
+      display: block;
       max-width: 100%;
       margin: 40px auto auto auto;
       overflow: hidden;
@@ -57,133 +141,90 @@
       max-height: 100%;
       position: relative;
 
-      .basket-item {
-        max-width: 100%;
-        margin: 0 20px 40px 20px;
-        height: 128px;
-        display: flex;
+      &__item {
+
+        &__name {
+          font-family: @font-Open-Sans;
+          font-size: 18px;
+          line-height: 24px;
+          color: @color-black;
+          text-align: center;
+          margin-bottom: 16px;
+        }
 
         &__img {
-          position: relative;
-          width: 100px;
-          height: 100%;
-          margin-right: 21px;
+          -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+          width: 100%;
+          max-width: 350px;
+          margin: 0 auto 16px auto;
 
           & img {
-            max-height: 100px;
-            max-width: 100px;
-            position: absolute;
-            top: 0;
-            bottom: 0;
-            margin: auto 0;
+            width: 100%;
+            margin: 0 auto;
           }
         }
 
-        &__info {
-          width: calc(80% - 121px);
+        &__btn {
+          padding-bottom: 11px;
+          margin-bottom: 24px;
+          border-bottom: 1px solid @color-light-grey;
 
-          &__name {
-            font-family: @font-Open-Sans;
-            font-size: 16px;
-            line-height: 24px;
-            color: @color-black;
+          &-remove {
+            height: 40px;
+            text-align: right;
+
+            & button {
+              margin: 4px 0;
+            }
           }
         }
 
         &__price {
-          padding-top: 3px;
-          width: 20%;
-          text-align: right;
-
-          & span {
-            font-family: @font-Open-Sans;
-            font-size: 16px;
-            line-height: 22px;
-            color: @color-black;
-          }
+          font-family: @font-Open-Sans;
+          font-size: 18px;
+          line-height: 22px;
+          color: @color-black;
+          margin-bottom: 40px;
         }
       }
 
-      .total-price {
-        width: 100%;
-        border-top: 1px solid @color-light-grey;
-        margin-top: 40px;
-        padding: 15px 0 40px 0;
-        font-family: @font-Roboto;
-        font-size: 16px;
-        line-height: 24px;
-        color: @color-black;
+      &__bottom-line {
+        display: block;
+        position: fixed;
+        bottom: 0;
+        right: 0;
+        left: 0;
+        background-color: #FFFFFF;
+        padding: 7px 15px 11px 15px;
+        margin: 0;
+        z-index: 999;
 
-        & div {
-          padding: 0 14px;
+        &__total-price {
+          width: 100%;
+          border-top: 1px solid @color-light-grey;
+          padding: 15px 0 15px 0;
+          font-family: @font-Roboto;
+          font-size: 18px;
+          line-height: 32px;
+          color: @color-black;
+
+          &__right {
+            text-align: right;
+          }
         }
 
-        &__price {
-          text-align: right;
+        &__buttons {
+
+          &-checkout {
+            padding-right: 15px;
+          }
+
+          &-clear {
+            padding-left: 30px;
+          }
         }
       }
     }
-  }
-}
-
-.input-group {
-  margin-bottom: 24px;
-}
-
-.error-block {
-  margin-top: 5px;
-
-  &__err {
-    font-family: @font-Roboto;
-    font-size: 12px;
-    line-height: 16px;
-    color: @color-brilliant-orange-yellow;
-    padding: 5px;
-  }
-}
-
-.div-btn {
-  width: 100%;
-  text-align: center;
-}
-
-.basket-buttons {
-  width: 428px;
-  margin: 0 auto;
-
-  &__checkout {
-    max-width: 231px;
-    margin-right: 53px;
-  }
-
-  &__clear {
-    max-width: 144px;
-  }
-}
-
-.cart-empty {
-  max-width: 375px;
-  margin: 36px auto auto auto;
-  overflow: hidden;
-  transition: all 0.5s;
-  max-height: 100%;
-  position: relative;
-  align-content: center;
-  text-align: center;
-
-  & img {
-    margin-bottom: 32px;
-  }
-
-  &__text {
-    font-family: @font-Open-Sans;
-    font-size: 24px;
-    line-height: 28px;
-    color: @color-black;
-    margin-bottom: 32px;
-  }
-
-  .btn-img {
-    margin: 3px 0 0 12px;
   }
 }

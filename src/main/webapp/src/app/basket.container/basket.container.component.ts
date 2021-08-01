@@ -1,8 +1,11 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {forkJoin, Observable, of, Subscription} from "rxjs";
+import {forkJoin, Observable, Subscription} from "rxjs";
 import {BasketService} from "../services/basket.service";
-import {catchError, map, mergeMap} from "rxjs/operators";
-import {HttpErrorResponse} from "@angular/common/http";
+import {mergeMap, switchMap} from "rxjs/operators";
+import {Params} from "@angular/router";
+import {Product} from "../models/product.model";
+import {PopupService} from "../services/popup.service";
+
 
 @Component({
   selector: 'app-basket',
@@ -16,6 +19,7 @@ export class BasketContainerComponent implements OnInit, OnDestroy {
   constructor(
     private basketService: BasketService,
     private changeDetection: ChangeDetectorRef,
+    private popupService: PopupService,
   ) {
   }
 
@@ -29,21 +33,29 @@ export class BasketContainerComponent implements OnInit, OnDestroy {
       this.changeDetection.markForCheck();
     });
 
-    this.subs = this.basketService.sendToCart$.subscribe((idAndCount: { id: number, count: number }) => {
+    this.basketService.sendToCart$
+      .pipe(
+        switchMap((idAndCount: { id: number, name: string, count: number }) => {
+            this.popupService.openPopup({openPopup: true, name: idAndCount.name, action: "add"});
+            return this.basketService.addToBasket(idAndCount.id);
+          }
+        ))
+      .subscribe(() => {
+      });
 
-      this.basketObs = this.basketService.addToBasket(1001);
-      this.basketService.addToBasket(1003);
-
-      this.basketService.addToBasket(idAndCount.id).subscribe(() => {
-      })
-
-      this.changeDetection.markForCheck();
-    });
   }
 
   ngOnDestroy(): void {
     if (this.subs) {
       this.subs.unsubscribe();
     }
+  }
+
+  clearBasket($event: boolean) {
+    this.basketService.clearBasket().subscribe(() => {
+      this.basketObs = this.basketService.getBasket();
+      this.popupService.openPopup({openPopup: true, action: "clearBasket"});
+      this.changeDetection.markForCheck();
+    });
   }
 }

@@ -1,5 +1,6 @@
 <div class="fullscreen" *ngIf="openBasket">
 <app-basket-ui
 [basket]="basketObs | async"
+(clearButton)="clearBasket($event)"
 ></app-basket-ui>
 </div>

@@ -1,6 +1,7 @@
 import {Injectable} from '@angular/core';
 import {WebRequestService} from "./web-request.service";
-import {Observable, Subject} from "rxjs";
+import {BehaviorSubject, Observable, Subject} from "rxjs";
+import {HttpResponse} from "@angular/common/http";
 
 @Injectable({
   providedIn: 'root'
@@ -8,13 +9,13 @@ import {Observable, Subject} from "rxjs";
 export class BasketService {
 
   public openBasket$ = new Subject<boolean>();
-  public sendToCart$ = new Subject<{id: number, count: number}>();
+  public sendToCart$ = new Subject<{id: number, name: string, count: number}>();
 
   public openBasket(openBasket: boolean): void {
     this.openBasket$.next(openBasket);
   }
 
-  public sendToCart(idAndCount: {id: number, count: number}): void {
+  public sendToCart(idAndCount: {id: number, name: string, count: number}): void {
     this.sendToCart$.next(idAndCount);
   }
 
