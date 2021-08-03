@@ -8,7 +8,7 @@
     </div>
 
     <div class="col-12 basket"
-         *ngIf="testBasket">
+         *ngIf="basket">
       <div class="basket__item" *ngFor="let item of basket.items">
         <div class="basket__item__img">
           <img src="{{item.product?.img}}">
@@ -31,7 +31,7 @@
 
       <div class="basket__total-price row">
         <div class="col-6">Total</div>
-        <div class="col-6 basket__total-price__right">₽{{testBasket.totalPrice | priceFormatting}}</div>
+        <div class="col-6 basket__total-price__right">₽{{basket.totalPrice | priceFormatting}}</div>
       </div>
 
       <div class="row basket__button-div">
@@ -50,7 +50,7 @@
     </div>
 
     <div class="col-12 basket-mobile"
-         *ngIf="testBasket">
+         *ngIf="basket">
       <div class="basket-mobile__item" *ngFor="let item of basket.items">
         <p class="basket-mobile__item__name">{{item.product?.name}}</p>
         <div class="basket-mobile__item__img">
@@ -77,7 +77,7 @@
         <div class="row basket-mobile__bottom-line__total-price">
           <div class="col-6">Total</div>
           <div class="col-6 o basket-mobile__bottom-line__total-price__right">
-            ₽{{testBasket.totalPrice | priceFormatting}}</div>
+            ₽{{basket.totalPrice | priceFormatting}}</div>
         </div>
         <div class="row basket-mobile__bottom-line__buttons">
           <div class="col-6 basket-mobile__bottom-line__buttons-checkout">
@@ -95,10 +95,10 @@
       </div>
     </div>
 
-    <div class="col-12 cart-empty"
-         *ngIf="!testBasket">
+    <div class="col-12 basket-empty"
+         *ngIf="!basket">
       <img src="assets/svg/cart-big.svg" width="73px" height="73px">
-      <div class="cart-empty__text">
+      <div class="basket-empty__text">
         <p>You shopping cart is empty.</p>
         <p>Please return to our catalog</p>
       </div>
