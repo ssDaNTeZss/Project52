@@ -7,23 +7,23 @@
       <a class="nav__link" href="#" [routerLink]="['/products', 'tablets']">{{ "NAVBAR.TITLE.TABLETS" | translate }}</a>
     </li>
     <li class="nav__item">
-      <a class="nav__link" href="#">{{ "NAVBAR.TITLE.ACCESSORIES" | translate }}</a>
+      <a class="nav__link" href="#" [routerLink]="['/products', 'accessories']">{{ "NAVBAR.TITLE.ACCESSORIES" | translate }}</a>
     </li>
   </ul>
 </nav>
 
 <nav class="row navbar-mobile" *ngIf="statusNavbar">
   <ul class="navbar-mobile__nav">
-    <li class="nav-mobile__item">
-      <a class="nav-mobile__link" href="#">{{ "NAVBAR.TITLE.PHONES" | translate }}</a>
+    <li class="nav-mobile__item" [routerLink]="['/products', 'phones']">
+      <span class="nav-mobile__link">{{ "NAVBAR.TITLE.PHONES" | translate }}</span>
       <img src="assets/svg/Arrow-right-black-24x24.svg">
     </li>
-    <li class="nav-mobile__item">
-      <a class="nav-mobile__link" href="#">{{ "NAVBAR.TITLE.TABLETS" | translate }}</a>
+    <li class="nav-mobile__item" [routerLink]="['/products', 'tablets']">
+      <span class="nav-mobile__link">{{ "NAVBAR.TITLE.TABLETS" | translate }}</span>
       <img src="assets/svg/Arrow-right-black-24x24.svg">
     </li>
-    <li class="nav-mobile__item">
-      <a class="nav-mobile__link" href="#">{{ "NAVBAR.TITLE.ACCESSORIES" | translate }}</a>
+    <li class="nav-mobile__item" [routerLink]="['/products', 'accessories']">
+      <span class="nav-mobile__link">{{ "NAVBAR.TITLE.ACCESSORIES" | translate }}</span>
       <img src="assets/svg/Arrow-right-black-24x24.svg">
     </li>
   </ul>
