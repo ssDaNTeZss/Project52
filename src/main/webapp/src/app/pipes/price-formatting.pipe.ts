@@ -7,8 +7,11 @@ export class PriceFormattingPipe implements PipeTransform {
 
   transform(value: number): string {
     let newWord: string;
-
-    return newWord = value.toString().replace(/(\d)(?=(\d{3})+(\D|$))/g, '$1 ');;
+    if (value) {
+      return newWord = value.toString().replace(/(\d)(?=(\d{3})+(\D|$))/g, '$1 ');
+    } else {
+      return null;
+    }
   }
 
 }
