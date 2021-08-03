@@ -11,9 +11,15 @@
       </div>
       <div class="products">
         <p class="title" translate>FOOTER.TITLE.PRODUCTS</p>
-        <p class="info" translate>FOOTER.PRODUCTS.PHONES</p>
-        <p class="info" translate>FOOTER.PRODUCTS.TABLETS</p>
-        <p class="info" translate>FOOTER.PRODUCTS.ACCESSORIES</p>
+        <p class="info cursor-pointer"
+           [routerLink]="['/products', 'phones']"
+           translate>FOOTER.PRODUCTS.PHONES</p>
+        <p class="info cursor-pointer"
+           [routerLink]="['/products', 'tablets']"
+           translate>FOOTER.PRODUCTS.TABLETS</p>
+        <p class="info cursor-pointer"
+           [routerLink]="['/products', 'accessories']"
+           translate>FOOTER.PRODUCTS.ACCESSORIES</p>
       </div>
       <div class="information">
         <p class="title" translate>FOOTER.TITLE.INFORMATION</p>

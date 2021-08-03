@@ -10,7 +10,7 @@ export class FooterComponent implements OnInit {
   constructor(
     private changeDetection: ChangeDetectorRef,
   ) {
-    this.changeDetection.detach();
+    this.changeDetection.markForCheck();
   }
 
   ngOnInit(): void {
