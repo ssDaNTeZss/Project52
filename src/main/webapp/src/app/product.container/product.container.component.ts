@@ -1,27 +1,33 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {map, mergeMap} from "rxjs/operators";
-import {Brand} from "../models/brand.model";
 import {ActivatedRoute} from "@angular/router";
 import {ProductService} from "../services/product.service";
 import {Product} from "../models/product.model";
+import {Subscription} from "rxjs";
+import {CookieService} from "../services/cookie.service";
 
 @Component({
   selector: 'app-product',
   templateUrl: './product.container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductContainerComponent implements OnInit {
+export class ProductContainerComponent implements OnInit, OnDestroy {
 
-  productId: number;
-  product: Product;
+  private subs: Subscription;
 
   constructor(
     private changeDetection: ChangeDetectorRef,
     private productService: ProductService,
     private route: ActivatedRoute,
+    private cookie: CookieService,
   ) { }
 
+  productId: number;
+  product: Product;
+
   ngOnInit(): void {
+
+
     this.route.params.pipe(
       map(params => {
         this.productId = params.idProduct;
@@ -31,9 +37,34 @@ export class ProductContainerComponent implements OnInit {
       .subscribe((data: any) => {
 
         this.product = data;
-        console.log(this.product);
         this.changeDetection.markForCheck();
       });
+
+    this.subs = this.cookie.getCookie('phoneIds').subscribe((cookies: any) => {
+      if (cookies === '') {
+        let arr = [];
+        arr[0] = this.productId;
+        this.cookie.setCookie('phoneIds', JSON.stringify(arr));
+      } else {
+        let ids = JSON.parse(cookies);
+          if (ids.length === 1) {
+            if (ids[0] !== this.productId) {
+              ids[1] = this.productId;
+            }
+          } else {
+            if (ids[1] !== this.productId) {
+              ids[0] = ids[1];
+              ids[1] = this.productId;
+            }
+          }
+          this.cookie.setCookie('phoneIds', JSON.stringify(ids));
+      }
+    });
   }
 
+  ngOnDestroy(): void {
+    if (this.subs) {
+      this.subs.unsubscribe();
+    }
+  }
 }
