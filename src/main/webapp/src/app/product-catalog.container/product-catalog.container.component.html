@@ -4,11 +4,11 @@
          *ngFor="let product of filteredProducts">
       <div [routerLink]="['/productdetails', product.id]">
         <div class="item__img">
-          <img src="{{product.img}}" alt="{{product.name}}">
+          <img class="item__img__img" src="{{product.img}}" alt="{{product.name}}">
           <span class="item__img__btn">
-          <img src="assets/svg/Favorite.svg" width="20px" height="20px">
-          <img src="assets/svg/cart.svg" width="20px" height="20px">
-        </span>
+            <img src="assets/svg/Favorite.svg" width="20px" height="20px">
+            <img src="assets/svg/cart.svg" width="20px" height="20px">
+          </span>
         </div>
         <div class="item__info">
           <p class="item__info__name">{{product.name}}</p>
