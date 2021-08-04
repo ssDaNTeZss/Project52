@@ -7,7 +7,8 @@
       <a class="nav__link" href="#" [routerLink]="['/products', 'tablets']">{{ "NAVBAR.TITLE.TABLETS" | translate }}</a>
     </li>
     <li class="nav__item">
-      <a class="nav__link" href="#" [routerLink]="['/products', 'accessories']">{{ "NAVBAR.TITLE.ACCESSORIES" | translate }}</a>
+      <a class="nav__link" href="#"
+         [routerLink]="['/products', 'accessories']">{{ "NAVBAR.TITLE.ACCESSORIES" | translate }}</a>
     </li>
   </ul>
 </nav>
@@ -16,15 +17,18 @@
   <ul class="navbar-mobile__nav" (click)="closeNavbar()">
     <li class="nav-mobile__item" [routerLink]="['/products', 'phones']">
       <span class="nav-mobile__link">{{ "NAVBAR.TITLE.PHONES" | translate }}</span>
-      <img src="assets/svg/Arrow-right-black-24x24.svg">
+      <img src="assets/svg/Arrow-right-black-24x24.svg"
+           alt="Arrow right">
     </li>
     <li class="nav-mobile__item" [routerLink]="['/products', 'tablets']">
       <span class="nav-mobile__link">{{ "NAVBAR.TITLE.TABLETS" | translate }}</span>
-      <img src="assets/svg/Arrow-right-black-24x24.svg">
+      <img src="assets/svg/Arrow-right-black-24x24.svg"
+           alt="Arrow right">
     </li>
     <li class="nav-mobile__item" [routerLink]="['/products', 'accessories']">
       <span class="nav-mobile__link">{{ "NAVBAR.TITLE.ACCESSORIES" | translate }}</span>
-      <img src="assets/svg/Arrow-right-black-24x24.svg">
+      <img src="assets/svg/Arrow-right-black-24x24.svg"
+           alt="Arrow right">
     </li>
   </ul>
 </nav>

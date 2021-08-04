@@ -3,7 +3,9 @@
     <div class="col-12 custom-form">
       <span class="custom-form__title">{{ "BASKET.TITLE" | translate }}</span>
       <div class="close-btn" (click)="closeBasket()">
-        <img class="close-btn" src="assets/svg/Close-black.svg" width="17px" height="17px" alt="Close">
+        <img class="close-btn" src="assets/svg/Close-black.svg"
+             width="17px" height="17px"
+             alt="Close button">
       </div>
     </div>
 
@@ -11,7 +13,8 @@
          *ngIf="basket">
       <div class="basket__item" *ngFor="let item of basket.items">
         <div class="basket__item__img">
-          <img src="{{item.product?.img}}">
+          <img src="{{item.product?.img}}"
+               alt="{{item?.product.name}}">
         </div>
         <div class="basket__item__info">
           <span class="basket__item__info__name">{{item.product?.name}}</span>
@@ -55,7 +58,8 @@
       <div class="basket-mobile__item" *ngFor="let item of basket.items">
         <p class="basket-mobile__item__name">{{item.product?.name}}</p>
         <div class="basket-mobile__item__img">
-          <img src="{{item.product?.img}}">
+          <img src="{{item.product?.img}}"
+               alt="{{item?.product.name}}">
         </div>
         <div class="row basket-mobile__item__btn">
           <div class="col-6">
@@ -67,7 +71,7 @@
           </div>
           <div class="col-6 basket-mobile__item__btn-remove">
             <button type="button" class="btn btn-primary small center"
-            (click)="removeItem(item.id, item.product?.name)">
+                    (click)="removeItem(item.id, item.product?.name)">
               <span>Remove</span>
             </button>
           </div>
@@ -99,7 +103,9 @@
 
     <div class="col-12 basket-empty"
          *ngIf="!basket">
-      <img src="assets/svg/cart-big.svg" width="73px" height="73px">
+      <img src="assets/svg/cart-big.svg"
+           width="73px" height="73px"
+           alt="Icon basket">
       <div class="basket-empty__text">
         <p>You shopping cart is empty.</p>
         <p>Please return to our catalog</p>
@@ -108,7 +114,9 @@
               [routerLink]="['/products', 'phones']"
               (click)="closeBasket()">
         <span>Catalog</span>
-        <img class="btn-img" src="assets/svg/trending-flat.svg" width="24px" height="24px">
+        <img class="btn-img" src="assets/svg/trending-flat.svg"
+             alt="Arrow right"
+             width="24px" height="24px">
       </button>
     </div>
   </div>

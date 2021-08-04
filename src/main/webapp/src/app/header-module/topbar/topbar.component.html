@@ -15,11 +15,14 @@
   </div>
   <div class="col topbar__icons">
     <span (click)="openAccountMenu()">
-      <img src="assets/svg/account.svg" width="24px" height="24px">
+      <img src="assets/svg/account.svg" width="24px" height="24px"
+           alt="Account">
     </span>
 
     <span class="icon_cart" (click)="openBasket()">
-      <img src="assets/svg/cart.svg" width="24px" height="24px">
+      <img src="assets/svg/cart.svg"
+           alt="Shopping cart button"
+           width="24px" height="24px">
     </span>
     <div class="account-menu" *ngIf="openAccMenu" [style.right]="accountMenuRight">
       <ul>

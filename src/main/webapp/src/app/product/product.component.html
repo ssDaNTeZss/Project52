@@ -3,12 +3,14 @@
     <div class="product-img">
       <div class="product-img__item"
            [style.left]="carouselLeftPer">
-        <img src="{{product?.img}}">
+        <img src="{{product?.img}}"
+             alt="{{product?.name}}">
       </div>
       <div class="product-img__item"
            *ngFor="let img of product?.images"
            [style.left]="carouselLeftPer">
-        <img src="{{img.imageLink}}">
+        <img src="{{img.imageLink}}"
+             alt="{{product?.name}}">
       </div>
 
       <div class="move-button__left"
@@ -16,6 +18,7 @@
            *ngIf="product?.images">
         <img class="move-button__left-arrow"
              src="assets/svg/arrow.svg"
+             alt="Arrow left"
              width="12px" height="21px">
       </div>
       <div class="move-button__right"
@@ -23,6 +26,7 @@
            *ngIf="product?.images">
         <img class="move-button__right-arrow"
              src="assets/svg/arrow.svg"
+             alt="Arrow right"
              width="12px" height="21px">
       </div>
     </div>
@@ -32,7 +36,6 @@
       <div class="card-title">
         <span class="card-title__name">{{product?.name}} {{product?.config}}</span>
         <span class="card-title__price">₽{{product?.price | priceFormatting}}</span>
-        <!--        <span>{{product?.rating}}</span>-->
       </div>
       <div class="card-buttons">
         <span class="card-buttons__count">Count:</span>
@@ -46,7 +49,7 @@
           <button
             type="button"
             class="btn btn-counter">
-            <span style="margin-left: 2.5px">-</span>
+            <span class="minus">-</span>
           </button>
         </div>
 
@@ -61,7 +64,8 @@
             type="submit"
             class="btn btn-cart"
             (click)="addToBasket()">
-            <img src="assets/svg/cart.svg">
+            <img src="assets/svg/cart.svg"
+                 alt="Icon basket">
           </button>
         </div>
       </div>
