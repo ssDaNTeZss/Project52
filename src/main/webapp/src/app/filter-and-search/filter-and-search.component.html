@@ -72,8 +72,8 @@
       </div>
     </div>
 
-    <div class="filter" (click)="openFilter('brand')">
-      <div class="filter__header">
+    <div class="filter">
+      <div class="filter__header" (click)="openFilter('brand')">
         <span class="header__title">Brand</span>
         <img class="filter__icon" src="assets/svg/Rectangle.svg">
       </div>
@@ -162,17 +162,180 @@
           </div>
 
         </form>
-
-
       </div>
     </div>
+
     <span class="countFilteredProducts">{{state.countFilteredProducts | declensionWord:"item"}}</span>
   </div>
 </div>
 
-<!--<div class="row filter-row__mobile">-->
-<!--  <div class="col">-->
-<!--    <span class="countFilteredProducts__mobile">{{state.countFilteredProducts | declensionWord:"item"}}</span>-->
-<!--  </div>-->
-<!--  <div class="test"></div>-->
-<!--</div>-->
+<div class="row filter-row__mobile">
+  <div class="col">
+    <span class="countFilteredProducts__mobile">{{state.countFilteredProducts | declensionWord:"item"}}</span>
+  </div>
+  <div class="col filter-btn">
+    <img src="assets/svg/Filter.svg" alt="Filters"
+         (click)="openMobileFilters()">
+  </div>
+  <div class="filter-elements"
+       [ngClass]="{
+      'activated': mobileFilters
+      }">
+    <div class="filter-element">
+      <div class="filter-element__title" (click)="openFilter('sort')">
+        <span class="header__title">{{sortFilterTitle}}</span>
+        <img class="filter__icon" src="assets/svg/Rectangle.svg"
+             [ngClass]="{ 'up': turnIcon }">
+      </div>
+      <div class="filter-element__content" [class.active]="activatedSort"
+           (click)="activatedSort = false">
+        <ul class="list">
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by popularity', true)"
+          >
+            <span class="options__title">by popularity</span>
+            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+          </li>
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by popularity', false)"
+          >
+            <span>by popularity</span>
+            <img class="options__icon" src="assets/svg/Rectangle.svg">
+          </li>
+
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by rating', true)"
+          >
+            <span>by rating</span>
+            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+          </li>
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by rating', false)"
+          >
+            <span>by rating</span>
+            <img class="options__icon" src="assets/svg/Rectangle.svg">
+          </li>
+
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by price', true)"
+          >
+            <span>by price</span>
+            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+          </li>
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by price', false)"
+          >
+            <span>by price</span>
+            <img class="options__icon" src="assets/svg/Rectangle.svg">
+          </li>
+
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by name', true)"
+          >
+            <span>by name</span>
+            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+          </li>
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by name', false)"
+          >
+            <span>by name</span>
+            <img class="options__icon" src="assets/svg/Rectangle.svg">
+          </li>
+
+          <li class="list__item"
+              (click)="applyFilter('sort', 'by default')"
+          >
+            <span>by default</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="filter-element">
+      <div class="filter-element__title" (click)="openFilter('brand')">
+        <span class="header__title">Brand</span>
+        <img class="filter__icon" src="assets/svg/Rectangle.svg">
+      </div>
+      <div class="filter-element__content" [class.active]="activatedBrand">
+        <div class="checkbox" *ngFor="let brand of state.brands">
+          <input type="checkbox"
+                 id="{{brand.value + '_mobile' | lowercase}}"
+                 name="{{brand.value | lowercase}}"
+                 value="{{brand.value | lowercase}}"
+                 [(ngModel)]="brand.checked"
+                 (change)="onToggle()"
+                 [checked]="brand.checked"
+                 [disabled]="brand.disabled">
+          <label for="{{brand.value | lowercase}}">{{brand.value}}</label>
+        </div>
+        <div class="checkbox" style="text-align: center"
+             (click)="cleaningAppliedBrands()"
+             *ngIf="this.state.appliedBrands.length !== 0">
+          <button type="button" class="btn btn-outline">
+            <span>Clear</span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <div class="filter-element">
+      <div class="filter-element__title" (click)="openFilter('price')">
+        <span class="header__title">Price</span>
+        <img class="filter__icon" src="assets/svg/Rectangle.svg">
+      </div>
+      <div class="filter-element__content" [class.active]="activatedPrice">
+        <form
+          novalidate
+          [formGroup]="formModelPrice"
+          (ngSubmit)="onSubmitForm()">
+          <div class="row">
+            <div class="col-6">
+              <div class="test-input">
+                <input
+                  type="number"
+                  formControlName="minPrice">
+                <label>from {{state.minPrice}}</label>
+                <span class="line"></span>
+              </div>
+            </div>
+            <div class="col-6">
+              <div class="test-input">
+                <input
+                  type="number"
+                  formControlName="maxPrice">
+                <label>up to {{state.maxPrice}}</label>
+                <span class="line"></span>
+              </div>
+            </div>
+          </div>
+          <div class="row filter-element__content__div-button"
+               [ngClass]="{
+          'display-block': (_minPrice.touched || _minPrice.dirty) ||
+          (_maxPrice.touched || _maxPrice.dirty)
+          }"
+          *ngIf="(_minPrice.touched || _minPrice.dirty) ||
+          (_maxPrice.touched || _maxPrice.dirty)">
+            <div class="col-6">
+              <button
+                type="button"
+                class="btn btn-outline big-plus center"
+                [disabled]="formModelPrice.invalid"
+                (click)="clearPriceForm()">
+                <span>Clear</span>
+              </button>
+            </div>
+            <div class="col-6">
+              <button
+                type="submit"
+                class="btn btn-primary big-plus center"
+                [disabled]="formModelPrice.invalid">
+                <span>Apply</span>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</div>

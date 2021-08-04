@@ -13,6 +13,7 @@ import {ActivatedRoute, Params} from "@angular/router";
 import {Brand} from "../models/brand.model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductCatalogService} from "../services/product-catalog.service";
+import {fakeAsync} from "@angular/core/testing";
 
 @Component({
   selector: 'app-filter-and-search-ui',
@@ -57,6 +58,7 @@ export class FilterAndSearchComponent implements OnInit, OnDestroy {
   ];
   test: boolean;
   formModelPrice: FormGroup;
+  mobileFilters = false;
 
   constructor(
     private changeDetection: ChangeDetectorRef,
@@ -94,7 +96,6 @@ export class FilterAndSearchComponent implements OnInit, OnDestroy {
 
     this.subs = this.ProductCatalogService.filteredProducts$.subscribe((filteredProducts: any[]) => {
       this.state.countFilteredProducts = filteredProducts.length;
-      console.log("FGG", filteredProducts.length)
       this.changeDetection.markForCheck();
     });
 
@@ -121,7 +122,6 @@ export class FilterAndSearchComponent implements OnInit, OnDestroy {
       this.subs.unsubscribe();
     }
   }
-
 
   openFilter(nameFilter: string): void {
     switch (nameFilter) {
@@ -196,5 +196,15 @@ export class FilterAndSearchComponent implements OnInit, OnDestroy {
     this.formModelPrice.reset();
     this.selectedPrices.emit([null, null]);
     this.activatedPrice = !this.activatedPrice;
+  }
+
+  openMobileFilters(): void {
+    if (this.mobileFilters) {
+      this.activatedSort = false;
+      this.activatedBrand = false;
+      this.activatedPrice = false;
+    }
+    this.mobileFilters = !this.mobileFilters;
+    console.log(this.mobileFilters);
   }
 }

@@ -13,6 +13,8 @@ import {Brand} from "../models/brand.model";
 })
 export class FilterAndSearchContainerComponent implements OnInit {
 
+  @Output() typeProducts = new EventEmitter<string>();
+
   state = {
     products: [],
     category: '',
@@ -45,6 +47,20 @@ export class FilterAndSearchContainerComponent implements OnInit {
     this.route.params.pipe(
       map(params => {
         this.state.category = params.typeProducts;
+
+        switch (this.state.category){
+          case "phones":
+            this.typeProducts.emit("Phones");
+            break;
+          case "tablets":
+            this.typeProducts.emit("Tablets");
+            break;
+          case "accessories":
+            this.typeProducts.emit("Accessories");
+            break;
+        }
+
+
         return params.typeProducts;
       }),
       mergeMap(typeProducts => this.productService.getProductsSameType(typeProducts)))
