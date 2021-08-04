@@ -13,7 +13,7 @@
 </nav>
 
 <nav class="row navbar-mobile" *ngIf="statusNavbar">
-  <ul class="navbar-mobile__nav">
+  <ul class="navbar-mobile__nav" (click)="closeNavbar()">
     <li class="nav-mobile__item" [routerLink]="['/products', 'phones']">
       <span class="nav-mobile__link">{{ "NAVBAR.TITLE.PHONES" | translate }}</span>
       <img src="assets/svg/Arrow-right-black-24x24.svg">

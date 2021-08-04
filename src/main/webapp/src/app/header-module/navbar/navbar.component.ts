@@ -30,4 +30,8 @@ export class NavbarComponent implements OnInit, OnDestroy {
       this.subs.unsubscribe();
     }
   }
+
+  closeNavbar(): void {
+    this.statusNavbar = false;
+  }
 }
