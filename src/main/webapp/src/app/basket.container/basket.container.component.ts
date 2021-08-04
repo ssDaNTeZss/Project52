@@ -58,4 +58,12 @@ export class BasketContainerComponent implements OnInit, OnDestroy {
       this.changeDetection.markForCheck();
     });
   }
+
+  removeItem($event: {id: number, name: string}): void {
+    this.basketService.removeItem($event.id).subscribe(() => {
+      this.basketObs = this.basketService.getBasket();
+      this.popupService.openPopup({openPopup: true, name: $event.name, action: "removeItem"});
+      this.changeDetection.markForCheck();
+    });
+  }
 }

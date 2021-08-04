@@ -20,7 +20,8 @@
             <span class="counter-component__count">1</span>
             <button type="button" class="btn btn-counter"><span style="margin-left: 2.5px;">-</span></button>
           </div>
-          <button type="button" class="btn btn-primary small center">
+          <button type="button" class="btn btn-primary small center"
+                  (click)="removeItem(item.id, item.product?.name)">
             <span>Remove</span>
           </button>
         </div>
@@ -65,7 +66,8 @@
             </div>
           </div>
           <div class="col-6 basket-mobile__item__btn-remove">
-            <button type="button" class="btn btn-primary small center">
+            <button type="button" class="btn btn-primary small center"
+            (click)="removeItem(item.id, item.product?.name)">
               <span>Remove</span>
             </button>
           </div>

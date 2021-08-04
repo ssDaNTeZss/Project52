@@ -22,6 +22,7 @@ export class BasketComponent implements OnInit, OnDestroy {
   @Input() basket?: Basket;
 
   @Output() clearButton = new EventEmitter<boolean>();
+  @Output() removeItemButton = new EventEmitter<{id: number, name: string}>();
 
   private subs: Subscription;
 
@@ -168,5 +169,9 @@ export class BasketComponent implements OnInit, OnDestroy {
 
   clearBasket(): void {
     this.clearButton.emit();
+  }
+
+  removeItem(id: number, name: string): void {
+    this.removeItemButton.emit({id: id, name: name});
   }
 }
