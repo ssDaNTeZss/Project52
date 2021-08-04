@@ -34,20 +34,20 @@
       </div>
 
       <div class="basket__total-price row">
-        <div class="col-6">Total</div>
+        <div class="col-6">{{ "BASKET.TITLE-TOTAL-PRICE" | translate }}</div>
         <div class="col-6 basket__total-price__right">₽{{basket.totalPrice | priceFormatting}}</div>
       </div>
 
       <div class="row basket__button-div">
         <div class="basket__button-div__checkout">
           <button type="button" class="btn btn-primary maximum-width center">
-            <span>Checkout</span>
+            <span>{{ "BASKET.BUTTON.CHECKOUT" | translate }}</span>
           </button>
         </div>
         <div class="basket__button-div__clear">
           <button type="button" class="btn btn-outline maximum-width center"
                   (click)="clearBasket()">
-            <span>Clear basket</span>
+            <span>{{ "BASKET.BUTTON.CLEAR" | translate }}</span>
           </button>
         </div>
       </div>
@@ -72,7 +72,7 @@
           <div class="col-6 basket-mobile__item__btn-remove">
             <button type="button" class="btn btn-primary small center"
                     (click)="removeItem(item.id, item.product?.name)">
-              <span>Remove</span>
+              <span>{{ "BASKET.BUTTON.REMOVE" | translate }}</span>
             </button>
           </div>
         </div>
@@ -88,13 +88,13 @@
         <div class="row basket-mobile__bottom-line__buttons">
           <div class="col-6 basket-mobile__bottom-line__buttons-checkout">
             <button type="button" class="btn btn-primary maximum-width center">
-              <span>Checkout</span>
+              <span>{{ "BASKET.BUTTON.CHECKOUT" | translate }}</span>
             </button>
           </div>
           <div class="col-6 basket-mobile__bottom-line__buttons-clear">
             <button type="button" class="btn btn-outline maximum-width center"
                     (click)="clearBasket()">
-              <span>Clear basket</span>
+              <span>{{ "BASKET.BUTTON.CLEAR" | translate }}</span>
             </button>
           </div>
         </div>
@@ -107,13 +107,15 @@
            width="73px" height="73px"
            alt="Icon basket">
       <div class="basket-empty__text">
-        <p>You shopping cart is empty.</p>
-        <p>Please return to our catalog</p>
+<!--        <p>You shopping cart is empty.</p>-->
+<!--        <p>Please return to our catalog</p>-->
+        <p translate>BASKET.EMPTY-TEXT-1</p>
+        <p translate>BASKET.EMPTY-TEXT-2</p>
       </div>
       <button type="button" class="btn btn-primary big center"
               [routerLink]="['/products', 'phones']"
               (click)="closeBasket()">
-        <span>Catalog</span>
+        <span>{{ "BASKET.BUTTON.CATALOG" | translate }}</span>
         <img class="btn-img" src="assets/svg/trending-flat.svg"
              alt="Arrow right"
              width="24px" height="24px">
