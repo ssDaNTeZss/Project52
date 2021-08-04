@@ -74,7 +74,7 @@
 
     <div class="filter">
       <div class="filter__header" (click)="openFilter('brand')">
-        <span class="header__title">Brand</span>
+        <span class="header__title">{{ "FILTER-AND-SEARCH.TITLE.BRAND" | translate }}</span>
         <img class="filter__icon" src="assets/svg/Rectangle.svg">
       </div>
       <div class="filter__options" [ngClass]="{
@@ -95,7 +95,7 @@
              (click)="cleaningAppliedBrands()"
              *ngIf="this.state.appliedBrands.length !== 0">
           <button type="button" class="btn btn-outline btn-for-pc">
-            <span>Clear</span>
+            <span>{{ "FILTER-AND-SEARCH.BUTTON.CLEAR" | translate }}</span>
           </button>
         </div>
       </div>
@@ -103,7 +103,7 @@
 
     <div class="filter">
       <div class="filter__header" (click)="openFilter('price')">
-        <span class="header__title">Price</span>
+        <span class="header__title">{{ "FILTER-AND-SEARCH.TITLE.PRICE" | translate }}</span>
         <img class="filter__icon" src="assets/svg/Rectangle.svg">
       </div>
       <div class="filter__options form-price" [ngClass]="{
@@ -115,12 +115,10 @@
           (ngSubmit)="onSubmitForm()"
           class="form-price">
 
-
           <div class="test-input">
             <input
               type="number"
               formControlName="minPrice"
-
             >
             <label>from {{state.minPrice}}</label>
             <span class="line"></span>
@@ -129,7 +127,6 @@
             <input
               type="number"
               formControlName="maxPrice"
-
             >
             <label>up to {{state.maxPrice}}</label>
             <span class="line"></span>
@@ -144,13 +141,13 @@
               class="btn btn-outline btn-for-pc"
               [disabled]="formModelPrice.invalid"
               (click)="clearPriceForm()">
-              <span>Clear</span>
+              <span>{{ "FILTER-AND-SEARCH.BUTTON.CLEAR" | translate }}</span>
             </button>
             <button
               type="submit"
               class="btn btn-primary btn-for-pc"
               [disabled]="formModelPrice.invalid">
-              <span>Apply</span>
+              <span>{{ "FILTER-AND-SEARCH.BUTTON.APPLY" | translate }}</span>
             </button>
           </div>
 
@@ -246,7 +243,7 @@
 
     <div class="filter-element">
       <div class="filter-element__title" (click)="openFilter('brand')">
-        <span class="header__title">Brand</span>
+        <span class="header__title">{{ "FILTER-AND-SEARCH.TITLE.BRAND" | translate }}</span>
         <img class="filter__icon" src="assets/svg/Rectangle.svg">
       </div>
       <div class="filter-element__content" [class.active]="activatedBrand">
@@ -273,7 +270,7 @@
 
     <div class="filter-element">
       <div class="filter-element__title" (click)="openFilter('price')">
-        <span class="header__title">Price</span>
+        <span class="header__title">{{ "FILTER-AND-SEARCH.TITLE.PRICE" | translate }}</span>
         <img class="filter__icon" src="assets/svg/Rectangle.svg">
       </div>
       <div class="filter-element__content" [class.active]="activatedPrice">
@@ -322,13 +319,12 @@
                 type="submit"
                 class="btn btn-primary big-plus center"
                 [disabled]="formModelPrice.invalid">
-                <span>Apply</span>
+                <span>{{ "FILTER-AND-SEARCH.BUTTON.APPLY" | translate }}</span>
               </button>
             </div>
           </div>
         </form>
       </div>
     </div>
-
   </div>
 </div>
