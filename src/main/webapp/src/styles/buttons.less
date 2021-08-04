@@ -114,8 +114,35 @@
     padding: 11px 28px;
 
     &.big {
-      height: 50px;
+      height: 55px;
       padding: 11px 55px;
+      max-width: 200px;
+      align-content: center;
+
+      &-plus {
+        height: 55px;
+        padding: 11px 55px;
+        align-content: center;
+        width: 100%;
+
+        &.center {
+          align-content: center;
+          text-align: center;
+
+          span {
+            margin: auto;
+          }
+        }
+      }
+
+      &.center {
+        align-content: center;
+        text-align: center;
+
+        span {
+          margin: auto;
+        }
+      }
     }
 
     &.maximum-width {
