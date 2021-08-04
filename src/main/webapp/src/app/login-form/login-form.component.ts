@@ -38,6 +38,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
     "password": null,
     "email": null
   };
+  _timer: number;
 
   ngOnInit(): void {
     this.formModelLogin = new FormGroup({
@@ -72,9 +73,11 @@ export class LoginFormComponent implements OnInit, OnDestroy {
         this.showPopup = openLoginPopup;
         this.changeDetection.markForCheck();
 
-        setTimeout(() => {
+        this._timer = setTimeout(() => {
           this.closeLoginForm();
         }, 3000);
+
+
       }
     });
   }
@@ -82,6 +85,9 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     if (this.subs) {
       this.subs.unsubscribe();
+    }
+    if (this._timer){
+      clearTimeout(this._timer);
     }
   }
 

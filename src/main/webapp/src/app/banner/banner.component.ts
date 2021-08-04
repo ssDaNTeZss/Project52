@@ -1,11 +1,11 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-banner',
   templateUrl: './banner.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class BannerComponent implements OnInit {
+export class BannerComponent implements OnInit, OnDestroy {
 
   carouselMarginPer: string;
   carouselMargin = 0;
@@ -17,8 +17,11 @@ export class BannerComponent implements OnInit {
   ) {
   }
 
+  _timer: number;
+  _timer2: number;
+
   ngOnInit(): void {
-    setInterval(() => {
+    this._timer = setInterval(() => {
       this.carouselMargin = this.carouselMargin + 20;
 
       if (this.carouselMargin > 40) {
@@ -29,7 +32,7 @@ export class BannerComponent implements OnInit {
       this.changeDetection.markForCheck();
     }, 6000);
 
-    setInterval(() => {
+    this._timer2 = setInterval(() => {
       this.carouselMargin2 = this.carouselMargin2 + 5;
 
       if (this.carouselMargin2 > 15) {
@@ -38,7 +41,16 @@ export class BannerComponent implements OnInit {
       this.carouselMarginPer2 = "-" + this.carouselMargin2 + "%";
 
       this.changeDetection.markForCheck();
-    }, 6000)
+    }, 6000);
+  }
+
+  ngOnDestroy(): void {
+    if (this._timer){
+      clearTimeout(this._timer);
+    }
+    if (this._timer2){
+      clearTimeout(this._timer2);
+    }
   }
 
   changeBanner(margin: number): void {
