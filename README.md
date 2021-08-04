@@ -1,4 +1,4 @@
-![alt text](src/main/webapp/src/images/logo.png "Main banner")
+![alt text](src/main/webapp/src/assets/img/devices_mockups.jpg "Main banner")
 # Shop52
 ## Description
 __Shop52__ is a store of gadgets and accessories.  
