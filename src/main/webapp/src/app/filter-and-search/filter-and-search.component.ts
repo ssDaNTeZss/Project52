@@ -105,6 +105,7 @@ export class FilterAndSearchComponent implements OnInit, OnDestroy {
         [
           Validators.min(this.state.minPrice),
           Validators.max(this.state.maxPrice),
+          Validators.pattern(/^[0-9]+(?!.)/)
         ],
       ),
       maxPrice: new FormControl(
@@ -112,6 +113,7 @@ export class FilterAndSearchComponent implements OnInit, OnDestroy {
         [
           Validators.min(this.state.minPrice),
           Validators.max(this.state.maxPrice),
+          Validators.pattern(/^[0-2]/)
         ],
       )
     });

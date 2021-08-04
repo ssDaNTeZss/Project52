@@ -80,13 +80,6 @@
       <div class="filter__options" [ngClass]="{
       'activated': activatedBrand
       }">
-        <!--        <div class="checkbox" *ngFor="let brand of state.brands">-->
-        <!--          <input type="checkbox" id="{{brand.value | lowercase}}" name="{{brand.value | lowercase}}" value="{{brand.value | lowercase}}"-->
-        <!--                 [(ngModel)]="brand.checked"-->
-        <!--                 (change)="onToggle($event, brand.value)">-->
-        <!--          <label for="{{brand.value | lowercase}}">{{brand.value}}</label>-->
-        <!--        </div>-->
-
         <div class="checkbox" *ngFor="let brand of state.brands">
           <input type="checkbox"
                  id="{{brand.value | lowercase}}"
