@@ -20,3 +20,14 @@
     </div>
   </div>
 </div>
+<div class="popup"
+     *ngIf="popup.openPopup && (popup.action === 'removeItem')">
+  <div class="row popup__content">
+    <div class="popup__content__img">
+      <img src="assets/svg/trash-can.svg" width="20px" height="24px">
+    </div>
+    <div class="popup__content__text">
+      The {{popup.name}} has been successfully removed from the cart!
+    </div>
+  </div>
+</div>
