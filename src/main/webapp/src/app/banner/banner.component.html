@@ -4,47 +4,58 @@
     <input type="radio" name="radio-btn" id="radio2">
     <input type="radio" name="radio-btn" id="radio3">
     <div class="carousel__item active" [style.margin-left]="carouselMarginPer">
-      <img src="assets/img/Block.jpg" alt="...">
+      <img src="assets/img/Block.jpg" alt="Advertising image">
       <div class="carousel__item__content">
         <p class="content__title">{{ "BANNER.TITLE-ONE" | translate }}</p>
         <p class="content__description-banner">{{ "BANNER.DESCRIPTION-ONE" | translate }}</p>
         <button type="button" class="btn btn-primary btn-for-pc">
           <span>{{ "BANNER.BUTTON" | translate }}</span>
-          <img class="trending-flat" src="assets/svg/trending-flat.svg" width="24px" height="24px">
+          <img class="trending-flat"
+               src="assets/svg/trending-flat.svg"
+               alt="Arrow"
+               width="24px" height="24px">
         </button>
         <a href="#" class="link link-primary link-for-mobile">
           <span>{{ "BANNER.BUTTON" | translate }}</span>
-          <img src="assets/svg/trending-flat.svg">
+          <img src="assets/svg/trending-flat.svg"
+               alt="Arrow">
         </a>
       </div>
     </div>
     <div class="carousel__item">
-      <img src="assets/img/Laptop-and-Phone.jpg" alt="...">
+      <img src="assets/img/Laptop-and-Phone.jpg" alt="Advertising image">
       <div class="carousel__item__content">
         <p class="content__title">{{ "BANNER.TITLE-TWO" | translate }}</p>
         <p class="content__description-banner">{{ "BANNER.DESCRIPTION-TWO" | translate }}</p>
         <button type="button" class="btn btn-primary btn-for-pc">
           <span>{{ "BANNER.BUTTON" | translate }}</span>
-          <img class="trending-flat" src="assets/svg/trending-flat.svg" width="24px" height="24px">
+          <img class="trending-flat" src="assets/svg/trending-flat.svg"
+               alt="Arrow"
+               width="24px" height="24px">
         </button>
         <a href="#" class="link link-primary link-for-mobile">
           <span>{{ "BANNER.BUTTON" | translate }}</span>
-          <img src="assets/svg/trending-flat.svg">
+          <img src="assets/svg/trending-flat.svg"
+               alt="Arrow">
         </a>
       </div>
     </div>
     <div class="carousel__item">
-      <img src="assets/img/Table.jpg" alt="...">
+      <img src="assets/img/Table.jpg" alt="Advertising image">
       <div class="carousel__item__content">
         <p class="content__title">{{ "BANNER.TITLE-THREE" | translate }}</p>
         <p class="content__description-banner">{{ "BANNER.DESCRIPTION-THREE" | translate }}</p>
         <button type="button" class="btn btn-primary btn-for-pc">
           <span>{{ "BANNER.BUTTON" | translate }}</span>
-          <img class="trending-flat" src="assets/svg/trending-flat.svg" width="24px" height="24px">
+          <img class="trending-flat"
+               src="assets/svg/trending-flat.svg"
+               alt="Arrow"
+               width="24px" height="24px">
         </button>
         <a href="#" class="link link-primary link-for-mobile">
           <span>{{ "BANNER.BUTTON" | translate }}</span>
-          <img src="assets/svg/trending-flat.svg">
+          <img src="assets/svg/trending-flat.svg"
+               alt="Arrow">
         </a>
       </div>
     </div>
@@ -60,8 +71,15 @@
   </div>
 
   <div class="navigation-arrows">
-    <img src="assets/svg/Arrow-left-gray-24x24.svg" width="21px" height="21px" (click)="toggleArrows('back')">
-    <img class="arrow-right active" src="assets/svg/Arrow-right-black-24x24.svg" width="21px" height="21px"
+    <img class="rotate180deg"
+         src="assets/svg/Arrow-right-black-24x24.svg"
+         alt="Arrow left"
+         width="21px" height="21px"
+         (click)="toggleArrows('back')">
+    <img class="arrow-right active"
+         src="assets/svg/Arrow-right-black-24x24.svg"
+         alt="Arrow right"
+         width="21px" height="21px"
          (click)="toggleArrows('forward')">
   </div>
 </div>
