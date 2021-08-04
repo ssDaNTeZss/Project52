@@ -1,13 +1,17 @@
 <div>
   <div class="catalog">
     <div class="item"
-         *ngFor="let product of filteredProducts">
+         *ngFor="let product of filteredProducts; trackBy: trackByFunction">
       <div [routerLink]="['/productdetails', product.id]">
         <div class="item__img">
           <img class="item__img__img" src="{{product.img}}" alt="{{product.name}}">
           <span class="item__img__btn">
-            <img src="assets/svg/Favorite.svg" width="20px" height="20px">
-            <img src="assets/svg/cart.svg" width="20px" height="20px">
+            <img src="assets/svg/Favorite.svg"
+                 alt="Heart icon"
+                 width="20px" height="20px">
+            <img src="assets/svg/cart.svg"
+                 alt="Icon basket"
+                 width="20px" height="20px">
           </span>
         </div>
         <div class="item__info">

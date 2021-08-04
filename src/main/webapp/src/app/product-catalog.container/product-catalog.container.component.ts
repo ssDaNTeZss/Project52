@@ -12,6 +12,10 @@ export class ProductCatalogContainerComponent implements OnInit, OnDestroy {
 
   private subs: Subscription;
   filteredProducts: Product[];
+  public trackByFunction(index, item) {
+    if (!item) return null;
+    return item.id;
+  };
 
   constructor(
     private changeDetection: ChangeDetectorRef,
