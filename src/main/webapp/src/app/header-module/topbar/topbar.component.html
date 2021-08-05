@@ -10,12 +10,13 @@
   </div>
   <div class="col topbar__brand">
     <a class="topbar__brand__item" href="#" [routerLink]="['/']">
-      Shop52
+      {{ "TOPBAR.TITLE" | translate}}
     </a>
   </div>
   <div class="col topbar__icons">
     <span (click)="openAccountMenu()">
-      <img src="assets/svg/account.svg" width="24px" height="24px"
+      <img src="assets/svg/account.svg"
+           width="24px" height="24px"
            alt="Account">
     </span>
 
@@ -26,8 +27,8 @@
     </span>
     <div class="account-menu" *ngIf="openAccMenu" [style.right]="accountMenuRight">
       <ul>
-        <li (click)="openLoginForm()">Sign in</li>
-        <li (click)="openSignupForm()">Create account</li>
+        <li (click)="openLoginForm()">{{ "TOPBAR.MENU.SIGN-IN" | translate}}</li>
+        <li (click)="openSignupForm()">{{ "TOPBAR.MENU.SIGN-UP" | translate}}</li>
       </ul>
     </div>
   </div>
