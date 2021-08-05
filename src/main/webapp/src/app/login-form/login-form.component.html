@@ -69,8 +69,8 @@
     <div class="col-12 custom-form-account-created"
          *ngIf="showPopup">
       <span class="custom-form-account-created__title">{{userData.username}},</span>
-      <span class="custom-form-account-created__text">you have successfully logged in to your account!</span>
-      <p class="custom-form-account-created__text">You will be redirected.</p>
+      <span class="custom-form-account-created__text">{{ "LOGIN-FORM.ACCOUNT-CREATED.SUCCESSFULLY" | translate }}</span>
+      <p class="custom-form-account-created__text">{{ "LOGIN-FORM.ACCOUNT-CREATED.REDIRECTED" | translate }}</p>
     </div>
   </div>
 </div>
