@@ -1,7 +1,7 @@
 import {TechSpec} from "./techSpec.model";
 import {Image} from "./image.model";
 
-export class Product {
+export interface Product {
   brand: string;
   category: string;
   config: string;
