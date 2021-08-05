@@ -38,7 +38,7 @@
         <span class="card-title__price">₽{{product?.price | priceFormatting}}</span>
       </div>
       <div class="card-buttons">
-        <span class="card-buttons__count">Count:</span>
+        <span class="card-buttons__count">{{ "PRODUCT.COUNT" | translate}}</span>
         <div class="counter-component">
           <button
             type="button"
@@ -57,7 +57,7 @@
           <button
             type="submit"
             class="btn btn-primary big-plus center">
-            <span>Order now</span>
+            <span>{{ "PRODUCT.BUTTON.ORDER-NOW" | translate}}</span>
           </button>
 
           <button
@@ -72,7 +72,7 @@
       <div class="card-information">
         <div class="information-card">
           <div class="row information-card__title" (click)="openInfoCard('techSpec')">
-            <div class="col-11">Technical Specifications</div>
+            <div class="col-11">{{ "PRODUCT.TECH-SPEC" | translate }}</div>
             <div class="col-1 information-card__title__btn" *ngIf="!openFirstCard">+</div>
             <div class="col-1 information-card__title__btn-minus" *ngIf="openFirstCard">-</div>
           </div>
@@ -88,7 +88,7 @@
         </div>
         <div class="information-card">
           <div class="row information-card__title" (click)="openInfoCard('description')">
-            <div class="col-11">Description</div>
+            <div class="col-11">{{ "PRODUCT.DESCRIPTION" | translate }}</div>
             <div class="col-1 information-card__title__btn" *ngIf="!openSecondCard">+</div>
             <div class="col-1 information-card__title__btn-minus" *ngIf="openSecondCard">-</div>
           </div>
