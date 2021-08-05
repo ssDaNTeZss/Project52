@@ -15,6 +15,13 @@
       "ACCESSORIES": "Accessories"
     }
   },
+  "TOPBAR": {
+    "TITLE": "Shop52",
+    "MENU": {
+      "SIGN-IN": "Sign in",
+      "SIGN-UP": "Create account"
+    }
+  },
   "FOOTER": {
     "TITLE": {
       "CONTACTS": "Contacts",
@@ -26,7 +33,8 @@
       "TABLETS": "Tablets",
       "ACCESSORIES": "Accessories"
     },
-    "ABOUT-US": "About us"
+    "ABOUT-US": "About us",
+    "COPYRIGHT": "© Copyright,  2021"
   },
   "MAIN-PAGE": {
     "PRODUCT-CAROUSEL": {
@@ -53,6 +61,10 @@
       "SUBMIT": "Create account",
       "BACK-HOME": "Back Home",
       "SIGN-IN": "Sign in"
+    },
+    "ACCOUNT-CREATED": {
+      "WELL-DONE": "Well done!",
+      "SUCCESSFULLY": "The account was successfully created."
     }
   },
   "LOGIN-FORM": {
@@ -71,13 +83,45 @@
     },
     "BUTTON": {
       "SUBMIT": "Sign in"
+    },
+    "ACCOUNT-CREATED": {
+      "SUCCESSFULLY": "you have successfully logged in to your account!",
+      "REDIRECTED": "You will be redirected."
     }
   },
   "BASKET": {
     "TITLE": "Your cart",
+    "TITLE-TOTAL-PRICE": "Total",
     "BUTTON": {
       "CHECKOUT": "Checkout",
-      "CLEAR": "Clear basket"
+      "CLEAR": "Clear basket",
+      "REMOVE": "Remove",
+      "CATALOG": "Catalog"
+    },
+    "EMPTY-TEXT-1": "You shopping cart is empty.",
+    "EMPTY-TEXT-2": "Please return to our catalog"
+  },
+  "FILTER-AND-SEARCH": {
+    "TITLE": {
+      "BRAND": "Brand",
+      "PRICE": "Price"
+    },
+    "BUTTON": {
+      "APPLY": "Apply",
+      "CLEAR": "Clear"
+    }
+  },
+  "PAGE-404": {
+    "BUTTON": {
+      "GO-BACK": "Go back"
+    }
+  },
+  "PRODUCT": {
+    "TECH-SPEC": "Technical Specifications",
+    "DESCRIPTION": "Description",
+    "COUNT": "Count:",
+    "BUTTON": {
+      "ORDER-NOW": "Order now"
     }
   }
 }
