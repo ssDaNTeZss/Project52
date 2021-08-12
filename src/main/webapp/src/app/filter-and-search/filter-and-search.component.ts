@@ -14,6 +14,7 @@ import {Brand} from "../models/brand.model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductCatalogService} from "../services/product-catalog.service";
 import {fakeAsync} from "@angular/core/testing";
+import {Product} from "../models/product.model";
 
 @Component({
   selector: 'app-filter-and-search-ui',
@@ -70,31 +71,7 @@ export class FilterAndSearchComponent implements OnInit, OnDestroy {
 
 
   ngOnInit(): void {
-    // this.subs = this.route.params.subscribe((params: Params) => {
-    //   this.state.category = params.typeProducts;
-    //
-    //   this.subs = this.productService.getProductsSameType(this.state.category).subscribe((data: any) => {
-    //     this.state.products = data;
-    //
-    //     let prices = [];
-    //     let brands = [];
-    //
-    //     for (let i = 0; i < data.length; i++) {
-    //       prices.push(data[i].price);
-    //       brands.push(data[i].brand);
-    //     }
-    //     this.state.minPrice = this.arrayMin(prices);
-    //     this.state.maxPrice = this.arrayMax(prices);
-    //
-    //     this.state.brands = Array.from(new Set(brands));
-    //
-    //     console.log(this.state);
-    //
-    //     this.changeDetection.markForCheck();
-    //   });
-    // });
-
-    this.subs = this.ProductCatalogService.filteredProducts$.subscribe((filteredProducts: any[]) => {
+    this.subs = this.ProductCatalogService.filteredProducts$.subscribe((filteredProducts: Product[]) => {
       this.state.countFilteredProducts = filteredProducts.length;
       this.changeDetection.markForCheck();
     });

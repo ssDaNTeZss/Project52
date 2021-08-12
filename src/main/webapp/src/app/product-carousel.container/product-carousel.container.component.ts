@@ -31,7 +31,7 @@ export class ProductCarouselContainerComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     if (this.title === "RECENTLY-VIEWED") {
-      this.subs = this.cookie.getCookie('phoneIds').subscribe((cookies: any) => {
+      this.subs = this.cookie.getCookie('phoneIds').subscribe((cookies: string) => {
         if (cookies) {
           this.ids = JSON.parse(cookies);
 

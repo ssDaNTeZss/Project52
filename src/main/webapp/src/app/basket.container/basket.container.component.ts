@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {forkJoin, Observable, Subscription} from "rxjs";
 import {BasketService} from "../services/basket.service";
-import {mergeMap, switchMap} from "rxjs/operators";
+import {count, mergeMap, switchMap} from "rxjs/operators";
 import {Params} from "@angular/router";
 import {Product} from "../models/product.model";
 import {PopupService} from "../services/popup.service";
@@ -35,9 +35,22 @@ export class BasketContainerComponent implements OnInit, OnDestroy {
 
     this.basketService.sendToCart$
       .pipe(
-        switchMap((idAndCount: { id: number, name: string, count: number }) => {
+        switchMap((idAndCount: { id: number, name: string, numberOfItems: number }) => {
             this.popupService.openPopup({openPopup: true, name: idAndCount.name, action: "add"});
             return this.basketService.addToBasket(idAndCount.id);
+
+            // console.log(idAndCount.numberOfItems);
+            // const array = new Array(idAndCount.numberOfItems).fill(5);
+            // console.log(array);
+            // // const array = [1,2,3,4,5];
+            //
+            // const arr = array.map(() => {
+            //   return this.basketService.addToBasket(idAndCount.id);
+            // });
+            // console.log(arr);
+            // const test = forkJoin(arr).subscribe();
+            //
+            // return arr;
           }
         ))
       .subscribe(() => {
@@ -59,7 +72,7 @@ export class BasketContainerComponent implements OnInit, OnDestroy {
     });
   }
 
-  removeItem($event: {id: number, name: string}): void {
+  removeItem($event: { id: number, name: string }): void {
     this.basketService.removeItem($event.id).subscribe(() => {
       this.basketObs = this.basketService.getBasket();
       this.popupService.openPopup({openPopup: true, name: $event.name, action: "removeItem"});

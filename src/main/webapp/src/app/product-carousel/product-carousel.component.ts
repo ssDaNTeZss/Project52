@@ -44,17 +44,17 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
   test = 0;
   test2: string;
   perScreen: number;
-  amounOfElements: number;
+  amountOfElements: number;
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
     this.scrWidth = window.innerWidth;
     if (this.scrWidth <= 1024) {
       this.perScreen = 50;
-      this.amounOfElements = 2;
+      this.amountOfElements = 2;
     } else {
       this.perScreen = 25;
-      this.amounOfElements = 4;
+      this.amountOfElements = 4;
     }
   }
 
@@ -76,31 +76,6 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
 
       this.changeDetection.markForCheck();
     }, 6000)
-
-    // this.subs = this.cookie.getCookie('phoneIds').subscribe((cookies: any) => {
-    //   console.log(cookies);
-    //   if (cookies === '') {
-    //     let arr = [];
-    //     arr[0] = this.state.phoneDetails.id;
-    //     // Cookie.setCookie('phoneIds', JSON.stringify(arr));
-    //     this.cookie.setCookie('phoneIds', JSON.stringify(arr));
-    //   } else {
-    //     this.subs = this.cookie.getCookie('phoneIds').subscribe((arr: any) => {
-    //       if (arr.length === 1) {
-    //         if (arr[0] !== this.state.phoneDetails.id) {
-    //           arr[1] = this.state.phoneDetails.id;
-    //         }
-    //       } else {
-    //         if (arr[1] !== this.state.phoneDetails.id) {
-    //           arr[0] = arr[1];
-    //           arr[1] = this.state.phoneDetails.id;
-    //         }
-    //       }
-    //       this.cookie.setCookie('phoneIds', JSON.stringify(arr));
-    //     });
-    //
-    //   }
-    // });
   }
 
   ngOnDestroy(): void {
@@ -111,7 +86,7 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
     this.carouselLeft = this.carouselLeft + this.perScreen;
 
     if (this.carouselLeft / this.perScreen >
-      this.products.length - this.amounOfElements) {
+      this.products.length - this.amountOfElements) {
       this.carouselLeft = 0;
     }
     this.carouselLeftPer = "-" + this.carouselLeft + "%";
@@ -119,7 +94,7 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
 
   leftMover() {
     if (this.carouselLeft == 0) {
-      this.carouselLeft = (this.products.length - this.amounOfElements) * this.perScreen;
+      this.carouselLeft = (this.products.length - this.amountOfElements) * this.perScreen;
     } else {
       this.carouselLeft = this.carouselLeft - this.perScreen;
     }

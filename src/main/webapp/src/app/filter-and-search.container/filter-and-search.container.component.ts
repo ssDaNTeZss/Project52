@@ -2,9 +2,9 @@ import {ChangeDetectionStrategy, ChangeDetectorRef, Component, EventEmitter, OnI
 import {ProductService} from "../services/product.service";
 import {ActivatedRoute} from "@angular/router";
 import {map, mergeMap} from "rxjs/operators";
-import {logger} from "codelyzer/util/logger";
 import {ProductCatalogService} from "../services/product-catalog.service";
 import {Brand} from "../models/brand.model";
+import {Product} from "../models/product.model";
 
 @Component({
   selector: 'app-filter-and-search',
@@ -64,11 +64,10 @@ export class FilterAndSearchContainerComponent implements OnInit {
         return params.typeProducts;
       }),
       mergeMap(typeProducts => this.productService.getProductsSameType(typeProducts)))
-      .subscribe((data: any) => {
+      .subscribe((data: Product[]) => {
         this.state.products = data;
         this.state.filteredProducts = data;
         this.ProductCatalogService.filteredProducts(this.state.filteredProducts);
-        // this.state.countFilteredProducts = this.state.filteredProducts.length;
 
         let prices = [];
         let brands = [];

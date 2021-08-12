@@ -10,6 +10,7 @@ import {
 import {LoginService} from "../services/login.service";
 import {Subscription} from "rxjs";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
+import {User} from "../models/user.model";
 
 @Component({
   selector: 'app-login-form-ui',
@@ -32,12 +33,7 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   showValidationError = false;
   validationError: string;
   showPopup = false;
-  userData: {
-    "id": 0,
-    "username": "",
-    "password": null,
-    "email": null
-  };
+  userData: User;
   _timer: number;
 
   ngOnInit(): void {
@@ -57,13 +53,13 @@ export class LoginFormComponent implements OnInit, OnDestroy {
       )
     });
 
-    this.subs = this.loginService.validErr$.subscribe((validErr: any) => {
+    this.subs = this.loginService.validErr$.subscribe((validErr: {showValidationError: boolean, validationError: string}) => {
       this.showValidationError = validErr.showValidationError;
       this.validationError = validErr.validationError;
       this.changeDetection.markForCheck();
     });
 
-    this.subs = this.loginService.setUserState$.subscribe((data: any) => {
+    this.subs = this.loginService.setUserState$.subscribe((data: User) => {
       this.userData = data;
       this.changeDetection.markForCheck();
     });
@@ -76,8 +72,6 @@ export class LoginFormComponent implements OnInit, OnDestroy {
         this._timer = setTimeout(() => {
           this.closeLoginForm();
         }, 3000);
-
-
       }
     });
   }

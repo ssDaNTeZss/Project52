@@ -1,7 +1,7 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {Subscription} from "rxjs";
-import {map} from "rxjs/operators";
 import {ActivatedRoute} from "@angular/router";
+import {Product} from "../../models/product.model";
 
 
 @Component({
@@ -13,7 +13,7 @@ export class CatalogPageComponent implements OnInit, OnDestroy {
 
   private subs: Subscription;
 
-  filteredProducts: any[];
+  filteredProducts: Product[];
 
 
   constructor(

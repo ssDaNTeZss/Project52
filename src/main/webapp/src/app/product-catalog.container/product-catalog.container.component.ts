@@ -24,7 +24,7 @@ export class ProductCatalogContainerComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-    this.subs = this.ProductCatalogService.filteredProducts$.subscribe((filteredProducts: any[]) => {
+    this.subs = this.ProductCatalogService.filteredProducts$.subscribe((filteredProducts: Product[]) => {
       this.filteredProducts = filteredProducts;
       this.changeDetection.markForCheck();
     });

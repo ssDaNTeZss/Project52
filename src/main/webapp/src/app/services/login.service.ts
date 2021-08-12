@@ -3,6 +3,7 @@ import {Observable, Subject} from "rxjs";
 import {WebRequestService} from "./web-request.service";
 import {HttpResponse} from "@angular/common/http";
 import {tap} from "rxjs/operators";
+import {User} from "../models/user.model";
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +13,7 @@ export class LoginService {
   public openLoginPopup$ = new Subject<boolean>();
   public validErr$ = new Subject<{showValidationError: boolean, validationError: string}>();
 
-  public setUserState$ = new Subject<any>();
+  public setUserState$ = new Subject<User>();
 
   public openLoginPopup(openLoginPopup: boolean): void {
     this.openLoginPopup$.next(openLoginPopup);
@@ -26,7 +27,7 @@ export class LoginService {
     this.validErr$.next(validErr);
   }
 
-  public setUserState(setUserState: any): void {
+  public setUserState(setUserState: User): void {
     this.setUserState$.next(setUserState);
   }
 
