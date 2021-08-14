@@ -3,33 +3,35 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { MainPageComponent } from './pages/main-page/main-page.component';
 import { BannerComponent } from './banner/banner.component';
-import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
-import { FooterComponent } from './footer/footer.component';
-import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
-import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { BasketComponent } from './basket/presentational/basket.component';
+import { BasketContainerComponent } from './basket/basket.container.component';
 import { CatalogPageComponent } from './pages/catalog-page/catalog-page.component';
-import { FilterAndSearchComponent } from './filter-and-search/filter-and-search.component';
-import { HeaderModule } from "./header-module/header.module";
-import { ProductCarouselContainerComponent } from './product-carousel.container/product-carousel.container.component';
-import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
-import { FilterAndSearchContainerComponent } from './filter-and-search.container/filter-and-search.container.component';
-import { ProductCatalogContainerComponent } from './product-catalog.container/product-catalog.container.component';
-import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { DeclensionWordPipe } from './pipes/declension-word.pipe';
-import { ProductPageComponent } from './pages/product-page/product-page.component';
-import { ProductContainerComponent } from './product.container/product.container.component';
-import { ProductComponent } from './product/product.component';
-import { SignupFormContainerComponent } from './signup-form.container/signup-form.container.component';
-import { SignupFormComponent } from './signup-form/signup-form.component';
-import { LoginFormContainerComponent } from './login-form.container/login-form.container.component';
-import { LoginFormComponent } from './login-form/login-form.component';
-import { BasketContainerComponent } from './basket.container/basket.container.component';
-import { BasketComponent } from './basket/basket.component';
-import { PopupContainerComponent } from './popup.container/popup.container.component';
+import { FilterAndSearchComponent } from './filter-and-search/presentational/filter-and-search.component';
+import { FilterAndSearchContainerComponent } from './filter-and-search/filter-and-search.container.component';
+import { FooterComponent } from './footer/footer.component';
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
+import { HeaderModule } from "./header-module/header.module";
+import { HttpClient, HttpClientModule } from "@angular/common/http";
+import { LoginFormComponent } from './login-form/presentational/login-form.component';
+import { LoginFormContainerComponent } from './login-form/login-form.container.component';
+import { MainPageComponent } from './pages/main-page/main-page.component';
+import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
+import { PopupComponent } from './popup/presentational/popup.component';
+import { PopupContainerComponent } from './popup/popup.container.component';
 import { PriceFormattingPipe } from './pipes/price-formatting.pipe';
+import { ProductCarouselComponent } from './product-carousel/presentational/product-carousel.component';
+import { ProductCarouselContainerComponent } from './product-carousel/product-carousel.container.component';
+import { ProductCatalogComponent } from './product-catalog/presentational/product-catalog.component';
+import { ProductCatalogContainerComponent } from './product-catalog/product-catalog.container.component';
+import { ProductComponent } from './product/presentational/product.component';
+import { ProductContainerComponent } from './product/product.container.component';
+import { ProductPageComponent } from './pages/product-page/product-page.component';
+import { SignupFormComponent } from './signup-form/presentational/signup-form.component';
+import { SignupFormContainerComponent } from './signup-form/signup-form.container.component';
+import { TranslateHttpLoader } from "@ngx-translate/http-loader";
+import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -38,28 +40,30 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    MainPageComponent,
     BannerComponent,
-    ProductCarouselComponent,
-    FooterComponent,
-    CatalogPageComponent,
-    FilterAndSearchComponent,
-    ProductCarouselContainerComponent,
-    PageNotFoundComponent,
-    FilterAndSearchContainerComponent,
-    ProductCatalogContainerComponent,
-    DeclensionWordPipe,
-    ProductPageComponent,
-    ProductContainerComponent,
-    ProductComponent,
-    SignupFormContainerComponent,
-    SignupFormComponent,
-    LoginFormContainerComponent,
-    LoginFormComponent,
-    BasketContainerComponent,
     BasketComponent,
+    BasketContainerComponent,
+    CatalogPageComponent,
+    DeclensionWordPipe,
+    FilterAndSearchComponent,
+    FilterAndSearchContainerComponent,
+    FooterComponent,
+    LoginFormComponent,
+    LoginFormContainerComponent,
+    MainPageComponent,
+    PageNotFoundComponent,
+    PopupComponent,
     PopupContainerComponent,
-    PriceFormattingPipe
+    PriceFormattingPipe,
+    ProductCarouselComponent,
+    ProductCarouselContainerComponent,
+    ProductCatalogComponent,
+    ProductCatalogContainerComponent,
+    ProductComponent,
+    ProductContainerComponent,
+    ProductPageComponent,
+    SignupFormComponent,
+    SignupFormContainerComponent
   ],
     imports: [
         BrowserModule,

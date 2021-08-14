@@ -7,11 +7,11 @@ import {
   OnDestroy,
   OnInit
 } from '@angular/core';
-import {CookieService} from "../services/cookie.service";
+import {CookieService} from "../../services/cookie.service";
 import {Observable, Subscription} from "rxjs";
-import {ProductService} from "../services/product.service";
+import {ProductService} from "../../services/product.service";
 import {TranslateService} from "@ngx-translate/core";
-import {Product} from "../models/product.model";
+import {Product} from "../../models/product.model";
 
 @Component({
   selector: 'app-product-carousel-ui',

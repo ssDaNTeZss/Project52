@@ -17,7 +17,7 @@
            (click)="leftMover()"
            *ngIf="product?.images">
         <img class="move-button__left-arrow"
-             src="assets/svg/arrow.svg"
+             src="../../../assets/svg/arrow.svg"
              alt="Arrow left"
              width="12px" height="21px">
       </div>
@@ -25,7 +25,7 @@
            (click)="rightMover()"
            *ngIf="product?.images">
         <img class="move-button__right-arrow"
-             src="assets/svg/arrow.svg"
+             src="../../../assets/svg/arrow.svg"
              alt="Arrow right"
              width="12px" height="21px">
       </div>
@@ -42,13 +42,15 @@
         <div class="counter-component">
           <button
             type="button"
-            class="btn btn-counter">
+            class="btn btn-counter"
+            (click)="changeQuantity.emit('increase')">
             <span>+</span>
           </button>
-          <span class="counter-component__count">1</span>
+          <span class="counter-component__count">{{ numberOfItems }}</span>
           <button
             type="button"
-            class="btn btn-counter">
+            class="btn btn-counter"
+            (click)="changeQuantity.emit('decrease')">
             <span class="minus">-</span>
           </button>
         </div>
@@ -64,7 +66,7 @@
             type="submit"
             class="btn btn-cart"
             (click)="addToBasket()">
-            <img src="assets/svg/cart.svg"
+            <img src="../../../assets/svg/cart.svg"
                  alt="Icon basket">
           </button>
         </div>

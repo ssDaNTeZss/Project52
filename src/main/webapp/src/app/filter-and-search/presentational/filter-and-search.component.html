@@ -3,7 +3,7 @@
     <div class="filter" (click)="openFilter('sort')">
       <div class="filter__header">
         <span class="header__title">{{sortFilterTitle}}</span>
-        <img class="filter__icon" src="assets/svg/Rectangle.svg"
+        <img class="filter__icon" src="../../../assets/svg/Rectangle.svg"
              [ngClass]="{ 'up': turnIcon }"
         >
       </div>
@@ -15,52 +15,52 @@
               (click)="applyFilter('sort', 'by popularity', true)"
           >
             <span class="options__title">by popularity</span>
-            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+            <img class="options__icon up" src="../../../assets/svg/Rectangle.svg">
           </li>
           <li class="list__item"
               (click)="applyFilter('sort', 'by popularity', false)"
           >
             <span>by popularity</span>
-            <img class="options__icon" src="assets/svg/Rectangle.svg">
+            <img class="options__icon" src="../../../assets/svg/Rectangle.svg">
           </li>
 
           <li class="list__item"
               (click)="applyFilter('sort', 'by rating', true)"
           >
             <span>by rating</span>
-            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+            <img class="options__icon up" src="../../../assets/svg/Rectangle.svg">
           </li>
           <li class="list__item"
               (click)="applyFilter('sort', 'by rating', false)"
           >
             <span>by rating</span>
-            <img class="options__icon" src="assets/svg/Rectangle.svg">
+            <img class="options__icon" src="../../../assets/svg/Rectangle.svg">
           </li>
 
           <li class="list__item"
               (click)="applyFilter('sort', 'by price', true)"
           >
             <span>by price</span>
-            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+            <img class="options__icon up" src="../../../assets/svg/Rectangle.svg">
           </li>
           <li class="list__item"
               (click)="applyFilter('sort', 'by price', false)"
           >
             <span>by price</span>
-            <img class="options__icon" src="assets/svg/Rectangle.svg">
+            <img class="options__icon" src="../../../assets/svg/Rectangle.svg">
           </li>
 
           <li class="list__item"
               (click)="applyFilter('sort', 'by name', true)"
           >
             <span>by name</span>
-            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+            <img class="options__icon up" src="../../../assets/svg/Rectangle.svg">
           </li>
           <li class="list__item"
               (click)="applyFilter('sort', 'by name', false)"
           >
             <span>by name</span>
-            <img class="options__icon" src="assets/svg/Rectangle.svg">
+            <img class="options__icon" src="../../../assets/svg/Rectangle.svg">
           </li>
 
           <li class="list__item"
@@ -75,7 +75,7 @@
     <div class="filter">
       <div class="filter__header" (click)="openFilter('brand')">
         <span class="header__title">{{ "FILTER-AND-SEARCH.TITLE.BRAND" | translate }}</span>
-        <img class="filter__icon" src="assets/svg/Rectangle.svg">
+        <img class="filter__icon" src="../../../assets/svg/Rectangle.svg">
       </div>
       <div class="filter__options" [ngClass]="{
       'activated': activatedBrand
@@ -104,7 +104,7 @@
     <div class="filter">
       <div class="filter__header" (click)="openFilter('price')">
         <span class="header__title">{{ "FILTER-AND-SEARCH.TITLE.PRICE" | translate }}</span>
-        <img class="filter__icon" src="assets/svg/Rectangle.svg">
+        <img class="filter__icon" src="../../../assets/svg/Rectangle.svg">
       </div>
       <div class="filter__options form-price" [ngClass]="{
       'activated': activatedPrice
@@ -164,7 +164,7 @@
     <span class="countFilteredProducts__mobile">{{state.countFilteredProducts | declensionWord:"item"}}</span>
   </div>
   <div class="col filter-btn">
-    <img src="assets/svg/Filter.svg" alt="Filters"
+    <img src="../../../assets/svg/Filter.svg" alt="Filters"
          (click)="openMobileFilters()">
   </div>
   <div class="filter-elements"
@@ -174,7 +174,7 @@
     <div class="filter-element">
       <div class="filter-element__title" (click)="openFilter('sort')">
         <span class="header__title">{{sortFilterTitle}}</span>
-        <img class="filter__icon" src="assets/svg/Rectangle.svg"
+        <img class="filter__icon" src="../../../assets/svg/Rectangle.svg"
              [ngClass]="{ 'up': turnIcon }">
       </div>
       <div class="filter-element__content" [class.active]="activatedSort"
@@ -184,52 +184,52 @@
               (click)="applyFilter('sort', 'by popularity', true)"
           >
             <span class="options__title">by popularity</span>
-            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+            <img class="options__icon up" src="../../../assets/svg/Rectangle.svg">
           </li>
           <li class="list__item"
               (click)="applyFilter('sort', 'by popularity', false)"
           >
             <span>by popularity</span>
-            <img class="options__icon" src="assets/svg/Rectangle.svg">
+            <img class="options__icon" src="../../../assets/svg/Rectangle.svg">
           </li>
 
           <li class="list__item"
               (click)="applyFilter('sort', 'by rating', true)"
           >
             <span>by rating</span>
-            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+            <img class="options__icon up" src="../../../assets/svg/Rectangle.svg">
           </li>
           <li class="list__item"
               (click)="applyFilter('sort', 'by rating', false)"
           >
             <span>by rating</span>
-            <img class="options__icon" src="assets/svg/Rectangle.svg">
+            <img class="options__icon" src="../../../assets/svg/Rectangle.svg">
           </li>
 
           <li class="list__item"
               (click)="applyFilter('sort', 'by price', true)"
           >
             <span>by price</span>
-            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+            <img class="options__icon up" src="../../../assets/svg/Rectangle.svg">
           </li>
           <li class="list__item"
               (click)="applyFilter('sort', 'by price', false)"
           >
             <span>by price</span>
-            <img class="options__icon" src="assets/svg/Rectangle.svg">
+            <img class="options__icon" src="../../../assets/svg/Rectangle.svg">
           </li>
 
           <li class="list__item"
               (click)="applyFilter('sort', 'by name', true)"
           >
             <span>by name</span>
-            <img class="options__icon up" src="assets/svg/Rectangle.svg">
+            <img class="options__icon up" src="../../../assets/svg/Rectangle.svg">
           </li>
           <li class="list__item"
               (click)="applyFilter('sort', 'by name', false)"
           >
             <span>by name</span>
-            <img class="options__icon" src="assets/svg/Rectangle.svg">
+            <img class="options__icon" src="../../../assets/svg/Rectangle.svg">
           </li>
 
           <li class="list__item"
@@ -244,7 +244,7 @@
     <div class="filter-element">
       <div class="filter-element__title" (click)="openFilter('brand')">
         <span class="header__title">{{ "FILTER-AND-SEARCH.TITLE.BRAND" | translate }}</span>
-        <img class="filter__icon" src="assets/svg/Rectangle.svg">
+        <img class="filter__icon" src="../../../assets/svg/Rectangle.svg">
       </div>
       <div class="filter-element__content" [class.active]="activatedBrand">
         <div class="checkbox" *ngFor="let brand of state.brands">
@@ -271,7 +271,7 @@
     <div class="filter-element">
       <div class="filter-element__title" (click)="openFilter('price')">
         <span class="header__title">{{ "FILTER-AND-SEARCH.TITLE.PRICE" | translate }}</span>
-        <img class="filter__icon" src="assets/svg/Rectangle.svg">
+        <img class="filter__icon" src="../../../assets/svg/Rectangle.svg">
       </div>
       <div class="filter-element__content" [class.active]="activatedPrice">
         <form

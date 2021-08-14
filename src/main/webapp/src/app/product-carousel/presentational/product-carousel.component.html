@@ -2,12 +2,12 @@
   <div class="col-12 col-xl-6 product-carousel__title" translate>{{ translatedTitle }}</div>
   <div class="col-xl-6 product-carousel__arrows" *ngIf="products$.length > 4">
     <img class="rotate180deg"
-         src="assets/svg/Arrow-right-black-24x24.svg"
+         src="../../../assets/svg/Arrow-right-black-24x24.svg"
          alt="Arrow left"
          width="24px" height="24px"
          (click)="leftMover()">
     <img class="arrow-right active"
-         src="assets/svg/Arrow-right-black-24x24.svg"
+         src="../../../assets/svg/Arrow-right-black-24x24.svg"
          alt="Arrow right"
          width="24px" height="24px"
          (click)="rightMover()">
@@ -20,10 +20,10 @@
         <a [routerLink]="['/productdetails', product.id]" class="card__img">
           <img src="{{product.img}}" alt="{{product.name}}">
           <span class="card__img__btn">
-            <img src="assets/svg/Favorite.svg"
+            <img src="../../../assets/svg/Favorite.svg"
                  alt="Heart icon"
                  width="20px" height="20px">
-            <img src="assets/svg/cart.svg"
+            <img src="../../../assets/svg/cart.svg"
                  alt="Icon basket"
                  width="20px" height="20px">
           </span>

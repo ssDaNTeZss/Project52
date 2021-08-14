@@ -24,6 +24,7 @@ export class ProductContainerComponent implements OnInit, OnDestroy {
 
   productId: number;
   product: Product;
+  numberOfItems = 1;
 
   ngOnInit(): void {
 
@@ -34,13 +35,12 @@ export class ProductContainerComponent implements OnInit, OnDestroy {
         return params.idProduct;
       }),
       mergeMap(idProduct => this.productService.getOneProduct(idProduct)))
-      .subscribe((data: any) => {
-
+      .subscribe((data: Product) => {
         this.product = data;
         this.changeDetection.markForCheck();
       });
 
-    this.subs = this.cookie.getCookie('phoneIds').subscribe((cookies: any) => {
+    this.subs = this.cookie.getCookie('phoneIds').subscribe((cookies: string) => {
       if (cookies === '') {
         let arr = [];
         arr[0] = this.productId;
@@ -66,5 +66,18 @@ export class ProductContainerComponent implements OnInit, OnDestroy {
     if (this.subs) {
       this.subs.unsubscribe();
     }
+  }
+
+  changeQuantity($event: string) {
+      if ($event === "increase") {
+        if (this.numberOfItems < 199) {
+          this.numberOfItems++;
+        }
+      }
+      if ($event === "decrease") {
+        if (this.numberOfItems > 1) {
+          this.numberOfItems--;
+        }
+      }
   }
 }

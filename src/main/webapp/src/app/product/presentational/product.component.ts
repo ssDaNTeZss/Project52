@@ -1,6 +1,7 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
-import {Product} from "../models/product.model";
-import {BasketService} from "../services/basket.service";
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Product} from "../../models/product.model";
+import {BasketService} from "../../services/basket.service";
+import {Brand} from "../../models/brand.model";
 
 @Component({
   selector: 'app-product-ui',
@@ -10,6 +11,8 @@ import {BasketService} from "../services/basket.service";
 export class ProductComponent implements OnInit {
 
   @Input() product: Product;
+  @Output() changeQuantity = new EventEmitter<string>();
+  @Input() numberOfItems: number;
 
   constructor(
     private basketService: BasketService,
@@ -54,6 +57,6 @@ export class ProductComponent implements OnInit {
   }
 
   addToBasket(): void {
-    this.basketService.sendToCart({id: this.product.id, name: this.product.name, count: 1});
+    this.basketService.sendToCart({id: this.product.id, name: this.product.name, numberOfItems: this.numberOfItems});
   }
 }

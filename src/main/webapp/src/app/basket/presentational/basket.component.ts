@@ -9,8 +9,8 @@ import {
   Output
 } from '@angular/core';
 import {Subscription} from "rxjs";
-import {BasketService} from "../services/basket.service";
-import {Basket} from "../models/basket.model";
+import {BasketService} from "../../services/basket.service";
+import {Basket} from "../../models/basket.model";
 
 @Component({
   selector: 'app-basket-ui',

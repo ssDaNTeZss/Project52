@@ -3,7 +3,7 @@
     <div class="col-12 custom-form">
       <span class="custom-form__title">{{ "BASKET.TITLE" | translate }}</span>
       <div class="close-btn" (click)="closeBasket()">
-        <img class="close-btn" src="assets/svg/Close-black.svg"
+        <img class="close-btn" src="../../../assets/svg/Close-black.svg"
              width="17px" height="17px"
              alt="Close button">
       </div>
@@ -103,7 +103,7 @@
 
     <div class="col-12 basket-empty"
          *ngIf="!basket">
-      <img src="assets/svg/cart-big.svg"
+      <img src="../../../assets/svg/cart-big.svg"
            width="73px" height="73px"
            alt="Icon basket">
       <div class="basket-empty__text">
@@ -116,7 +116,7 @@
               [routerLink]="['/products', 'phones']"
               (click)="closeBasket()">
         <span>{{ "BASKET.BUTTON.CATALOG" | translate }}</span>
-        <img class="btn-img" src="assets/svg/trending-flat.svg"
+        <img class="btn-img" src="../../../assets/svg/trending-flat.svg"
              alt="Arrow right"
              width="24px" height="24px">
       </button>

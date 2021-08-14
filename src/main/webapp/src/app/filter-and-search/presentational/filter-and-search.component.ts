@@ -7,14 +7,14 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import {ProductService} from "../services/product.service";
+import {ProductService} from "../../services/product.service";
 import {Subscription} from "rxjs";
 import {ActivatedRoute, Params} from "@angular/router";
-import {Brand} from "../models/brand.model";
+import {Brand} from "../../models/brand.model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
-import {ProductCatalogService} from "../services/product-catalog.service";
+import {ProductCatalogService} from "../../services/product-catalog.service";
 import {fakeAsync} from "@angular/core/testing";
-import {Product} from "../models/product.model";
+import {Product} from "../../models/product.model";
 
 @Component({
   selector: 'app-filter-and-search-ui',

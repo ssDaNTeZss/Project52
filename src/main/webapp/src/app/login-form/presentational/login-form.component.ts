@@ -7,10 +7,10 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import {LoginService} from "../services/login.service";
+import {LoginService} from "../../services/login.service";
 import {Subscription} from "rxjs";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../models/user.model";
+import {User} from "../../models/user.model";
 
 @Component({
   selector: 'app-login-form-ui',

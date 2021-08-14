@@ -8,10 +8,11 @@ import {
   Output
 } from '@angular/core';
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {Subscription} from "rxjs";
-import {SignupService} from "../services/signup.service";
-import {confirmPasswordValidator} from "../validators/confirmPassword.validator";
-import {LoginService} from "../services/login.service";
+import {ReplaySubject, Subscription} from "rxjs";
+import {SignupService} from "../../services/signup.service";
+import {confirmPasswordValidator} from "../../validators/confirmPassword.validator";
+import {LoginService} from "../../services/login.service";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-signup-form-ui',
@@ -39,6 +40,8 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   showValidationError = false;
   validationError: string;
   showPopup = false;
+
+  destroy: ReplaySubject<any> = new ReplaySubject<any>(1);
 
   ngOnInit(): void {
     this.formModelSignUp = new FormGroup({
@@ -72,13 +75,13 @@ export class SignupFormComponent implements OnInit, OnDestroy {
       )
     });
 
-    this.subs = this.signupService.validErr$.subscribe((validErr: any) => {
+    this.signupService.validErr$.pipe(takeUntil(this.destroy)).subscribe((validErr: {showValidationError: boolean, validationError: string}) => {
       this.showValidationError = validErr.showValidationError;
       this.validationError = validErr.validationError;
       this.changeDetection.markForCheck();
     });
 
-    this.subs = this.signupService.openSignupPopup$.subscribe((openSignupPopup: boolean) => {
+    this.signupService.openSignupPopup$.pipe(takeUntil(this.destroy)).subscribe((openSignupPopup: boolean) => {
       if (openSignupPopup) {
         this.showPopup = openSignupPopup;
         this.changeDetection.markForCheck();
@@ -87,9 +90,8 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subs) {
-      this.subs.unsubscribe();
-    }
+    this.destroy.next(null);
+    this.destroy.complete();
   }
 
   isControlInvalid(controlName: string): boolean {

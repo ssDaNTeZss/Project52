@@ -31,11 +31,6 @@ export class PopupContainerComponent implements OnInit, OnDestroy {
     }) => {
       this.popup = popup;
 
-      setInterval(() => {
-        this.popup.openPopup = false;
-        this.changeDetection.markForCheck();
-      }, 4000);
-
       this.changeDetection.markForCheck();
     })
   }
