@@ -2,6 +2,8 @@ import {Injectable} from '@angular/core';
 import {WebRequestService} from "./web-request.service";
 import {BehaviorSubject, Observable, Subject} from "rxjs";
 import {HttpResponse} from "@angular/common/http";
+import {Product} from "../models/product.model";
+import {Basket} from "../models/basket.model";
 
 @Injectable({
   providedIn: 'root'
@@ -9,13 +11,13 @@ import {HttpResponse} from "@angular/common/http";
 export class BasketService {
 
   public openBasket$ = new Subject<boolean>();
-  public sendToCart$ = new Subject<{id: number, name: string, count: number}>();
+  public sendToCart$ = new Subject<{id: number, name: string, numberOfItems: number}>();
 
   public openBasket(openBasket: boolean): void {
     this.openBasket$.next(openBasket);
   }
 
-  public sendToCart(idAndCount: {id: number, name: string, count: number}): void {
+  public sendToCart(idAndCount: {id: number, name: string, numberOfItems: number}): void {
     this.sendToCart$.next(idAndCount);
   }
 
@@ -24,12 +26,16 @@ export class BasketService {
   ) {
   }
 
-  getBasket(): Observable<Object> {
-    return this.webReqService.get("basket");
+  getBasket(): Observable<Basket> {
+    return this.webReqService.get<Basket>("basket");
   }
 
-  addToBasket(id: number): Observable<Object> {
-    return this.webReqService.post("basket", {id: id});
+  // addToBasket(id: number): Observable<Object> {
+  //   return this.webReqService.post("basket", {id: id});
+  // }
+
+  addToBasket(id: number): Observable<Basket> {
+    return this.webReqService.post<Basket>("basket", {id: id});
   }
 
   getUserInfo(): Observable<Object> {

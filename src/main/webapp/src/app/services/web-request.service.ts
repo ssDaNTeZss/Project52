@@ -14,20 +14,20 @@ export class WebRequestService {
     this.ROOT_URL = environment.apiUrl;
   }
 
-  get(uri: string, payload?: Object) {
-    return this.http.get(`${this.ROOT_URL}/${uri}`, payload);
+  get<T>(uri: string, payload?: Object) {
+    return this.http.get<T>(`${this.ROOT_URL}/${uri}`, payload);
   }
 
-  post(uri: string, payload: Object) {
-    return this.http.post(`${this.ROOT_URL}/${uri}`, payload);
+  post<T>(uri: string, payload: Object) {
+    return this.http.post<T>(`${this.ROOT_URL}/${uri}`, payload);
   }
 
-  put(uri: string, payload: Object) {
-    return this.http.put(`${this.ROOT_URL}/${uri}`, payload);
+  put<T>(uri: string, payload: Object) {
+    return this.http.put<T>(`${this.ROOT_URL}/${uri}`, payload);
   }
 
-  delete(uri: string) {
-    return this.http.delete(`${this.ROOT_URL}/${uri}`);
+  delete<T>(uri: string) {
+    return this.http.delete<T>(`${this.ROOT_URL}/${uri}`);
   }
 
   signup(email: string, password: string, username: string) {
