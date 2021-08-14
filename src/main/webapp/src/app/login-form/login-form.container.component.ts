@@ -41,7 +41,7 @@ export class LoginFormContainerComponent implements OnInit, OnDestroy {
   signIn($stateOfForm: { username: string, password: string }): void {
     this.loginService.login($stateOfForm.username, $stateOfForm.password)
       .pipe(catchError((e: HttpErrorResponse) => {
-        if (e.status === 403) {
+        if (e.status === 403 || e.status === 405) {
           this.state.showValidationError = true;
           this.state.validationError = "Invalid username or password!";
 
