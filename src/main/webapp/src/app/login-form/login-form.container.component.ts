@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {of, Subscription} from "rxjs";
 import {LoginService} from "../services/login.service";
 import {catchError} from "rxjs/operators";
@@ -9,7 +9,7 @@ import {HttpErrorResponse} from "@angular/common/http";
   templateUrl: './login-form.container.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class LoginFormContainerComponent implements OnInit {
+export class LoginFormContainerComponent implements OnInit, OnDestroy {
 
   private subs: Subscription;
 
@@ -30,6 +30,12 @@ export class LoginFormContainerComponent implements OnInit {
       this.openLoginForm = openLoginForm;
       this.changeDetection.markForCheck();
     })
+  }
+
+  ngOnDestroy(): void {
+    if (this.subs) {
+      this.subs.unsubscribe();
+    }
   }
 
   signIn($stateOfForm: { username: string, password: string }): void {

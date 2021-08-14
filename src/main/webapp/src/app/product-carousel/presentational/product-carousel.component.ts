@@ -45,6 +45,7 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
   test2: string;
   perScreen: number;
   amountOfElements: number;
+  _timer: number;
 
   @HostListener('window:resize', ['$event'])
   getScreenSize(event?) {
@@ -59,14 +60,12 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
   }
 
   ngOnInit(): void {
-
-
     this.subs = this.translate.get("MAIN-PAGE.PRODUCT-CAROUSEL." + this.title).subscribe((res: string) => {
       this.translatedTitle = res;
       this.changeDetection.markForCheck();
     });
 
-    setInterval(() => {
+    this._timer = setInterval(() => {
       this.carouselMargin2 = this.carouselMargin2 + 5;
 
       if (this.carouselMargin2 > 15) {
@@ -79,7 +78,12 @@ export class ProductCarouselComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.subs.unsubscribe();
+    if (this.subs) {
+      this.subs.unsubscribe();
+    }
+    if (this._timer){
+      clearTimeout(this._timer);
+    }
   }
 
   rightMover() {
