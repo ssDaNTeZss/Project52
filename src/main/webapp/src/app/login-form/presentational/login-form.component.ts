@@ -8,9 +8,10 @@ import {
   Output
 } from '@angular/core';
 import {LoginService} from "../../services/login.service";
-import {Subscription} from "rxjs";
+import {ReplaySubject, Subscription} from "rxjs";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
 import {User} from "../../models/user.model";
+import {takeUntil} from "rxjs/operators";
 
 @Component({
   selector: 'app-login-form-ui',
@@ -36,6 +37,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   userData: User;
   _timer: number;
 
+  destroy: ReplaySubject<any> = new ReplaySubject<any>(1);
+
   ngOnInit(): void {
     this.formModelLogin = new FormGroup({
       username: new FormControl(
@@ -53,18 +56,18 @@ export class LoginFormComponent implements OnInit, OnDestroy {
       )
     });
 
-    this.subs = this.loginService.validErr$.subscribe((validErr: {showValidationError: boolean, validationError: string}) => {
+    this.loginService.validErr$.pipe(takeUntil(this.destroy)).subscribe((validErr: {showValidationError: boolean, validationError: string}) => {
       this.showValidationError = validErr.showValidationError;
       this.validationError = validErr.validationError;
       this.changeDetection.markForCheck();
     });
 
-    this.subs = this.loginService.setUserState$.subscribe((data: User) => {
+    this.loginService.setUserState$.pipe(takeUntil(this.destroy)).subscribe((data: User) => {
       this.userData = data;
       this.changeDetection.markForCheck();
     });
 
-    this.subs = this.loginService.openLoginPopup$.subscribe((openLoginPopup: boolean) => {
+    this.loginService.openLoginPopup$.pipe(takeUntil(this.destroy)).subscribe((openLoginPopup: boolean) => {
       if (openLoginPopup) {
         this.showPopup = openLoginPopup;
         this.changeDetection.markForCheck();
@@ -77,9 +80,8 @@ export class LoginFormComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.subs) {
-      this.subs.unsubscribe();
-    }
+    this.destroy.next(null);
+    this.destroy.complete();
     if (this._timer){
       clearTimeout(this._timer);
     }

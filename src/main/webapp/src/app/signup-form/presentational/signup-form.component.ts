@@ -34,7 +34,6 @@ export class SignupFormComponent implements OnInit, OnDestroy {
   ) {
   }
 
-  private subs: Subscription;
   formModelSignUp: FormGroup;
   openSignupForm = false;
   showValidationError = false;
@@ -134,7 +133,6 @@ export class SignupFormComponent implements OnInit, OnDestroy {
 
     this.changeDetection.markForCheck();
   }
-
 
   backHome(): void {
     this.closeSignupForm();
