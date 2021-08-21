@@ -102,6 +102,13 @@
     "EMPTY-TEXT-2": "Please return to our catalog"
   },
   "FILTER-AND-SEARCH": {
+    "SORTING": {
+      "POPULARITY": "by popularity",
+      "RATING": "by rating",
+      "PRICE": "by price",
+      "NAME": "by name",
+      "DEFAULT": "by default"
+    },
     "TITLE": {
       "BRAND": "Brand",
       "PRICE": "Price"
