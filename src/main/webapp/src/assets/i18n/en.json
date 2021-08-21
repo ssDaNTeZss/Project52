@@ -121,6 +121,12 @@
   "PAGE-404": {
     "BUTTON": {
       "GO-BACK": "Go back"
+    },
+    "TEXT": {
+      "TEXT-ONE": "This is awkward...",
+      "TEXT-TWO": "You are looking for",
+      "TEXT-THREE": "something that",
+      "TEXT-FOUR": "doesn't actually exist."
     }
   },
   "PRODUCT": {

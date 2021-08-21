@@ -141,9 +141,7 @@ export class FilterAndSearchContainerComponent implements OnInit {
   }
 
   sorting(): void {
-    if (this.state.sortName === 'default') {
-      // this.filtration();
-    } else {
+    if (this.state.sortName !== 'default') {
       if (this.state.sortCheckArrowUp) {
         this.state.filteredProducts.sort(this.compare(this.state.sortName));
       } else {

@@ -1,14 +1,13 @@
-import {ChangeDetectionStrategy, Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {ChangeDetectionStrategy, Component, EventEmitter, Input, Output} from '@angular/core';
 import {Product} from "../../models/product.model";
 import {BasketService} from "../../services/basket.service";
-import {Brand} from "../../models/brand.model";
 
 @Component({
   selector: 'app-product-ui',
   templateUrl: './product.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductComponent implements OnInit {
+export class ProductComponent {
 
   @Input() product: Product;
   @Output() changeQuantity = new EventEmitter<string>();
@@ -24,9 +23,6 @@ export class ProductComponent implements OnInit {
   carouselLeftPer: string;
   carouselLeft = 0;
   perScreen = 100;
-
-  ngOnInit(): void {
-  }
 
   openInfoCard(cardName: string): void {
     if (cardName === "techSpec") {

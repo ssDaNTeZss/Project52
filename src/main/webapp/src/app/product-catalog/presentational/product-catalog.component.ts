@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, Input, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, Input} from '@angular/core';
 import {Product} from "../../models/product.model";
 
 @Component({
@@ -6,7 +6,7 @@ import {Product} from "../../models/product.model";
   templateUrl: './product-catalog.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class ProductCatalogComponent implements OnInit {
+export class ProductCatalogComponent {
 
   @Input() filteredProducts: Product[];
 
@@ -16,8 +16,5 @@ export class ProductCatalogComponent implements OnInit {
   };
 
   constructor() { }
-
-  ngOnInit(): void {
-  }
 
 }

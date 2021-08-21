@@ -9,11 +9,10 @@ import {
 } from '@angular/core';
 import {ProductService} from "../../services/product.service";
 import {Subscription} from "rxjs";
-import {ActivatedRoute, Params} from "@angular/router";
+import {ActivatedRoute} from "@angular/router";
 import {Brand} from "../../models/brand.model";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {ProductCatalogService} from "../../services/product-catalog.service";
-import {fakeAsync} from "@angular/core/testing";
 import {Product} from "../../models/product.model";
 
 @Component({
@@ -184,6 +183,5 @@ export class FilterAndSearchComponent implements OnInit, OnDestroy {
       this.activatedPrice = false;
     }
     this.mobileFilters = !this.mobileFilters;
-    console.log(this.mobileFilters);
   }
 }

@@ -1,37 +1,18 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
-import {Subscription} from "rxjs";
-import {ActivatedRoute} from "@angular/router";
+import {ChangeDetectionStrategy, Component} from '@angular/core';
 import {Product} from "../../models/product.model";
-
 
 @Component({
   selector: 'app-catalog-page',
   templateUrl: './catalog-page.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class CatalogPageComponent implements OnInit, OnDestroy {
-
-  private subs: Subscription;
+export class CatalogPageComponent {
 
   filteredProducts: Product[];
 
-
-  constructor(
-    private changeDetection: ChangeDetectorRef,
-    private route: ActivatedRoute,
-  ) { }
+  constructor( ) { }
 
   category = "";
-
-  ngOnInit(): void {
-
-  }
-
-  ngOnDestroy(): void {
-    if (this.subs) {
-      this.subs.unsubscribe();
-    }
-  }
 
   typeProducts($event: string): void {
     this.category = $event;

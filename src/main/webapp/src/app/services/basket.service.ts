@@ -1,8 +1,6 @@
 import {Injectable} from '@angular/core';
 import {WebRequestService} from "./web-request.service";
-import {BehaviorSubject, Observable, Subject} from "rxjs";
-import {HttpResponse} from "@angular/common/http";
-import {Product} from "../models/product.model";
+import {Observable, Subject} from "rxjs";
 import {Basket} from "../models/basket.model";
 
 @Injectable({
@@ -29,10 +27,6 @@ export class BasketService {
   getBasket(): Observable<Basket> {
     return this.webReqService.get<Basket>("basket");
   }
-
-  // addToBasket(id: number): Observable<Object> {
-  //   return this.webReqService.post("basket", {id: id});
-  // }
 
   addToBasket(id: number): Observable<Basket> {
     return this.webReqService.post<Basket>("basket", {id: id});

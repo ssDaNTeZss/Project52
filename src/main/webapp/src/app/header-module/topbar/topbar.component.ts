@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, ChangeDetectorRef, Component, HostListener} from '@angular/core';
 import {OpenNavbarService} from "../../services/open-navbar.service";
 import {SignupService} from "../../services/signup.service";
 import {LoginService} from "../../services/login.service";
@@ -9,7 +9,7 @@ import {BasketService} from "../../services/basket.service";
   templateUrl: './topbar.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class TopbarComponent implements OnInit {
+export class TopbarComponent {
 
   statusNavbar = false;
   openAccMenu = false;
@@ -31,9 +31,6 @@ export class TopbarComponent implements OnInit {
       this.accountMenuRight = (this.scrWidth - 1164) / 2 + "px";
       this.changeDetection.markForCheck();
     }
-  }
-
-  ngOnInit(): void {
   }
 
   openNavbar(): void {
