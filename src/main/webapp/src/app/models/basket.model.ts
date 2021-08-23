@@ -4,5 +4,5 @@ export interface Basket {
   id: number;
   totalPrice: number;
   userId: number;
-  items: [Items];
+  items: Items[];
 }

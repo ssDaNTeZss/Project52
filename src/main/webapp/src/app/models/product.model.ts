@@ -12,6 +12,6 @@ export interface Product {
   popularity: number;
   price: number;
   rating: number;
-  techSpec: [TechSpec];
-  images: [Image];
+  techSpec: TechSpec[];
+  images: Image[];
 }
