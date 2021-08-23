@@ -1,6 +1,6 @@
 import {ChangeDetectionStrategy, ChangeDetectorRef, Component, OnDestroy, OnInit} from '@angular/core';
 import {of, Subscription} from "rxjs";
-import {LoginService} from "../services/login.service";
+import {LoginService} from "../../services/login.service";
 import {catchError} from "rxjs/operators";
 import {HttpErrorResponse} from "@angular/common/http";
 

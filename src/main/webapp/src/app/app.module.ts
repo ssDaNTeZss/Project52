@@ -14,8 +14,6 @@ import { FooterComponent } from './footer/footer.component';
 import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 import { HeaderModule } from "./header-module/header.module";
 import { HttpClient, HttpClientModule } from "@angular/common/http";
-import { LoginFormComponent } from './login-form/presentational/login-form.component';
-import { LoginFormContainerComponent } from './login-form/login-form.container.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
 import { PageNotFoundComponent } from './pages/page-not-found/page-not-found.component';
 import { PopupComponent } from './popup/presentational/popup.component';
@@ -32,6 +30,7 @@ import { SignupFormComponent } from './signup-form/presentational/signup-form.co
 import { SignupFormContainerComponent } from './signup-form/signup-form.container.component';
 import { TranslateHttpLoader } from "@ngx-translate/http-loader";
 import { TranslateLoader, TranslateModule } from "@ngx-translate/core";
+import { LoginModule } from "./login-module/login.module";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -48,8 +47,6 @@ export function HttpLoaderFactory(http: HttpClient) {
     FilterAndSearchComponent,
     FilterAndSearchContainerComponent,
     FooterComponent,
-    LoginFormComponent,
-    LoginFormContainerComponent,
     MainPageComponent,
     PageNotFoundComponent,
     PopupComponent,
@@ -77,6 +74,7 @@ export function HttpLoaderFactory(http: HttpClient) {
             },
         }),
         HeaderModule,
+        LoginModule,
         FormsModule,
         ReactiveFormsModule
     ],

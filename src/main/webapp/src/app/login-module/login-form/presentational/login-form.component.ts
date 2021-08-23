@@ -7,10 +7,10 @@ import {
   OnInit,
   Output
 } from '@angular/core';
-import {LoginService} from "../../services/login.service";
-import {ReplaySubject, Subscription} from "rxjs";
+import {LoginService} from "../../../services/login.service";
+import {ReplaySubject} from "rxjs";
 import {AbstractControl, FormControl, FormGroup, Validators} from "@angular/forms";
-import {User} from "../../models/user.model";
+import {User} from "../../../models/user.model";
 import {takeUntil} from "rxjs/operators";
 
 @Component({
@@ -21,8 +21,6 @@ import {takeUntil} from "rxjs/operators";
 export class LoginFormComponent implements OnInit, OnDestroy {
 
   @Output() stateOfForm = new EventEmitter<{ username: string, password: string }>();
-
-  private subs: Subscription;
 
   constructor(
     private loginService: LoginService,
